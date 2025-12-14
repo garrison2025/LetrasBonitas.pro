@@ -30,26 +30,22 @@
             font-weight: 400;
             display: inline-block;
         }
+        /* Task 3: Hide Scrollbar for Toolbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('converter', () => ({
                 inputText: 'Elegancia',
                 toastVisible: false,
-                symbolCategories: [
-                    { name: "Populares", symbols: ["★", "⚡", "✈", "☠", "☂", "❤", "❥", "✔", "✘", "🔥"] },
-                    { name: "Adornos y Alas", symbols: ["꧁", "꧂", "༺", "༻", "★彡", "ッ", "【", "】", "『", "』", "➤"] },
-                    { name: "Corazones", symbols: ["♥", "♡", "❥", "❣", "❦", "❧", "ღ", "💖", "💕"] },
-                    { name: "Estrellas y Flores", symbols: ["★", "☆", "✦", "✧", "✩", "✪", "❀", "✿", "❁", "✾"] },
-                    { name: "Música y Notas", symbols: ["♩", "♪", "♫", "♬", "♭", "♮", "♯"] },
-                    { name: "Oficina y Flechas", symbols: ["✎", "✂", "✈", "✉", "➔", "➙", "➛", "➜", "➝", "➤"] }
-                ],
+                toolbarSymbols: ['★', '⚡', '꧁', '꧂', '❤', '✈', '☠', '✔', '✘', '⚔', '☂', '✿', '❄', '✪', '✯', '✦', '✨', '❥', '❣', 'ღ'],
                 fonts: [
                     // Cursivas & Script (The Core)
                     { name: 'Cursiva Real', map: { a:'𝓪',b:'𝓫',c:'𝓬',d:'𝓭',e:'𝓮',f:'𝓯',g:'𝓰',h:'𝓱',i:'𝓲',j:'𝓳',k:'𝓴',l:'𝓵',m:'𝓶',n:'𝓷',o:'𝓸',p:'𝓹',q:'𝓺',r:'𝓻',s:'𝓼',t:'𝓽',u:'𝓾',v:'𝓿',w:'𝔀',x:'𝔁',y:'𝔂',z:'𝔃', A:'𝓐',B:'𝓑',C:'𝓒',D:'𝓓',E:'𝓔',F:'𝓕',G:'𝓖',H:'𝓗',I:'𝓘',J:'𝓙',K:'𝓚',L:'𝓛',M:'𝓜',N:'𝓝',O:'𝓞',P:'𝓟',Q:'𝓠',R:'𝓡',S:'𝓢',T:'𝓣',U:'𝓤',V:'𝓥',W:'𝓦',X:'𝓧',Y:'𝓨',Z:'𝓩' } },
                     { name: 'Cursiva Clásica', map: { a:'𝒶',b:'𝒷',c:'𝒸',d:'𝒹',e:'ℯ',f:'𝒻',g:'ℊ',h:'𝒽',i:'𝒾',j:'𝒿',k:'𝓀',l:'𝓁',m:'𝓂',n:'𝓃',o:'ℴ',p:'𝓅',q:'𝓆',r:'𝓇',s:'𝓈',t:'𝓉',u:'𝓊',v:'𝓋',w:'𝓌',x:'𝓍',y:'𝓎',z:'𝓏', A:'𝒜',B:'ℬ',C:'𝒞',D:'𝒟',E:'ℰ',F:'ℱ',G:'𝒢',H:'ℋ',I:'ℐ',J:'𝒿',K:'𝒦',L:'ℒ',M:'ℳ',N:'𝒩',O:'𝒪',P:'𝒫',Q:'𝒬',R:'ℛ',S:'𝒮',T:'𝒯',U:'𝒰',V:'𝒱',W:'𝒲',X:'𝒳',Y:'𝒴',Z:'𝒵' } },
                     { name: 'Manuscrita', map: { a:'𝑎',b:'𝑏',c:'𝑐',d:'𝑑',e:'𝑒',f:'𝑓',g:'𝑔',h:'ℎ',i:'𝑖',j:'𝑗',k:'𝑘',l:'𝑙',m:'𝑚',n:'𝑛',o:'𝑜',p:'𝑝',q:'𝑞',r:'𝑟',s:'𝑠',t:'𝑡',u:'𝑢',v:'𝑣',w:'𝑤',x:'𝑥',y:'𝑦',z:'𝑧', A:'𝐴',B:'𝐵',C:'𝐶',D:'𝐷',E:'𝐸',F:'𝐹',G:'𝐺',H:'𝐻',I:'𝐼',J:'𝐽',K:'𝐾',L:'𝐿',M:'𝑀',N:'𝑁',O:'𝑂',P:'𝑃',Q:'𝑄',R:'𝑅',S:'𝑆',T:'𝑇',U:'𝑈',V:'𝑉',W:'𝑊',X:'𝑋',Y:'𝑌',Z:'𝑍' } },
-                    { name: 'Negrita Itálica', map: { a:'𝒂',b:'𝒃',c:'𝒄',d:'𝒅',e:'𝒆',f:'𝒇',g:'𝒈',h:'𝒉',i:'𝒊',j:'𝒋',k:'𝒌',l:'𝒍',m:'𝒎',n:'𝒏',o:'𝒐',p:'𝒑',q:'𝒒',r:'𝒓',s:'𝒔',t:'𝒕',u:'𝒖',v:'𝒗',w:'𝒘',x:'𝒙',y:'𝒚',z:'𝒛', A:'𝑨',B:'𝑩',C:'𝑪',D:'𝑫',E:'𝑬',F:'𝑭',G:'𝑮',H:'𝑯',I:'𝑰',J:'𝑱',K:'𝑲',L:'𝑳',M:'𝑴',N:'𝑵',O:'𝑶',P:'𝑷',Q:'𝑸',R:'𝑹',S:'𝑺',T:'𝑻',U:'𝑼',V:'𝑽',W:'𝑾',X:'𝑿',Y:'𝒀',Z:'𝒁' } },
+                    { name: 'Negrita Itálica', map: { a:'𝒂',b:'𝒃',c:'𝒄',d:'𝒅',e:'𝒆',f:'𝒇',g:'𝒈',h:'𝒉',i:'𝒊',j:'𝒋',k:'𝒌',l:'𝒍',m:'𝒎',n:'𝒏',o:'𝒐',p:'𝒑',q:'𝒒',r:'𝒓',s:'𝒔',t:'𝒕',u:'𝒖',v:'𝒗',w:'𝒘',x:'𝒙',y:'𝒚',z:'𝒛', A:'𝑨',B:'𝑩',C:'𝑪',D:'𝑫',E:'𝑬',F:'𝑭',G:'𝑮',H:'𝑯',I:'𝑰',J:'𝑱',K:'𝑲',L:'𝑳',M:'𝑴',N:'𝑵',O:'𝑶',P:'𝑷',Q:'𝑸',R:'𝑹',S:'𝑺',T:'𝑻',U:'𝑼',V:'𝑽',W:'𝑾',X:'𝑿',Y:'𝑿',Z:'𝒁' } },
                     
                     // Elegance & Serif
                     { name: 'Doble Trazo', map: { a:'𝕒',b:'𝕓',c:'𝕔',d:'𝕕',e:'𝕖',f:'𝕗',g:'𝕘',h:'𝕙',i:'𝕚',j:'𝕛',k:'𝕜',l:'𝕝',m:'𝕞',n:'𝕟',o:'𝕠',p:'𝕡',q:'𝕢',r:'𝕣',s:'𝕤',t:'𝕥',u:'𝕦',v:'𝕧',w:'𝕨',x:'𝕩',y:'𝕪',z:'𝕫', A:'𝔸',B:'𝔹',C:'ℂ',D:'𝔻',E:'𝔼',F:'𝔽',G:'𝔾',H:'ℍ',I:'𝕀',J:'𝕁',K:'𝕂',L:'𝕃',M:'𝕄',N:'ℕ',O:'𝕆',P:'ℙ',Q:'ℚ',R:'ℝ',S:'𝕊',T:'𝕋',U:'𝕌',V:'𝕍',W:'𝕎',X:'𝕏',Y:'𝕐',Z:'ℤ' } },
@@ -63,9 +59,9 @@
                     
                     // Geometric & Shapes
                     { name: 'Burbujas', map: { a:'ⓐ',b:'ⓑ',c:'ⓒ',d:'ⓓ',e:'ⓔ',f:'ⓕ',g:'ⓖ',h:'ⓗ',i:'ⓘ',j:'ⓙ',k:'ⓚ',l:'ⓛ',m:'ⓜ',n:'ⓝ',o:'ⓞ',p:'ⓟ',q:'ⓠ',r:'ⓡ',s:'ⓢ',t:'ⓣ',u:'ⓤ',v:'ⓥ',w:'ⓦ',x:'ⓧ',y:'ⓨ',z:'ⓩ', A:'Ⓐ',B:'Ⓑ',C:'Ⓒ',D:'Ⓓ',E:'Ⓔ',F:'Ⓕ',G:'Ⓖ',H:'Ⓗ',I:'Ⓘ',J:'Ⓙ',K:'Ⓚ',L:'Ⓛ',M:'Ⓜ',N:'Ⓝ',O:'Ⓞ',P:'Ⓟ',Q:'Ⓠ',R:'Ⓡ',S:'Ⓢ',T:'Ⓣ',U:'Ⓤ',V:'Ⓥ',W:'Ⓦ',X:'Ⓧ',Y:'Ⓨ',Z:'Ⓩ' } },
-                    { name: 'Burbujas Negras', map: { a:'🅐',b:'🅑',c:'🅒',d:'🅓',e:'🅔',f:'🅕',g:'🅖',h:'🅗',i:'🅘',j:'🅙',k:'🅚',l:'🅛',m:'🅜',n:'🅝',o:'🅞',p:'🅟',q:'🅠',r:'🅡',s:'🅢',t:'🅣',u:'🅤',v:'🅥',w:'🅦',x:'🅧',y:'🅨',z:'🅩', A:'🅐',B:'🅑',C:'🅒',D:'🅓',E:'🅔',F:'🅕',G:'🅖',H:'🅗',I:'🅘',J:'🅙',K:'𝅚',L:'𝅛',M:'🅜',N:'🅝',O:'🅞',P:'🅟',Q:'🅠',R:'🅡',S:'🅢',T:'🅣',U:'🅤',V:'𝅥',W:'𝅦',X:'𝅧',Y:'𝅨',Z:'🅩' } },
+                    { name: 'Burbujas Negras', map: { a:'🅐',b:'🅑',c:'🅒',d:'🅓',e:'🅔',f:'🅕',g:'🅖',h:'🅗',i:'🅘',j:'🅙',k:'🅚',l:'🅛',m:'🅼',n:'🅝',o:'🅞',p:'🅟',q:'🅠',r:'🅡',s:'🅢',t:'🅣',u:'🅤',v:'🅥',w:'🅦',x:'🅧',y:'🅨',z:'🅩', A:'🅐',B:'🅑',C:'🅒',D:'🅓',E:'🅔',F:'🅕',G:'🅖',H:'🅗',I:'🅘',J:'🅙',K:'𝅚',L:'𝅛',M:'🅜',N:'🅝',O:'🅞',P:'🅟',Q:'🅠',R:'🅡',S:'🅢',T:'🅣',U:'🅤',V:'𝅥',W:'𝅦',X:'𝅧',Y:'𝅨',Z:'🅩' } },
                     { name: 'Cuadrados', map: { a:'🄰',b:'🄱',c:'🄲',d:'🄳',e:'🄴',f:'🄵',g:'🄶',h:'🄷',i:'🄸',j:'🄹',k:'🄺',l:'🄻',m:'🄼',n:'🄽',o:'🄾',p:'🄿',q:'🅀',r:'🅁',s:'🅂',t:'🅃',u:'🅄',v:'🅅',w:'🅆',x:'🅇',y:'🅈',z:'🅉', A:'🄰',B:'🄱',C:'🄲',D:'🄳',E:'🄴',F:'🄵',G:'🄶',H:'🄷',I:'🄸',J:'🄹',K:'🄺',L:'🄻',M:'🄼',N:'🄽',O:'🄾',P:'🄿',Q:'🅀',R:'🅁',S:'🅂',T:'🅃',U:'🅄',V:'🅅',W:'🅆',X:'🅇',Y:'🅈',Z:'🅉' } },
-                    { name: 'Cuadrados Negros', map: { a:'🅰',b:'🅱',c:'🅲',d:'🅳',e:'🅴',f:'🅵',g:'🅶',h:'🅷',i:'🅸',j:'🅹',k:'🅺',l:'🅻',m:'🅼',n:'🅽',o:'🅾',p:'🅿',q:'🆀',r:'🆁',s:'🆂',t:'🆃',u:'🆄',v:'🆅',w:'🆆',x:'🆇',y:'🆈',z:'🆉', A:'🅰',B:'🅱',C:'🅲',D:'🅳',E:'🅴',F:'🅵',G:'🅶',H:'🅷',I:'🅸',J:'🅹',K:'🅺',L:'🅻',M:'🅼',N:'🅽',O:'🅾',P:'🅿',Q:'🆀',R:'🆁',S:'🆂',T:'🆃',U:'🆄',V:'🆅',W:'🆆',X:'𝆇',Y:'🆈',Z:'🆉' } },
+                    { name: 'Cuadrados Negros', map: { a:'🅰',b:'🅱',c:'🅲',d:'🅳',e:'🅴',f:'𝅵',g:'🅶',h:'🅷',i:'🅸',j:'🅹',k:'🅺',l:'🅻',m:'🅼',n:'🅽',o:'🅾',p:'🅿',q:'🆀',r:'🆁',s:'🆂',t:'🆃',u:'🆄',v:'🆅',w:'🆆',x:'🆇',y:'🆈',z:'🆉', A:'🅰',B:'🅱',C:'🅲',D:'🅳',E:'🅴',F:'𝅵',G:'🅶',H:'🅷',I:'🅸',J:'🅹',K:'🅺',L:'🅻',M:'🅼',N:'🅽',O:'🅾',P:'🅿',Q:'🆀',R:'🆁',S:'🆂',T:'🆃',U:'🆄',V:'🆅',W:'🆆',X:'𝆇',Y:'🆈',Z:'🆉' } },
                     
                     // Aesthetic & Wide
                     { name: 'Aesthetic (Ancho)', map: { a:'ａ',b:'ｂ',c:'ｃ',d:'ｄ',e:'ｅ',f:'ｆ',g:'ｇ',h:'ｈ',i:'ｉ',j:'ｊ',k:'ｋ',l:'ｌ',m:'ｍ',n:'ｎ',o:'ｏ',p:'ｐ',q:'ｑ',r:'ｒ',s:'ｓ',t:'ｔ',u:'ｕ',v:'ｖ',w:'ｗ',x:'ｘ',y:'ｙ',z:'ｚ', A:'Ａ',B:'Ｂ',C:'Ｃ',D:'Ｄ',E:'Ｅ',F:'Ｆ',G:'Ｇ',H:'Ｈ',I:'Ｉ',J:'Ｊ',K:'Ｋ',L:'Ｌ',M:'Ｍ',N:'Ｎ',O:'Ｏ',P:'Ｐ',Q:'Ｑ',R:'Ｒ',S:'Ｓ',T:'Ｔ',U:'Ｕ',V:'Ｖ',W:'Ｗ',X:'Ｘ',Y:'𝑌',Z:'Ｚ', ' ':'　' } },
@@ -101,6 +97,18 @@
                         if (specialChars.includes(char)) return `<span class="fallback-char">${char}</span>`;
                         return char;
                     }).join('');
+                },
+                insertSymbol(symbol) {
+                    const textarea = this.$refs.textarea;
+                    const start = textarea.selectionStart;
+                    const end = textarea.selectionEnd;
+                    const text = this.inputText;
+                    this.inputText = text.substring(0, start) + symbol + text.substring(end);
+                    this.$nextTick(() => {
+                        textarea.focus();
+                        const newPos = start + symbol.length;
+                        textarea.setSelectionRange(newPos, newPos);
+                    });
                 },
                 copyToClipboard(text) {
                     navigator.clipboard.writeText(text).then(() => {
@@ -167,7 +175,29 @@
 
         <div class="mb-12 sticky top-24 z-30">
             <div class="bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-slate-200 p-2 transition-transform hover:scale-[1.01] duration-300">
-                <textarea x-model="inputText" class="block w-full px-6 py-8 bg-slate-50 border border-slate-100 rounded-xl text-slate-900 text-3xl md:text-4xl font-bold text-center placeholder:text-slate-300 focus:ring-4 focus:ring-pink-100 focus:border-pink-200 resize-none outline-none transition-all" rows="1" spellcheck="false" placeholder="Escribe aquí..."></textarea>
+                
+                <textarea 
+                    x-ref="textarea"
+                    x-model="inputText" 
+                    class="block w-full px-6 py-8 bg-slate-50 border border-slate-100 rounded-xl text-slate-900 text-3xl md:text-4xl font-bold text-center placeholder:text-slate-300 focus:ring-4 focus:ring-pink-100 focus:border-pink-200 resize-none outline-none transition-all" 
+                    rows="1" 
+                    spellcheck="false" 
+                    placeholder="Escribe tu texto aquí..."></textarea>
+
+                <!-- Symbol Toolbar -->
+                <div class="mt-2 pt-2 border-t border-slate-100">
+                    <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1 px-1">
+                        <template x-for="sym in toolbarSymbols" :key="sym">
+                            <button 
+                                @click="insertSymbol(sym)"
+                                class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-xl bg-slate-50 hover:bg-pink-50 text-slate-600 hover:text-pink-600 rounded-lg transition-all active:scale-90"
+                                type="button"
+                                x-text="sym"
+                            ></button>
+                        </template>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -181,30 +211,6 @@
                     <p class="text-xl md:text-2xl text-slate-800 break-words font-medium leading-relaxed" x-html="transformText(font.map)"></p>
                 </div>
             </template>
-        </div>
-
-        <!-- Symbols Library (New Section) -->
-        <div class="border-t border-slate-200 pt-16">
-            <h2 class="text-3xl font-bold text-slate-900 text-center mb-10">Símbolos y Adornos para Copiar</h2>
-            <div class="grid gap-8">
-                <template x-for="category in symbolCategories" :key="category.name">
-                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-                        <h3 class="text-lg font-semibold text-slate-700 mb-4 flex items-center gap-2">
-                            <span class="w-1 h-6 bg-pink-500 rounded-full"></span>
-                            <span x-text="category.name"></span>
-                        </h3>
-                        <div class="flex flex-wrap gap-2">
-                            <template x-for="symbol in category.symbols" :key="symbol">
-                                <button 
-                                    @click="copyToClipboard(symbol)" 
-                                    class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-lg md:text-xl bg-slate-50 hover:bg-pink-50 text-slate-600 hover:text-pink-600 rounded-xl border border-slate-100 transition-all hover:scale-110 active:scale-95"
-                                    x-text="symbol"
-                                ></button>
-                            </template>
-                        </div>
-                    </div>
-                </template>
-            </div>
         </div>
     </main>
 

@@ -30,20 +30,16 @@
             font-weight: 400;
             display: inline-block;
         }
+        /* Task 3: Hide Scrollbar for Toolbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('converter', () => ({
                 inputText: 'Vida Loca',
                 toastVisible: false,
-                symbolCategories: [
-                    { name: "Populares", symbols: ["★", "⚡", "✈", "☠", "☂", "❤", "❥", "✔", "✘", "🔥"] },
-                    { name: "Adornos y Alas", symbols: ["꧁", "꧂", "༺", "༻", "★彡", "ッ", "【", "】", "『", "』", "➤"] },
-                    { name: "Corazones", symbols: ["♥", "♡", "❥", "❣", "❦", "❧", "ღ", "💖", "💕"] },
-                    { name: "Estrellas y Flores", symbols: ["★", "☆", "✦", "✧", "✩", "✪", "❀", "✿", "❁", "✾"] },
-                    { name: "Música y Notas", symbols: ["♩", "♪", "♫", "♬", "♭", "♮", "♯"] },
-                    { name: "Oficina y Flechas", symbols: ["✎", "✂", "✈", "✉", "➔", "➙", "➛", "➜", "➝", "➤"] }
-                ],
+                toolbarSymbols: ['★', '⚡', '꧁', '꧂', '❤', '✈', '☠', '✔', '✘', '⚔', '☂', '✿', '❄', '✪', '✯', '✦', '✨', '❥', '❣', 'ღ'],
                 fonts: [
                     { name: 'Blackletter', map: { a:'𝖆',b:'𝖇',c:'𝖈',d:'𝖉',e:'𝖊',f:'𝖋',g:'𝖌',h:'𝖍',i:'𝖎',j:'𝖏',k:'𝖐',l:'𝖑',m:'𝖒',n:'𝖓',o:'𝖔',p:'𝖕',q:'𝖖',r:'𝖗',s:'𝓼',t:'𝖙',u:'𝖚',v:'𝖛',w:'𝖜',x:'𝖝',y:'𝖞',z:'𝖟', A:'𝕬',B:'𝕭',C:'𝕮',D:'𝕯',E:'𝕰',F:'𝕱',G:'𝕲',H:'𝕳',I:'𝕴',J:'𝕵',K:'𝕶',L:'𝕷',M:'𝕸',N:'𝕹',O:'𝕺',P:'𝕻',Q:'𝕼',R:'𝕽',S:'𝕾',T:'𝕿',U:'𝖀',V:'𝖁',W:'𝖂',X:'𝖃',Y:'𝖄',Z:'𝖅' } },
                     { name: 'Chicano', map: { a:'𝓪',b:'𝓫',c:'𝓬',d:'𝓭',e:'𝓮',f:'𝓯',g:'𝓰',h:'𝓱',i:'𝓲',j:'𝓳',k:'𝓴',l:'𝓵',m:'𝓶',n:'𝓷',o:'𝓸',p:'𝓹',q:'𝓺',r:'𝓻',s:'𝓼',t:'𝓽',u:'𝓾',v:'𝓿',w:'𝔀',x:'𝔁',y:'𝔂',z:'𝔃', A:'𝓐',B:'𝓑',C:'𝓒',D:'𝓓',E:'𝓔',F:'𝓕',G:'𝓖',H:'𝓗',I:'𝓘',J:'𝓙',K:'𝓚',L:'𝓛',M:'𝓜',N:'𝓝',O:'𝓞',P:'𝓟',Q:'𝓠',R:'𝓡',S:'𝓢',T:'𝓣',U:'𝓤',V:'𝓥',W:'𝓦',X:'𝓧',Y:'𝓨',Z:'𝓩' } },
@@ -57,6 +53,18 @@
                         if (specialChars.includes(char)) return `<span class="fallback-char">${char}</span>`;
                         return char;
                     }).join('');
+                },
+                insertSymbol(symbol) {
+                    const textarea = this.$refs.textarea;
+                    const start = textarea.selectionStart;
+                    const end = textarea.selectionEnd;
+                    const text = this.inputText;
+                    this.inputText = text.substring(0, start) + symbol + text.substring(end);
+                    this.$nextTick(() => {
+                        textarea.focus();
+                        const newPos = start + symbol.length;
+                        textarea.setSelectionRange(newPos, newPos);
+                    });
                 },
                 copyToClipboard(text) {
                     navigator.clipboard.writeText(text).then(() => {
@@ -106,7 +114,7 @@
             <div class="flex flex-col gap-4">
                 <a href="index.html" class="text-base font-medium text-slate-600">Inicio</a>
                 <a href="letras-cursivas.html" class="text-base font-medium text-slate-600">Cursivas</a>
-                <a href="letras-tatuajes.html" class="text-base font-semibold text-slate-900">Tatuajes</a>
+                <a href="letras-tatuajes.html" class="text-base font-medium text-slate-600">Tatuajes</a>
                 <a href="letras-goticas.html" class="text-base font-medium text-slate-600">Góticas</a>
                 <a href="letras-graffiti.html" class="text-base font-medium text-slate-600">Graffiti</a>
             </div>
@@ -123,7 +131,29 @@
 
         <div class="mb-12 sticky top-24 z-30">
             <div class="bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-slate-200 p-2 transition-transform hover:scale-[1.01] duration-300">
-                <textarea x-model="inputText" class="block w-full px-6 py-8 bg-slate-50 border border-slate-100 rounded-xl text-slate-900 text-3xl md:text-4xl font-bold text-center placeholder:text-slate-300 focus:ring-4 focus:ring-slate-100 focus:border-slate-200 resize-none outline-none transition-all" rows="1" spellcheck="false" placeholder="Escribe aquí..."></textarea>
+                
+                <textarea 
+                    x-ref="textarea"
+                    x-model="inputText" 
+                    class="block w-full px-6 py-8 bg-slate-50 border border-slate-100 rounded-xl text-slate-900 text-3xl md:text-4xl font-bold text-center placeholder:text-slate-300 focus:ring-4 focus:ring-slate-100 focus:border-slate-200 resize-none outline-none transition-all" 
+                    rows="1" 
+                    spellcheck="false" 
+                    placeholder="Escribe tu texto aquí..."></textarea>
+
+                <!-- Symbol Toolbar -->
+                <div class="mt-2 pt-2 border-t border-slate-100">
+                    <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1 px-1">
+                        <template x-for="sym in toolbarSymbols" :key="sym">
+                            <button 
+                                @click="insertSymbol(sym)"
+                                class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-xl bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-900 rounded-lg transition-all active:scale-90"
+                                type="button"
+                                x-text="sym"
+                            ></button>
+                        </template>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -137,30 +167,6 @@
                     <p class="text-xl md:text-2xl text-slate-800 break-words font-medium leading-relaxed" x-html="transformText(font.map)"></p>
                 </div>
             </template>
-        </div>
-
-        <!-- Symbols Library (New Section) -->
-        <div class="border-t border-slate-200 pt-16">
-            <h2 class="text-3xl font-bold text-slate-900 text-center mb-10">Símbolos y Adornos para Copiar</h2>
-            <div class="grid gap-8">
-                <template x-for="category in symbolCategories" :key="category.name">
-                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-                        <h3 class="text-lg font-semibold text-slate-700 mb-4 flex items-center gap-2">
-                            <span class="w-1 h-6 bg-slate-500 rounded-full"></span>
-                            <span x-text="category.name"></span>
-                        </h3>
-                        <div class="flex flex-wrap gap-2">
-                            <template x-for="symbol in category.symbols" :key="symbol">
-                                <button 
-                                    @click="copyToClipboard(symbol)" 
-                                    class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-lg md:text-xl bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-900 rounded-xl border border-slate-100 transition-all hover:scale-110 active:scale-95"
-                                    x-text="symbol"
-                                ></button>
-                            </template>
-                        </div>
-                    </div>
-                </template>
-            </div>
         </div>
     </main>
 

@@ -2,58 +2,124 @@
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <title>Graffiti Fonts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letras Graffiti - Generador</title>
+    <meta name="description" content="Generador de letras estilo graffiti y urbano.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Share Tech Mono', monospace; background-color: #1a1a1a; color: #e5e5e5; }
-        .font-urban { font-family: 'Black Ops One', cursive; }
+        body { font-family: 'Inter', sans-serif; background-color: #09090b; color: #fafafa; }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
         [x-cloak] { display: none !important; }
+
+        .bg-tech-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at 50% 0%, black 40%, transparent 100%);
+        }
+        .static-glow {
+            background: radial-gradient(circle at center, rgba(34, 197, 94, 0.15) 0%, transparent 70%); /* Green glow */
+        }
     </style>
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('converter', () => ({
-                inputText: 'TAG NAME',
+                inputText: 'GRAFFITI',
                 toastVisible: false,
                 fonts: [
                     { name: 'Bubbles', map: { a:'ⓐ',b:'ⓑ',c:'ⓒ',d:'ⓓ',e:'ⓔ',f:'ⓕ',g:'ⓖ',h:'ⓗ',i:'ⓘ',j:'ⓙ',k:'ⓚ',l:'ⓛ',m:'ⓜ',n:'ⓝ',o:'ⓞ',p:'ⓟ',q:'ⓠ',r:'ⓡ',s:'ⓢ',t:'ⓣ',u:'ⓤ',v:'ⓥ',w:'ⓦ',x:'ⓧ',y:'ⓨ',z:'ⓩ', A:'Ⓐ',B:'Ⓑ',C:'Ⓒ',D:'Ⓓ',E:'Ⓔ',F:'Ⓕ',G:'Ⓖ',H:'Ⓗ',I:'Ⓘ',J:'Ⓙ',K:'Ⓚ',L:'Ⓛ',M:'Ⓜ',N:'Ⓝ',O:'Ⓞ',P:'Ⓟ',Q:'Ⓠ',R:'Ⓡ',S:'Ⓢ',T:'Ⓣ',U:'Ⓤ',V:'Ⓥ',W:'Ⓦ',X:'Ⓧ',Y:'Ⓨ',Z:'Ⓩ' } },
                     { name: 'Black Bubbles', map: { a:'🅐',b:'🅑',c:'🅒',d:'🅓',e:'🅔',f:'🅕',g:'🅖',h:'🅗',i:'🅘',j:'🅙',k:'🅚',l:'🅛',m:'🅜',n:'🅝',o:'🅞',p:'🅟',q:'🅠',r:'🅡',s:'🅢',t:'🅣',u:'🅤',v:'🅥',w:'🅦',x:'🅧',y:'🅨',z:'🅩', A:'🅐',B:'🅑',C:'🅒',D:'🅓',E:'🅔',F:'🅕',G:'🅖',H:'🅗',I:'🅘',J:'𝅚',K:'𝅚',L:'𝅚',M:'🅜',N:'𝅝',O:'🅞',P:'🅟',Q:'𝅚',R:'🅡',S:'🅢',T:'🅣',U:'🅤',V:'𝅥',W:'🅦',X:'🅧',Y:'🅨',Z:'🅩' } }
                 ],
-                transformText(map) { if (!this.inputText) return 'TAG NAME'; return this.inputText.split('').map(char => map[char] || char).join(''); },
+                transformText(map) { if (!this.inputText) return 'GRAFFITI'; return this.inputText.split('').map(char => map[char] || char).join(''); },
                 copyToClipboard(text) { navigator.clipboard.writeText(text).then(() => { this.toastVisible = true; setTimeout(() => this.toastVisible = false, 1500); }); }
             }));
         });
     </script>
 </head>
-<body x-data="converter" class="min-h-screen p-4 md:p-8">
+<body x-data="converter" class="antialiased min-h-screen relative selection:bg-green-500 selection:text-black flex flex-col">
 
-    <header class="flex justify-between items-center mb-12 border-b border-gray-700 pb-4">
-        <a href="index.html" class="text-green-400 text-xl tracking-wider">GRAFFITI_GEN_V2</a>
-        <a href="index.html" class="text-xs text-gray-500 hover:text-green-400">[BACK]</a>
+    <div class="fixed inset-0 bg-tech-grid pointer-events-none -z-10"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] static-glow pointer-events-none -z-10 opacity-60"></div>
+
+    <header class="sticky top-0 z-50 w-full bg-[#09090b]/90 border-b border-white/10 supports-[backdrop-filter]:bg-[#09090b]/80 supports-[backdrop-filter]:backdrop-blur-sm">
+        <div class="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="w-6 h-6 bg-green-500 rounded flex items-center justify-center text-black font-bold text-xs group-hover:bg-green-400 transition-colors">G</div>
+                <span class="font-display font-bold text-lg tracking-tight text-white">Letras<span class="text-green-500">Graffiti</span></span>
+            </a>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-zinc-400">
+                <a href="index.html" class="hover:text-white transition-colors">Inicio</a>
+                <a href="letras-cursivas.html" class="hover:text-white transition-colors">Cursivas</a>
+                <a href="letras-tatuajes.html" class="hover:text-white transition-colors">Tatuajes</a>
+                <a href="letras-goticas.html" class="hover:text-white transition-colors">Góticas</a>
+                <a href="letras-graffiti.html" class="text-white">Graffiti</a>
+            </nav>
+            <button class="md:hidden p-2 text-zinc-400" @click="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
     </header>
 
-    <main class="max-w-4xl mx-auto">
-        <div class="mb-12">
-            <label class="text-xs text-gray-600 block mb-2">/// INPUT_STREAM</label>
-            <textarea x-model="inputText" class="w-full bg-[#222] text-green-400 text-4xl md:text-6xl font-urban text-center p-8 focus:outline-none uppercase border-l-4 border-gray-700 focus:border-green-400 transition-colors" rows="1"></textarea>
+    <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-[#09090b] pt-20 px-6">
+        <div class="flex flex-col gap-4 text-lg font-medium text-zinc-300">
+            <a href="index.html">Inicio</a>
+            <a href="letras-cursivas.html">Cursivas</a>
+            <a href="letras-tatuajes.html">Tatuajes</a>
+            <a href="letras-goticas.html">Góticas</a>
+            <a href="letras-graffiti.html" class="text-white">Graffiti</a>
+            <a href="letras-amino.html">Amino</a>
+            <a href="letras-facebook.html">Facebook</a>
+            <button class="mt-8 text-sm text-zinc-500" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Cerrar</button>
+        </div>
+    </div>
+
+    <main class="flex-grow pt-16 pb-20 px-4 max-w-5xl mx-auto w-full">
+        <div class="text-center mb-12">
+            <h1 class="font-display font-bold text-4xl md:text-6xl text-white mb-4 tracking-tight">
+                Letras <span class="text-green-500">Graffiti</span>
+            </h1>
+            <p class="text-zinc-400 max-w-md mx-auto text-base md:text-lg">Generador de texto urbano.</p>
         </div>
 
-        <div class="grid gap-4">
+        <div class="mb-12">
+            <div class="relative group">
+                <div class="absolute -inset-0.5 bg-green-500 rounded-lg opacity-20 group-hover:opacity-40 transition duration-300"></div>
+                <div class="relative bg-[#09090b] rounded-lg p-1">
+                    <textarea x-model="inputText" class="block w-full px-4 py-8 bg-[#09090b] border border-zinc-800 rounded-md text-white text-3xl md:text-4xl font-display font-medium placeholder:text-zinc-700 focus:ring-1 focus:ring-green-500 focus:border-green-500 resize-none text-center outline-none transition-colors" rows="1" spellcheck="false" placeholder="TAG HERE..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <template x-for="font in fonts" :key="font.name">
-                <div class="bg-[#222] p-6 flex justify-between items-center hover:bg-[#252525] cursor-pointer group" @click="copyToClipboard(transformText(font.map))">
-                    <div>
-                        <div class="text-[10px] text-gray-600 mb-1" x-text="font.name"></div>
-                        <div class="text-2xl text-gray-300" x-text="transformText(font.map)"></div>
+                <div class="group relative bg-[#121214] border border-zinc-800/60 rounded-lg p-5 cursor-pointer hover:border-zinc-600 transition-colors duration-200" @click="copyToClipboard(transformText(font.map))">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-zinc-500 group-hover:text-green-500 transition-colors" x-text="font.name"></span>
+                        <span class="text-[10px] font-bold text-green-500 opacity-0 group-hover:opacity-100 transition-opacity">COPIAR</span>
                     </div>
-                    <div class="text-green-400 text-xs opacity-0 group-hover:opacity-100">[COPY]</div>
+                    <div class="min-h-[3rem] flex items-center">
+                        <p class="text-xl md:text-2xl text-zinc-100 break-words font-medium leading-snug" x-text="transformText(font.map)"></p>
+                    </div>
                 </div>
             </template>
         </div>
     </main>
 
-    <div x-cloak x-show="toastVisible" class="fixed bottom-8 right-8 bg-green-400 text-black px-4 py-1 text-sm font-bold">
-        STATUS: COPIED
+    <footer class="border-t border-zinc-900 py-8 text-center text-xs text-zinc-600">
+        <p>&copy; 2024 LetrasBonitas.pro &bull; Urban Style</p>
+    </footer>
+
+    <div x-cloak x-show="toastVisible" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none will-change-transform">
+        <div class="bg-zinc-100 text-zinc-900 px-4 py-2 rounded-full font-bold text-sm shadow-xl flex items-center gap-2">
+            <svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Copiado
+        </div>
     </div>
 </body>
 </html>

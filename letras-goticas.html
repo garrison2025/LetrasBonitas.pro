@@ -23,18 +23,46 @@
         }
         .animate-gradient { background-size: 200% auto; animation: shine 4s linear infinite; }
         @keyframes shine { to { background-position: 200% center; } }
+        /* Task 1: Fallback Char Style */
+        .fallback-char {
+            font-family: 'Times New Roman', Didot, 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            display: inline-block;
+        }
     </style>
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('converter', () => ({
                 inputText: 'Darkness',
                 toastVisible: false,
+                symbolCategories: [
+                    { name: "Populares", symbols: ["★", "⚡", "✈", "☠", "☂", "❤", "❥", "✔", "✘", "🔥"] },
+                    { name: "Adornos y Alas", symbols: ["꧁", "꧂", "༺", "༻", "★彡", "ッ", "【", "】", "『", "』", "➤"] },
+                    { name: "Corazones", symbols: ["♥", "♡", "❥", "❣", "❦", "❧", "ღ", "💖", "💕"] },
+                    { name: "Estrellas y Flores", symbols: ["★", "☆", "✦", "✧", "✩", "✪", "❀", "✿", "❁", "✾"] },
+                    { name: "Música y Notas", symbols: ["♩", "♪", "♫", "♬", "♭", "♮", "♯"] },
+                    { name: "Oficina y Flechas", symbols: ["✎", "✂", "✈", "✉", "➔", "➙", "➛", "➜", "➝", "➤"] }
+                ],
                 fonts: [
                     { name: 'Fraktur', map: { a:'𝔞',b:'𝔟',c:'𝔠',d:'𝔡',e:'𝔢',f:'𝔣',g:'𝔤',h:'𝔥',i:'𝔦',j:'𝔧',k:'𝔨',l:'𝔩',m:'𝔪',n:'𝔫',o:'𝔬',p:'𝔭',q:'𝔮',r:'𝔯',s:'𝔰',t:'𝔱',u:'𝔲',v:'𝔳',w:'𝔴',x:'𝔵',y:'𝔶',z:'𝔷', A:'𝔄',B:'𝔅',C:'ℭ',D:'𝔇',E:'𝔈',F:'𝔉',G:'𝔊',H:'ℌ',I:'ℑ',J:'𝔍',K:'𝔎',L:'𝔏',M:'𝔐',N:'𝔑',O:'𝔒',P:'𝔓',Q:'𝔔',R:'ℜ',S:'𝔖',T:'𝔗',U:'𝔲',V:'𝔙',W:'𝔚',X:'𝔵',Y:'𝔶',Z:'ℨ' } },
-                    { name: 'Bold Gothic', map: { a:'𝖆',b:'𝖇',c:'𝖈',d:'𝖉',e:'𝖊',f:'𝖋',g:'𝖌',h:'𝖍',i:'𝖎',j:'𝖏',k:'𝖐',l:'𝖑',m:'𝖒',n:'𝖓',o:'𝖔',p:'𝖕',q:'𝖖',r:'𝖗',s:'𝖘',t:'𝖙',u:'𝖚',v:'𝖛',w:'𝖜',x:'𝖝',y:'𝖞',z:'𝖟', A:'𝕬',B:'𝕭',C:'𝕮',D:'𝕯',E:'𝕰',F:'𝕱',G:'𝕲',H:'𝕳',I:'𝕴',J:'𝕵',K:'𝕶',L:'𝕷',M:'𝕸',N:'𝕹',O:'𝕺',P:'𝕻',Q:'𝕼',R:'𝕽',S:'𝕾',T:'𝕿',U:'𝖀',V:'𝖁',W:'𝖂',X:'𝖃',Y:'𝖄',Z:'𝖅' } }
+                    { name: 'Bold Gothic', map: { a:'𝖆',b:'𝖇',c:'𝖈',d:'𝖉',e:'𝖊',f:'𝖋',g:'𝖌',h:'𝖍',i:'𝖎',j:'𝖏',k:'𝖐',l:'𝖑',m:'𝖒',n:'𝖓',o:'𝖔',p:'𝖕',q:'𝖖',r:'𝖗',s:'𝓼',t:'𝖙',u:'𝖚',v:'𝖛',w:'𝖜',x:'𝖝',y:'𝖞',z:'𝖟', A:'𝕬',B:'𝕭',C:'𝕮',D:'𝕯',E:'𝕰',F:'𝕱',G:'𝕲',H:'𝕳',I:'𝕴',J:'𝕵',K:'𝕶',L:'𝕷',M:'𝕸',N:'𝕹',O:'𝕺',P:'𝕻',Q:'𝕼',R:'𝕽',S:'𝕾',T:'𝕿',U:'𝖀',V:'𝖁',W:'𝖂',X:'𝖃',Y:'𝖄',Z:'𝖅' } }
                 ],
-                transformText(map) { if (!this.inputText) return 'Gothic'; return this.inputText.split('').map(char => map[char] || char).join(''); },
-                copyToClipboard(text) { navigator.clipboard.writeText(text).then(() => { this.toastVisible = true; setTimeout(() => this.toastVisible = false, 2000); }); }
+                transformText(map) {
+                    if (!this.inputText) return 'Gothic';
+                    const specialChars = ['á', 'é', 'í', 'ó', 'ú', 'ñ', 'Ñ', '¿', '¡'];
+                    return this.inputText.split('').map(char => {
+                        if (map[char]) return map[char];
+                        if (specialChars.includes(char)) return `<span class="fallback-char">${char}</span>`;
+                        return char;
+                    }).join('');
+                },
+                copyToClipboard(text) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        this.toastVisible = true;
+                        setTimeout(() => this.toastVisible = false, 2000);
+                    });
+                }
             }));
         });
     </script>
@@ -98,16 +126,40 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-20">
             <template x-for="font in fonts" :key="font.name">
                 <div class="group relative bg-white border border-slate-200 rounded-xl p-6 hover:border-red-300 hover:shadow-lg hover:shadow-red-500/5 transition-all duration-300 cursor-pointer" @click="copyToClipboard(transformText(font.map))">
                     <div class="flex justify-between items-center mb-3">
                         <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-red-600 transition-colors" x-text="font.name"></span>
                         <div class="opacity-0 group-hover:opacity-100 transition-all transform translate-x-2 group-hover:translate-x-0"><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-50 text-red-600 text-xs font-bold">Copiar</span></div>
                     </div>
-                    <p class="text-xl md:text-2xl text-slate-800 break-words font-medium leading-relaxed" x-text="transformText(font.map)"></p>
+                    <p class="text-xl md:text-2xl text-slate-800 break-words font-medium leading-relaxed" x-html="transformText(font.map)"></p>
                 </div>
             </template>
+        </div>
+
+        <!-- Symbols Library (New Section) -->
+        <div class="border-t border-slate-200 pt-16">
+            <h2 class="text-3xl font-bold text-slate-900 text-center mb-10">Símbolos y Adornos para Copiar</h2>
+            <div class="grid gap-8">
+                <template x-for="category in symbolCategories" :key="category.name">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                        <h3 class="text-lg font-semibold text-slate-700 mb-4 flex items-center gap-2">
+                            <span class="w-1 h-6 bg-red-600 rounded-full"></span>
+                            <span x-text="category.name"></span>
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <template x-for="symbol in category.symbols" :key="symbol">
+                                <button 
+                                    @click="copyToClipboard(symbol)" 
+                                    class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-lg md:text-xl bg-slate-50 hover:bg-red-50 text-slate-600 hover:text-red-600 rounded-xl border border-slate-100 transition-all hover:scale-110 active:scale-95"
+                                    x-text="symbol"
+                                ></button>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
         </div>
     </main>
 

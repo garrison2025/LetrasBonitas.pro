@@ -23,12 +23,27 @@
         }
         .animate-gradient { background-size: 200% auto; animation: shine 4s linear infinite; }
         @keyframes shine { to { background-position: 200% center; } }
+        /* Task 1: Fallback Char Style */
+        .fallback-char {
+            font-family: 'Times New Roman', Didot, 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            display: inline-block;
+        }
     </style>
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('converter', () => ({
                 inputText: 'Elegancia',
                 toastVisible: false,
+                symbolCategories: [
+                    { name: "Populares", symbols: ["★", "⚡", "✈", "☠", "☂", "❤", "❥", "✔", "✘", "🔥"] },
+                    { name: "Adornos y Alas", symbols: ["꧁", "꧂", "༺", "༻", "★彡", "ッ", "【", "】", "『", "』", "➤"] },
+                    { name: "Corazones", symbols: ["♥", "♡", "❥", "❣", "❦", "❧", "ღ", "💖", "💕"] },
+                    { name: "Estrellas y Flores", symbols: ["★", "☆", "✦", "✧", "✩", "✪", "❀", "✿", "❁", "✾"] },
+                    { name: "Música y Notas", symbols: ["♩", "♪", "♫", "♬", "♭", "♮", "♯"] },
+                    { name: "Oficina y Flechas", symbols: ["✎", "✂", "✈", "✉", "➔", "➙", "➛", "➜", "➝", "➤"] }
+                ],
                 fonts: [
                     // Cursivas & Script (The Core)
                     { name: 'Cursiva Real', map: { a:'𝓪',b:'𝓫',c:'𝓬',d:'𝓭',e:'𝓮',f:'𝓯',g:'𝓰',h:'𝓱',i:'𝓲',j:'𝓳',k:'𝓴',l:'𝓵',m:'𝓶',n:'𝓷',o:'𝓸',p:'𝓹',q:'𝓺',r:'𝓻',s:'𝓼',t:'𝓽',u:'𝓾',v:'𝓿',w:'𝔀',x:'𝔁',y:'𝔂',z:'𝔃', A:'𝓐',B:'𝓑',C:'𝓒',D:'𝓓',E:'𝓔',F:'𝓕',G:'𝓖',H:'𝓗',I:'𝓘',J:'𝓙',K:'𝓚',L:'𝓛',M:'𝓜',N:'𝓝',O:'𝓞',P:'𝓟',Q:'𝓠',R:'𝓡',S:'𝓢',T:'𝓣',U:'𝓤',V:'𝓥',W:'𝓦',X:'𝓧',Y:'𝓨',Z:'𝓩' } },
@@ -43,14 +58,14 @@
                     { name: 'Mayúsculas Pequeñas', map: { a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ǫ',r:'ʀ',s:'s',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ', A:'ᴀ',B:'ʙ',C:'ᴄ',D:'ᴅ',E:'ᴇ',F:'ꜰ',G:'ɢ',H:'ʜ',I:'ɪ',J:'ᴊ',K:'ᴋ',L:'ʟ',M:'ᴍ',N:'ɴ',O:'ᴏ',P:'ᴘ',Q:'ǫ',R:'ʀ',S:'s',T:'ᴛ',U:'ᴜ',V:'ᴠ',W:'ᴡ',X:'x',Y:'ʏ',Z:'ᴢ' } },
                     
                     // Gothic & Vintage
-                    { name: 'Gótica Real', map: { a:'𝔞',b:'𝔟',c:'𝔠',d:'𝔡',e:'𝔢',f:'𝔣',g:'𝔤',h:'𝔥',i:'𝔦',j:'𝔧',k:'𝔨',l:'𝔩',m:'𝔪',n:'𝔫',o:'𝔬',p:'𝔭',q:'𝔮',r:'𝔯',s:'𝔰',t:'𝔱',u:'𝔲',v:'𝔳',w:'𝔴',x:'𝔵',y:'𝔶',z:'𝔷', A:'𝔄',B:'𝔅',C:'ℭ',D:'𝔇',E:'𝔈',F:'𝔉',G:'𝔊',H:'ℌ',I:'ℑ',J:'𝔍',K:'𝔎',L:'𝔏',M:'𝔐',N:'𝔑',O:'𝔒',P:'𝔓',Q:'𝔔',R:'ℜ',S:'𝔖',T:'𝔗',U:'𝔲',V:'𝔙',W:'𝔚',X:'𝔛',Y:'𝔜',Z:'ℨ' } },
+                    { name: 'Gótica Real', map: { a:'𝔞',b:'𝔟',c:'𝔠',d:'𝔡',e:'𝔢',f:'𝔣',g:'𝔤',h:'𝔥',i:'𝔦',j:'𝔧',k:'𝔨',l:'𝔩',m:'𝔪',n:'𝔫',o:'𝔬',p:'𝔭',q:'𝔮',r:'𝔯',s:'𝔰',t:'𝔱',u:'𝔲',v:'𝔳',w:'𝔴',x:'𝔵',y:'𝔶',z:'𝔷', A:'𝔄',B:'𝔅',C:'ℭ',D:'𝔇',E:'𝔈',F:'𝔉',G:'𝔊',H:'ℌ',I:'ℑ',J:'𝔍',K:'𝔎',L:'𝔏',M:'𝔐',N:'𝔑',O:'𝔒',P:'𝔓',Q:'𝔔',R:'ℜ',S:'𝔖',T:'𝔗',U:'𝔲',V:'𝔙',W:'𝔚',X:'𝔛',Y:'𝔶',Z:'ℨ' } },
                     { name: 'Gótica Negrita', map: { a:'𝖆',b:'𝖇',c:'𝖈',d:'𝖉',e:'𝖊',f:'𝖋',g:'𝖌',h:'𝖍',i:'𝖎',j:'𝖏',k:'𝖐',l:'𝖑',m:'𝖒',n:'𝖓',o:'𝖔',p:'𝖕',q:'𝖖',r:'𝖗',s:'𝓼',t:'𝖙',u:'𝖚',v:'𝖛',w:'𝖜',x:'𝖝',y:'𝖞',z:'𝖟', A:'𝕬',B:'𝕭',C:'𝕮',D:'𝕯',E:'𝕰',F:'𝕱',G:'𝕲',H:'𝕳',I:'𝕴',J:'𝕵',K:'𝕶',L:'𝕷',M:'𝕸',N:'𝕹',O:'𝕺',P:'𝕻',Q:'𝕼',R:'𝕽',S:'𝕾',T:'𝕿',U:'𝖀',V:'𝖁',W:'𝖂',X:'𝖃',Y:'𝖄',Z:'𝖅' } },
                     
                     // Geometric & Shapes
                     { name: 'Burbujas', map: { a:'ⓐ',b:'ⓑ',c:'ⓒ',d:'ⓓ',e:'ⓔ',f:'ⓕ',g:'ⓖ',h:'ⓗ',i:'ⓘ',j:'ⓙ',k:'ⓚ',l:'ⓛ',m:'ⓜ',n:'ⓝ',o:'ⓞ',p:'ⓟ',q:'ⓠ',r:'ⓡ',s:'ⓢ',t:'ⓣ',u:'ⓤ',v:'ⓥ',w:'ⓦ',x:'ⓧ',y:'ⓨ',z:'ⓩ', A:'Ⓐ',B:'Ⓑ',C:'Ⓒ',D:'Ⓓ',E:'Ⓔ',F:'Ⓕ',G:'Ⓖ',H:'Ⓗ',I:'Ⓘ',J:'Ⓙ',K:'Ⓚ',L:'Ⓛ',M:'Ⓜ',N:'Ⓝ',O:'Ⓞ',P:'Ⓟ',Q:'Ⓠ',R:'Ⓡ',S:'Ⓢ',T:'Ⓣ',U:'Ⓤ',V:'Ⓥ',W:'Ⓦ',X:'Ⓧ',Y:'Ⓨ',Z:'Ⓩ' } },
                     { name: 'Burbujas Negras', map: { a:'🅐',b:'🅑',c:'🅒',d:'🅓',e:'🅔',f:'🅕',g:'🅖',h:'🅗',i:'🅘',j:'🅙',k:'🅚',l:'🅛',m:'🅜',n:'🅝',o:'🅞',p:'🅟',q:'🅠',r:'🅡',s:'🅢',t:'🅣',u:'🅤',v:'🅥',w:'🅦',x:'🅧',y:'🅨',z:'🅩', A:'🅐',B:'🅑',C:'🅒',D:'🅓',E:'🅔',F:'🅕',G:'🅖',H:'🅗',I:'🅘',J:'🅙',K:'𝅚',L:'𝅛',M:'🅜',N:'🅝',O:'🅞',P:'🅟',Q:'🅠',R:'🅡',S:'🅢',T:'🅣',U:'🅤',V:'𝅥',W:'𝅦',X:'𝅧',Y:'𝅨',Z:'🅩' } },
                     { name: 'Cuadrados', map: { a:'🄰',b:'🄱',c:'🄲',d:'🄳',e:'🄴',f:'🄵',g:'🄶',h:'🄷',i:'🄸',j:'🄹',k:'🄺',l:'🄻',m:'🄼',n:'🄽',o:'🄾',p:'🄿',q:'🅀',r:'🅁',s:'🅂',t:'🅃',u:'🅄',v:'🅅',w:'🅆',x:'🅇',y:'🅈',z:'🅉', A:'🄰',B:'🄱',C:'🄲',D:'🄳',E:'🄴',F:'🄵',G:'🄶',H:'🄷',I:'🄸',J:'🄹',K:'🄺',L:'🄻',M:'🄼',N:'🄽',O:'🄾',P:'🄿',Q:'🅀',R:'🅁',S:'🅂',T:'🅃',U:'🅄',V:'🅅',W:'🅆',X:'🅇',Y:'🅈',Z:'🅉' } },
-                    { name: 'Cuadrados Negros', map: { a:'🅰',b:'🅱',c:'🅲',d:'🅳',e:'🅴',f:'🅵',g:'🅶',h:'🅷',i:'🅸',j:'🅹',k:'🅺',l:'🅻',m:'🅼',n:'🅽',o:'🅾',p:'🅿',q:'🆀',r:'🆁',s:'🆂',t:'🆃',u:'🆄',v:'🆅',w:'🆆',x:'🆇',y:'🆈',z:'🆉', A:'🅰',B:'🅱',C:'🅲',D:'🅳',E:'🅴',F:'🅵',G:'🅶',H:'🅷',I:'🅸',J:'🅹',K:'🅺',L:'🅻',M:'🅼',N:'🅽',O:'🅾',P:'🅿',Q:'🆀',R:'🆁',S:'🆂',T:'🆃',U:'🆄',V:'🆅',W:'🆆',X:'🆇',Y:'🆈',Z:'🆉' } },
+                    { name: 'Cuadrados Negros', map: { a:'🅰',b:'🅱',c:'🅲',d:'🅳',e:'🅴',f:'🅵',g:'🅶',h:'🅷',i:'🅸',j:'🅹',k:'🅺',l:'🅻',m:'🅼',n:'🅽',o:'🅾',p:'🅿',q:'🆀',r:'🆁',s:'🆂',t:'🆃',u:'🆄',v:'🆅',w:'🆆',x:'🆇',y:'🆈',z:'🆉', A:'🅰',B:'🅱',C:'🅲',D:'🅳',E:'🅴',F:'🅵',G:'🅶',H:'🅷',I:'🅸',J:'🅹',K:'🅺',L:'🅻',M:'🅼',N:'🅽',O:'🅾',P:'🅿',Q:'🆀',R:'🆁',S:'🆂',T:'🆃',U:'🆄',V:'🆅',W:'🆆',X:'𝆇',Y:'🆈',Z:'🆉' } },
                     
                     // Aesthetic & Wide
                     { name: 'Aesthetic (Ancho)', map: { a:'ａ',b:'ｂ',c:'ｃ',d:'ｄ',e:'ｅ',f:'ｆ',g:'ｇ',h:'ｈ',i:'ｉ',j:'ｊ',k:'ｋ',l:'ｌ',m:'ｍ',n:'ｎ',o:'ｏ',p:'ｐ',q:'ｑ',r:'ｒ',s:'ｓ',t:'ｔ',u:'ｕ',v:'ｖ',w:'ｗ',x:'ｘ',y:'ｙ',z:'ｚ', A:'Ａ',B:'Ｂ',C:'Ｃ',D:'Ｄ',E:'Ｅ',F:'Ｆ',G:'Ｇ',H:'Ｈ',I:'Ｉ',J:'Ｊ',K:'Ｋ',L:'Ｌ',M:'Ｍ',N:'Ｎ',O:'Ｏ',P:'Ｐ',Q:'Ｑ',R:'Ｒ',S:'Ｓ',T:'Ｔ',U:'Ｕ',V:'Ｖ',W:'Ｗ',X:'Ｘ',Y:'𝑌',Z:'Ｚ', ' ':'　' } },
@@ -80,7 +95,12 @@
                 ],
                 transformText(map) {
                     if (!this.inputText) return 'Elegancia';
-                    return this.inputText.split('').map(char => map[char] || char).join('');
+                    const specialChars = ['á', 'é', 'í', 'ó', 'ú', 'ñ', 'Ñ', '¿', '¡'];
+                    return this.inputText.split('').map(char => {
+                        if (map[char]) return map[char];
+                        if (specialChars.includes(char)) return `<span class="fallback-char">${char}</span>`;
+                        return char;
+                    }).join('');
                 },
                 copyToClipboard(text) {
                     navigator.clipboard.writeText(text).then(() => {
@@ -151,16 +171,40 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-20">
             <template x-for="font in fonts" :key="font.name">
                 <div class="group relative bg-white border border-slate-200 rounded-xl p-6 hover:border-pink-300 hover:shadow-lg hover:shadow-pink-500/5 transition-all duration-300 cursor-pointer" @click="copyToClipboard(transformText(font.map))">
                     <div class="flex justify-between items-center mb-3">
                         <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-pink-600 transition-colors" x-text="font.name"></span>
                         <div class="opacity-0 group-hover:opacity-100 transition-all transform translate-x-2 group-hover:translate-x-0"><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-pink-50 text-pink-600 text-xs font-bold">Copiar</span></div>
                     </div>
-                    <p class="text-xl md:text-2xl text-slate-800 break-words font-medium leading-relaxed" x-text="transformText(font.map)"></p>
+                    <p class="text-xl md:text-2xl text-slate-800 break-words font-medium leading-relaxed" x-html="transformText(font.map)"></p>
                 </div>
             </template>
+        </div>
+
+        <!-- Symbols Library (New Section) -->
+        <div class="border-t border-slate-200 pt-16">
+            <h2 class="text-3xl font-bold text-slate-900 text-center mb-10">Símbolos y Adornos para Copiar</h2>
+            <div class="grid gap-8">
+                <template x-for="category in symbolCategories" :key="category.name">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                        <h3 class="text-lg font-semibold text-slate-700 mb-4 flex items-center gap-2">
+                            <span class="w-1 h-6 bg-pink-500 rounded-full"></span>
+                            <span x-text="category.name"></span>
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <template x-for="symbol in category.symbols" :key="symbol">
+                                <button 
+                                    @click="copyToClipboard(symbol)" 
+                                    class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-lg md:text-xl bg-slate-50 hover:bg-pink-50 text-slate-600 hover:text-pink-600 rounded-xl border border-slate-100 transition-all hover:scale-110 active:scale-95"
+                                    x-text="symbol"
+                                ></button>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
         </div>
     </main>
 

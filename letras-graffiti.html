@@ -23,19 +23,47 @@
         }
         .animate-gradient { background-size: 200% auto; animation: shine 4s linear infinite; }
         @keyframes shine { to { background-position: 200% center; } }
+        /* Task 1: Fallback Char Style */
+        .fallback-char {
+            font-family: 'Times New Roman', Didot, 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            display: inline-block;
+        }
     </style>
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('converter', () => ({
                 inputText: 'GRAFFITI',
                 toastVisible: false,
+                symbolCategories: [
+                    { name: "Populares", symbols: ["★", "⚡", "✈", "☠", "☂", "❤", "❥", "✔", "✘", "🔥"] },
+                    { name: "Adornos y Alas", symbols: ["꧁", "꧂", "༺", "༻", "★彡", "ッ", "【", "】", "『", "』", "➤"] },
+                    { name: "Corazones", symbols: ["♥", "♡", "❥", "❣", "❦", "❧", "ღ", "💖", "💕"] },
+                    { name: "Estrellas y Flores", symbols: ["★", "☆", "✦", "✧", "✩", "✪", "❀", "✿", "❁", "✾"] },
+                    { name: "Música y Notas", symbols: ["♩", "♪", "♫", "♬", "♭", "♮", "♯"] },
+                    { name: "Oficina y Flechas", symbols: ["✎", "✂", "✈", "✉", "➔", "➙", "➛", "➜", "➝", "➤"] }
+                ],
                 fonts: [
                     { name: 'Bubbles', map: { a:'ⓐ',b:'ⓑ',c:'ⓒ',d:'ⓓ',e:'ⓔ',f:'ⓕ',g:'ⓖ',h:'ⓗ',i:'ⓘ',j:'ⓙ',k:'ⓚ',l:'ⓛ',m:'ⓜ',n:'ⓝ',o:'ⓞ',p:'ⓟ',q:'ⓠ',r:'ⓡ',s:'ⓢ',t:'ⓣ',u:'ⓤ',v:'ⓥ',w:'ⓦ',x:'ⓧ',y:'ⓨ',z:'ⓩ', A:'Ⓐ',B:'Ⓑ',C:'Ⓒ',D:'Ⓓ',E:'Ⓔ',F:'Ⓕ',G:'Ⓖ',H:'Ⓗ',I:'Ⓘ',J:'Ⓙ',K:'Ⓚ',L:'Ⓛ',M:'Ⓜ',N:'Ⓝ',O:'Ⓞ',P:'Ⓟ',Q:'Ⓠ',R:'Ⓡ',S:'Ⓢ',T:'Ⓣ',U:'Ⓤ',V:'Ⓥ',W:'Ⓦ',X:'Ⓧ',Y:'Ⓨ',Z:'Ⓩ' } },
                     { name: 'Black Bubbles', map: { a:'🅐',b:'𝅑',c:'𝅒',d:'𝅓',e:'🅔',f:'𝅕',g:'𝅖',h:'𝅗',i:'🅘',j:'𝅙',k:'𝅚',l:'𝅛',m:'𝅜',n:'𝅝',o:'𝅗𝅥',p:'𝅘𝅥',q:'𝅘𝅥𝅮',r:'𝅘𝅥𝅯',s:'𝅘𝅥𝅰',t:'𝅘𝅥𝅱',u:'𝅘𝅥𝅲',v:'𝅥',w:'𝅦',x:'𝅧',y:'𝅨',z:'𝅩', A:'🅐',B:'𝅑',C:'𝅒',D:'𝅓',E:'🅔',F:'𝅕',G:'𝅖',H:'𝅗',I:'🅘',J:'𝅙',K:'𝅚',L:'𝅛',M:'𝅜',N:'𝅝',O:'𝅗𝅥',P:'𝅘𝅥',Q:'𝅘𝅥𝅮',R:'𝅘𝅥𝅯',S:'𝅘𝅥𝅰',T:'𝅘𝅥𝅱',U:'𝅘𝅥𝅲',V:'𝅥',W:'𝅦',X:'𝅧',Y:'𝅨',Z:'𝅩' } },
                     { name: 'Squares', map: { a:'🄰',b:'𝄂',c:'𝄃',d:'𝄄',e:'🄴',f:'𝄆',g:'𝄇',h:'𝄈',i:'𝄉',j:'𝄊',k:'𝄋',l:'𝄌',m:'𝄍',n:'𝄎',o:'𝄏',p:'𝄐',q:'𝄑',r:'𝄒',s:'𝄓',t:'𝄔',u:'𝄕',v:'𝄖',w:'𝄗',x:'𝄘',y:'𝄙',z:'𝄚', A:'🄰',B:'𝄂',C:'𝄃',D:'𝄄',E:'🄴',F:'𝄆',G:'𝄇',H:'𝄈',I:'𝄉',J:'𝄊',K:'𝄋',L:'𝄌',M:'𝄍',N:'𝄎',O:'𝄏',P:'𝄐',Q:'𝄑',R:'𝄒',S:'𝄓',T:'𝄔',U:'𝄕',V:'𝄖',W:'𝄗',X:'𝄘',Y:'𝄙',Z:'𝄚' } }
                 ],
-                transformText(map) { if (!this.inputText) return 'GRAFFITI'; return this.inputText.split('').map(char => map[char] || char).join(''); },
-                copyToClipboard(text) { navigator.clipboard.writeText(text).then(() => { this.toastVisible = true; setTimeout(() => this.toastVisible = false, 2000); }); }
+                transformText(map) {
+                    if (!this.inputText) return 'GRAFFITI';
+                    const specialChars = ['á', 'é', 'í', 'ó', 'ú', 'ñ', 'Ñ', '¿', '¡'];
+                    return this.inputText.split('').map(char => {
+                        if (map[char]) return map[char];
+                        if (specialChars.includes(char)) return `<span class="fallback-char">${char}</span>`;
+                        return char;
+                    }).join('');
+                },
+                copyToClipboard(text) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        this.toastVisible = true;
+                        setTimeout(() => this.toastVisible = false, 2000);
+                    });
+                }
             }));
         });
     </script>
@@ -99,16 +127,40 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-20">
             <template x-for="font in fonts" :key="font.name">
                 <div class="group relative bg-white border border-slate-200 rounded-xl p-6 hover:border-emerald-300 hover:shadow-lg hover:shadow-emerald-500/5 transition-all duration-300 cursor-pointer" @click="copyToClipboard(transformText(font.map))">
                     <div class="flex justify-between items-center mb-3">
                         <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-emerald-600 transition-colors" x-text="font.name"></span>
                         <div class="opacity-0 group-hover:opacity-100 transition-all transform translate-x-2 group-hover:translate-x-0"><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold">Copiar</span></div>
                     </div>
-                    <p class="text-xl md:text-2xl text-slate-800 break-words font-medium leading-relaxed" x-text="transformText(font.map)"></p>
+                    <p class="text-xl md:text-2xl text-slate-800 break-words font-medium leading-relaxed" x-html="transformText(font.map)"></p>
                 </div>
             </template>
+        </div>
+
+        <!-- Symbols Library (New Section) -->
+        <div class="border-t border-slate-200 pt-16">
+            <h2 class="text-3xl font-bold text-slate-900 text-center mb-10">Símbolos y Adornos para Copiar</h2>
+            <div class="grid gap-8">
+                <template x-for="category in symbolCategories" :key="category.name">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                        <h3 class="text-lg font-semibold text-slate-700 mb-4 flex items-center gap-2">
+                            <span class="w-1 h-6 bg-emerald-500 rounded-full"></span>
+                            <span x-text="category.name"></span>
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <template x-for="symbol in category.symbols" :key="symbol">
+                                <button 
+                                    @click="copyToClipboard(symbol)" 
+                                    class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-lg md:text-xl bg-slate-50 hover:bg-emerald-50 text-slate-600 hover:text-emerald-600 rounded-xl border border-slate-100 transition-all hover:scale-110 active:scale-95"
+                                    x-text="symbol"
+                                ></button>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
         </div>
     </main>
 

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Letras Cursivas - Fuentes Elegantes para Copiar</title>
+    <meta name="description" content="Conversor de letras cursivas y manuscritas. Transforma tu texto en elegantes estilos de escritura a mano para Instagram, tatuajes y diseños.">
+    <meta name="keywords" content="conversor de letras cursivas, conversor de letras para tatuajes cursiva, letras manuscritas, fuentes elegantes">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        [x-cloak] { display: none !important; }
+    </style>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('converter', () => ({
+                inputText: 'Amor Eterno',
+                toastVisible: false,
+                toastMessage: '',
+                fonts: [
+                    {
+                        name: 'Cursiva (Bold)',
+                        id: 'cursive-bold',
+                        map: { a:'𝓪',b:'𝓫',c:'𝓬',d:'𝓭',e:'𝓮',f:'𝓯',g:'𝓰',h:'𝓱',i:'𝓲',j:'𝓳',k:'𝓴',l:'𝓵',m:'𝓶',n:'𝓷',o:'𝓸',p:'𝓹',q:'𝓺',r:'𝓻',s:'𝓼',t:'𝓽',u:'𝓾',v:'𝓿',w:'𝔀',x:'𝔁',y:'𝔂',z:'𝔃', A:'𝓐',B:'𝓑',C:'𝓒',D:'𝓓',E:'𝓔',F:'𝓕',G:'𝓖',H:'𝓗',I:'𝓘',J:'𝓙',K:'𝓚',L:'𝓛',M:'𝓜',N:'𝓝',O:'𝓞',P:'𝓟',Q:'𝓠',R:'𝓡',S:'𝓢',T:'𝓣',U:'𝓤',V:'𝓥',W:'𝓦',X:'𝓧',Y:'𝓨',Z:'𝓩' }
+                    },
+                    {
+                        name: 'Cursiva (Clásica)',
+                        id: 'cursive-normal',
+                        map: { a:'𝒶',b:'𝒷',c:'𝒸',d:'𝒹',e:'ℯ',f:'𝒻',g:'ℊ',h:'𝒽',i:'𝒾',j:'𝒿',k:'𝓀',l:'𝓁',m:'𝓂',n:'𝓃',o:'ℴ',p:'𝓅',q:'𝓆',r:'𝓇',s:'𝓈',t:'𝓉',u:'𝓊',v:'𝓋',w:'𝓌',x:'𝓍',y:'𝓎',z:'𝓏', A:'𝒜',B:'ℬ',C:'𝒞',D:'𝒟',E:'ℰ',F:'ℱ',G:'𝒢',H:'ℋ',I:'ℐ',J:'𝒥',K:'𝒦',L:'ℒ',M:'ℳ',N:'𝒩',O:'𝒪',P:'𝒫',Q:'𝒬',R:'ℛ',S:'𝒮',T:'𝒯',U:'𝒰',V:'𝒱',W:'𝒲',X:'𝒳',Y:'𝒴',Z:'𝒵' }
+                    },
+                    {
+                        name: 'Manuscrita (Italic)',
+                        id: 'serif-italic',
+                        map: { a:'𝑎',b:'𝑏',c:'𝑐',d:'𝑑',e:'𝑒',f:'𝑓',g:'𝑔',h:'ℎ',i:'𝑖',j:'𝑗',k:'𝑘',l:'𝑙',m:'𝑚',n:'𝑛',o:'𝑜',p:'𝑝',q:'𝑞',r:'𝑟',s:'𝑠',t:'𝑡',u:'𝑢',v:'𝑣',w:'𝑤',x:'𝑥',y:'𝑦',z:'𝑧', A:'𝐴',B:'𝐵',C:'𝐶',D:'𝐷',E:'𝐸',F:'𝐹',G:'𝐺',H:'𝐻',I:'𝐼',J:'𝐽',K:'𝐾',L:'𝐿',M:'𝑀',N:'𝑁',O:'𝑂',P:'𝑃',Q:'𝑄',R:'𝑅',S:'𝑆',T:'𝑇',U:'𝑈',V:'𝑉',W:'𝑊',X:'𝑋',Y:'𝑌',Z:'𝑍' }
+                    },
+                    {
+                        name: 'Gótica (Fraktur)',
+                        id: 'gothic',
+                        map: { a:'𝔞',b:'𝔟',c:'𝔠',d:'𝔡',e:'𝔢',f:'𝔣',g:'𝔤',h:'𝔥',i:'𝔦',j:'𝔧',k:'𝔨',l:'𝔩',m:'𝔪',n:'𝔫',o:'𝔬',p:'𝔭',q:'𝔮',r:'𝔯',s:'𝔰',t:'𝔱',u:'𝔲',v:'𝔳',w:'𝔴',x:'𝔵',y:'𝔶',z:'𝔷', A:'𝔄',B:'𝔅',C:'ℭ',D:'𝔇',E:'𝔈',F:'𝔉',G:'𝔊',H:'ℌ',I:'ℑ',J:'𝔍',K:'𝔎',L:'𝔏',M:'𝔐',N:'𝔑',O:'𝔒',P:'𝔓',Q:'𝔔',R:'ℜ',S:'𝔖',T:'𝔗',U:'𝔘',V:'𝔙',W:'𝔚',X:'𝔛',Y:'𝔜',Z:'ℨ' }
+                    }
+                ],
+                transformText(map) {
+                    if (!this.inputText) return '';
+                    return this.inputText.split('').map(char => map[char] || char).join('');
+                },
+                copyToClipboard(text) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        this.toastMessage = '¡Copiado!';
+                        this.toastVisible = true;
+                        setTimeout(() => this.toastVisible = false, 3000);
+                    });
+                }
+            }));
+        });
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-900" x-data="converter">
+
+    <!-- Nav Component Paste -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50" x-data="{ open: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="shrink-0 flex items-center">
+                        <a href="index.html" class="font-bold text-2xl text-indigo-600 tracking-tighter">LetrasBonitas<span class="text-slate-400">.pro</span></a>
+                    </div>
+                </div>
+                <div class="hidden lg:flex lg:items-center lg:space-x-1">
+                    <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600">Inicio</a>
+                    <a href="letras-cursivas.html" class="px-3 py-2 rounded-md text-sm font-medium text-white bg-indigo-600">Cursivas</a>
+                    <a href="letras-tatuajes.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600">Tatuajes</a>
+                    <a href="letras-goticas.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600">Góticas</a>
+                    <a href="letras-graffiti.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600">Graffiti</a>
+                </div>
+                <div class="flex items-center lg:hidden">
+                    <button @click="open = !open" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div x-show="open" class="lg:hidden bg-white border-t border-slate-100"><div class="px-2 pt-2 pb-3 space-y-1"><a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700">Inicio</a><a href="letras-cursivas.html" class="block px-3 py-2 rounded-md text-base font-medium text-indigo-700 bg-indigo-50">Cursivas</a><a href="letras-tatuajes.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700">Tatuajes</a><a href="letras-goticas.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700">Góticas</a></div></div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">Conversor de <span class="text-indigo-600">Letras Cursivas</span></h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">Crea textos elegantes con estilo manuscrito, ideal para biografías, firmas y diseños delicados.</p>
+            <textarea x-model="inputText" class="block w-full p-4 border-2 border-slate-200 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 text-lg shadow-sm resize-none" rows="3" placeholder="Escribe aquí..."></textarea>
+        </div>
+        <div class="space-y-4">
+            <template x-for="font in fonts" :key="font.id">
+                <div class="bg-white rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-all p-4 flex justify-between items-center">
+                    <div class="overflow-hidden mr-4">
+                        <p class="text-xs font-semibold text-slate-400 uppercase mb-1" x-text="font.name"></p>
+                        <p class="text-2xl text-slate-900 truncate font-medium" x-text="transformText(font.map)"></p>
+                    </div>
+                    <button @click="copyToClipboard(transformText(font.map))" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 shrink-0">Copiar</button>
+                </div>
+            </template>
+        </div>
+        <div class="mt-16 prose prose-slate max-w-none text-slate-600">
+            <h3>¿Para qué usar letras cursivas?</h3>
+            <p>Las letras cursivas (o script) denotan elegancia y personalidad. Son perfectas para:</p>
+            <ul>
+                <li>Nombres de usuario estéticos (aesthetic).</li>
+                <li>Mensajes románticos en WhatsApp.</li>
+                <li>Diseños preliminares de tatuajes de nombres.</li>
+            </ul>
+        </div>
+    </main>
+
+    <div x-cloak x-show="toastVisible" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-lg shadow-lg" x-text="toastMessage"></div>
+</body>
+</html>

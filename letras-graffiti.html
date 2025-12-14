@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Letras Graffiti - Estilos Urbanos</title>
+    <meta name="description" content="Conversor de letras graffiti y burbujas. Crea textos con estilo urbano, encerrados en círculos o cuadrados, y dale onda a tus comentarios.">
+    <meta name="keywords" content="conversor de letras graffiti, letras burbuja, letras en circulos, fuentes urbanas">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        [x-cloak] { display: none !important; }
+    </style>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('converter', () => ({
+                inputText: 'Hip Hop',
+                toastVisible: false,
+                toastMessage: '',
+                fonts: [
+                    {
+                        name: 'Burbujas (Círculos)',
+                        id: 'bubble',
+                        map: { a:'ⓐ',b:'ⓑ',c:'ⓒ',d:'ⓓ',e:'ⓔ',f:'ⓕ',g:'ⓖ',h:'ⓗ',i:'ⓘ',j:'ⓙ',k:'ⓚ',l:'ⓛ',m:'ⓜ',n:'ⓝ',o:'ⓞ',p:'ⓟ',q:'ⓠ',r:'ⓡ',s:'ⓢ',t:'ⓣ',u:'ⓤ',v:'ⓥ',w:'ⓦ',x:'ⓧ',y:'ⓨ',z:'ⓩ', A:'Ⓐ',B:'Ⓑ',C:'Ⓒ',D:'Ⓓ',E:'Ⓔ',F:'Ⓕ',G:'Ⓖ',H:'Ⓗ',I:'Ⓘ',J:'Ⓙ',K:'Ⓚ',L:'Ⓛ',M:'Ⓜ',N:'Ⓝ',O:'Ⓞ',P:'Ⓟ',Q:'Ⓠ',R:'Ⓡ',S:'Ⓢ',T:'Ⓣ',U:'Ⓤ',V:'Ⓥ',W:'Ⓦ',X:'Ⓧ',Y:'Ⓨ',Z:'Ⓩ' }
+                    },
+                    {
+                        name: 'Burbujas Negras',
+                        id: 'bubble-black',
+                        map: { a:'🅐',b:'🅑',c:'🅒',d:'🅓',e:'🅔',f:'🅕',g:'🅖',h:'🅗',i:'🅘',j:'🅙',k:'🅚',l:'🅛',m:'🅜',n:'🅝',o:'🅞',p:'🅟',q:'🅠',r:'🅡',s:'🅢',t:'🅣',u:'🅤',v:'🅥',w:'🅦',x:'🅧',y:'🅨',z:'🅩', A:'🅐',B:'🅑',C:'🅒',D:'🅓',E:'🅔',F:'🅕',G:'🅖',H:'🅗',I:'🅘',J:'🅙',K:'🅚',L:'🅛',M:'🅜',N:'🅝',O:'🅞',P:'🅟',Q:'🅠',R:'🅡',S:'🅢',T:'🅣',U:'🅤',V:'🅥',W:'🅦',X:'🅧',Y:'🅨',Z:'🅩' }
+                    },
+                    {
+                        name: 'Cuadrados (Square)',
+                        id: 'square',
+                        map: { a:'🄰',b:'🄱',c:'🄲',d:'🄳',e:'🄴',f:'🄵',g:'🄶',h:'🄷',i:'🄸',j:'🄹',k:'🄺',l:'🄻',m:'🄼',n:'🄽',o:'🄾',p:'🄿',q:'🅀',r:'🅁',s:'🅂',t:'🅃',u:'🅄',v:'🅅',w:'🅆',x:'🅇',y:'🅈',z:'🅉', A:'🄰',B:'🄱',C:'🄲',D:'🄳',E:'🄴',F:'🄵',G:'🄶',H:'🄷',I:'🄸',J:'🄹',K:'🄺',L:'🄻',M:'🄼',N:'🄽',O:'🄾',P:'🄿',Q:'🅀',R:'🅁',S:'🅂',T:'🅃',U:'🅄',V:'🅅',W:'🅆',X:'🅇',Y:'🅈',Z:'🅉' }
+                    },
+                    {
+                        name: 'Ancho Completo (Vaporwave)',
+                        id: 'full-width',
+                        map: { a:'ａ',b:'ｂ',c:'ｃ',d:'ｄ',e:'ｅ',f:'ｆ',g:'ｇ',h:'ｈ',i:'ｉ',j:'ｊ',k:'ｋ',l:'ｌ',m:'ｍ',n:'ｎ',o:'ｏ',p:'ｐ',q:'ｑ',r:'ｒ',s:'ｓ',t:'ｔ',u:'ｕ',v:'ｖ',w:'ｗ',x:'ｘ',y:'ｙ',z:'ｚ', A:'Ａ',B:'Ｂ',C:'Ｃ',D:'Ｄ',E:'Ｅ',F:'Ｆ',G:'Ｇ',H:'Ｈ',I:'Ｉ',J:'Ｊ',K:'Ｋ',L:'Ｌ',M:'Ｍ',N:'Ｎ',O:'Ｏ',P:'Ｐ',Q:'Ｑ',R:'Ｒ',S:'Ｓ',T:'Ｔ',U:'Ｕ',V:'Ｖ',W:'Ｗ',X:'Ｘ',Y:'Ｙ',Z:'Ｚ', ' ':'　' }
+                    }
+                ],
+                transformText(map) {
+                    if (!this.inputText) return '';
+                    return this.inputText.split('').map(char => map[char] || char).join('');
+                },
+                copyToClipboard(text) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        this.toastMessage = '¡Copiado!';
+                        this.toastVisible = true;
+                        setTimeout(() => this.toastVisible = false, 3000);
+                    });
+                }
+            }));
+        });
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-900" x-data="converter">
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50" x-data="{ open: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="shrink-0 flex items-center">
+                        <a href="index.html" class="font-bold text-2xl text-indigo-600 tracking-tighter">LetrasBonitas<span class="text-slate-400">.pro</span></a>
+                    </div>
+                </div>
+                <div class="hidden lg:flex lg:items-center lg:space-x-1">
+                    <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600">Inicio</a>
+                    <a href="letras-cursivas.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600">Cursivas</a>
+                    <a href="letras-tatuajes.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600">Tatuajes</a>
+                    <a href="letras-goticas.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600">Góticas</a>
+                    <a href="letras-graffiti.html" class="px-3 py-2 rounded-md text-sm font-medium text-white bg-indigo-600">Graffiti</a>
+                </div>
+                <div class="flex items-center lg:hidden">
+                    <button @click="open = !open" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div x-show="open" class="lg:hidden bg-white border-t border-slate-100"><div class="px-2 pt-2 pb-3 space-y-1"><a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700">Inicio</a><a href="letras-cursivas.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700">Cursivas</a><a href="letras-tatuajes.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700">Tatuajes</a><a href="letras-goticas.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700">Góticas</a><a href="letras-graffiti.html" class="block px-3 py-2 rounded-md text-base font-medium text-indigo-700 bg-indigo-50">Graffiti</a></div></div>
+    </nav>
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">Conversor de <span class="text-indigo-600">Letras Graffiti</span></h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">Estilos callejeros, burbujas y caracteres de ancho completo. Perfecto para destacar en comentarios.</p>
+            <textarea x-model="inputText" class="block w-full p-4 border-2 border-slate-200 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 text-lg shadow-sm resize-none" rows="3" placeholder="Escribe tu flow..."></textarea>
+        </div>
+        <div class="space-y-4">
+            <template x-for="font in fonts" :key="font.id">
+                <div class="bg-white rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-all p-4 flex justify-between items-center">
+                    <div class="overflow-hidden mr-4">
+                        <p class="text-xs font-semibold text-slate-400 uppercase mb-1" x-text="font.name"></p>
+                        <p class="text-2xl text-slate-900 truncate font-medium" x-text="transformText(font.map)"></p>
+                    </div>
+                    <button @click="copyToClipboard(transformText(font.map))" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 shrink-0">Copiar</button>
+                </div>
+            </template>
+        </div>
+    </main>
+    <div x-cloak x-show="toastVisible" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-lg shadow-lg" x-text="toastMessage"></div>
+</body>
+</html>

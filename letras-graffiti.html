@@ -14,11 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #0f172a; }
         [x-cloak] { display: none !important; }
         .grid-bg {
-            background-color: #0f172a;
-            background-image: linear-gradient(#1e293b 1px, transparent 1px), linear-gradient(90deg, #1e293b 1px, transparent 1px);
+            background-color: #f8fafc;
+            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
             background-size: 40px 40px;
             background-position: center top;
         }
@@ -47,7 +47,7 @@
                 fonts: [
                     // --- 1. BUBBLE STYLE (Bombing) ---
                     { name: 'Burbujas Clásicas', map: { a:'ⓐ',b:'ⓑ',c:'ⓒ',d:'ⓓ',e:'ⓔ',f:'ⓕ',g:'ⓖ',h:'ⓗ',i:'ⓘ',j:'ⓙ',k:'ⓚ',l:'ⓛ',m:'ⓜ',n:'ⓝ',o:'ⓞ',p:'ⓟ',q:'ⓠ',r:'ⓡ',s:'ⓢ',t:'ⓣ',u:'ⓤ',v:'ⓥ',w:'ⓦ',x:'ⓧ',y:'ⓨ',z:'ⓩ', A:'Ⓐ',B:'Ⓑ',C:'Ⓒ',D:'Ⓓ',E:'Ⓔ',F:'Ⓕ',G:'Ⓖ',H:'Ⓗ',I:'Ⓘ',J:'Ⓙ',K:'Ⓚ',L:'Ⓛ',M:'Ⓜ',N:'Ⓝ',O:'Ⓞ',P:'Ⓟ',Q:'Ⓠ',R:'Ⓡ',S:'Ⓢ',T:'Ⓣ',U:'Ⓤ',V:'Ⓥ',W:'Ⓦ',X:'Ⓧ',Y:'Ⓨ',Z:'Ⓩ' } },
-                    { name: 'Burbujas Negras', map: { a:'🅐',b:'🅑',c:'🅒',d:'🅓',e:'🅔',f:'🅕',g:'🅖',h:'🅗',i:'🅘',j:'🅙',k:'🅚',l:'🅛',m:'🅼',n:'🅝',o:'🅞',p:'🅟',q:'🅠',r:'🅡',s:'🅢',t:'🅣',u:'🅤',v:'🅥',w:'🅦',x:'🅧',y:'🅨',z:'🅩', A:'🅐',B:'🅑',C:'🅒',D:'🅓',E:'🅔',F:'🅕',G:'🅖',H:'🅗',I:'🅘',J:'🅙',K:'𝅚',L:'𝅛',M:'🅼',N:'🅝',O:'🅞',P:'🅟',Q:'🅠',R:'🅡',S:'🅢',T:'🅣',U:'🅤',V:'𝅥',W:'𝅦',X:'𝅧',Y:'𝅨',Z:'𝅩' } },
+                    { name: 'Burbujas Negras', map: { a:'🅐',b:'🅑',c:'🅒',d:'🅓',e:'🅔',f:'𝅕',g:'🅖',h:'🅗',i:'🅘',j:'🅙',k:'🅚',l:'🅛',m:'🅼',n:'🅝',o:'🅞',p:'🅟',q:'🅠',r:'🅡',s:'🅢',t:'🅣',u:'🅤',v:'🅥',w:'🅦',x:'🅧',y:'🅨',z:'🅩', A:'🅐',B:'🅑',C:'🅒',D:'🅓',E:'🅔',F:'🅕',G:'🅖',H:'🅗',I:'🅘',J:'🅙',K:'𝅚',L:'𝅛',M:'🅜',N:'🅝',O:'🅞',P:'🅟',Q:'🅠',R:'🅡',S:'🅢',T:'🅣',U:'🅤',V:'𝅥',W:'𝅦',X:'𝅧',Y:'𝅨',Z:'𝅩' } },
                     { name: 'Paréntesis', map: { a:'⒜',b:'⒝',c:'⒞',d:'⒟',e:'⒠',f:'⒡',g:'⒢',h:'⒣',i:'⒤',j:'⒥',k:'⒦',l:'⒧',m:'⒨',n:'⒩',o:'⒪',p:'⒫',q:'⒬',r:'⒭',s:'⒮',t:'⒯',u:'⒰',v:'⒱',w:'⒲',x:'⒳',y:'⒵',z:'⒵', A:'⒜',B:'⒝',C:'⒞',D:'⒟',E:'⒠',F:'⒡',G:'⒢',H:'⒣',I:'⒤',J:'⒥',K:'⒦',L:'⒧',M:'⒨',N:'⒩',O:'⒪',P:'⒫',Q:'⒬',R:'⒭',S:'⒮',T:'⒯',U:'⒰',V:'⒱',W:'⒲',X:'⒳',Y:'⒵',Z:'⒵' } },
                     { name: 'Luni Bubbles', map: { a:'ℓ',b:'в',c:'c',d:'∂',e:'є',f:'ƒ',g:'g',h:'н',i:'ι',j:'נ',k:'к',l:'l',m:'м',n:'η',o:'σ',p:'ρ',q:'q',r:'я',s:'ѕ',t:'т',u:'υ',v:'ν',w:'ω',x:'χ',y:'у',z:'z', A:'ℓ',B:'в',C:'c',D:'∂',E:'є',F:'ƒ',G:'g',H:'н',I:'ι',J:'נ',K:'к',L:'l',M:'м',N:'η',O:'σ',P:'ρ',Q:'q',R:'я',S:'ѕ',T:'т',U:'υ',V:'ν',W:'ω',X:'χ',Y:'у',Z:'z' } },
 
@@ -59,11 +59,11 @@
 
                     // --- 3. TAGS & HANDSTYLE (Markers) ---
                     { name: 'Tag Fino', map: { a:'𝘢',b:'𝘣',c:'𝘤',d:'𝘥',e:'𝘦',f:'𝘧',g:'𝘨',h:'𝘩',i:'𝘪',j:'𝘫',k:'𝘬',l:'𝘭',m:'𝘮',n:'𝘯',o:'𝘰',p:'𝘱',q:'𝘲',r:'𝘳',s:'𝘴',t:'𝘵',u:'𝘶',v:'𝘷',w:'𝘸',x:'𝘹',y:'𝘺',z:'𝘻', A:'𝘈',B:'𝘉',C:'𝘊',D:'𝘋',E:'𝘌',F:'𝘍',G:'𝘎',H:'𝘏',I:'𝘐',J:'𝘑',K:'𝘒',L:'𝘓',M:'𝘔',N:'𝘕',O:'𝘖',P:'𝘗',Q:'𝘘',R:'𝘙',S:'𝘚',T:'𝘛',U:'𝘜',V:'𝘝',W:'𝘞',X:'𝘟',Y:'𝘠',Z:'𝘡' } },
-                    { name: 'Tag Grueso', map: { a:'𝙖',b:'𝙗',c:'𝙘',d:'𝙙',e:'𝙚',f:'𝙛',g:'𝙜',h:'𝙝',i:'𝙞',j:'𝙟',k:'𝙠',l:'𝙡',m:'𝙢',n:'𝙣',o:'𝙤',p:'𝙥',q:'𝙦',r:'𝙧',s:'𝙨',t:'𝙩',u:'𝙪',v:'𝙫',w:'𝙬',x:'𝙭',y:'𝙮',z:'𝙯', A:'𝘼',B:'𝘽',C:'𝘾',D:'𝘿',E:'𝙀',F:'𝙁',G:'𝙂',H:'𝙃',I:'𝙄',J:'𝙅',K:'𝙆',L:'𝙇',M:'𝙈',N:'𝙉',O:'𝙊',P:'𝙋',Q:'𝙌',R:'𝙍',S:'𝙎',T:'𝙏',U:'𝙐',V:'𝙑',W:'𝙒',X:'𝙓',Y:'𝙔',Z:'𝙕' } },
+                    { name: 'Tag Grueso', map: { a:'𝙖',b:'',c:'𝙘',d:'𝙙',e:'𝙚',f:'𝙛',g:'𝙜',h:'𝙝',i:'𝙞',j:'𝙟',k:'𝙠',l:'𝙡',m:'𝙢',n:'𝙣',o:'𝙤',p:'𝙥',q:'𝙦',r:'𝙧',s:'𝙨',t:'𝙩',u:'𝙪',v:'𝙫',w:'𝙬',x:'𝙭',y:'𝙮',z:'𝙯', A:'𝘼',B:'𝘽',C:'𝘾',D:'𝘿',E:'𝙀',F:'𝙁',G:'𝙂',H:'𝙃',I:'𝙄',J:'𝙅',K:'𝙆',L:'𝙇',M:'𝙈',N:'𝙉',O:'𝙊',P:'𝙋',Q:'𝙌',R:'𝙍',S:'𝙎',T:'𝙏',U:'𝙐',V:'𝙑',W:'𝙒',X:'𝙓',Y:'𝙔',Z:'𝙕' } },
                     { name: 'Flow Script', map: { a:'𝓪',b:'𝓫',c:'𝓬',d:'𝓭',e:'𝓮',f:'𝓯',g:'𝓰',h:'𝓱',i:'𝓲',j:'𝓳',k:'𝓴',l:'𝓵',m:'𝓶',n:'𝓷',o:'𝓸',p:'𝓹',q:'𝓺',r:'𝓻',s:'𝓼',t:'𝓽',u:'𝓾',v:'𝓿',w:'𝔀',x:'𝔁',y:'𝔂',z:'𝔃', A:'𝓐',B:'𝓑',C:'𝓒',D:'𝓓',E:'𝓔',F:'𝓕',G:'𝓖',H:'𝓗',I:'𝓘',J:'𝓙',K:'𝓚',L:'𝓛',M:'𝓜',N:'𝓝',O:'𝓞',P:'𝓟',Q:'𝓠',R:'𝓡',S:'𝓢',T:'𝓣',U:'𝓤',V:'𝓥',W:'𝓦',X:'𝓧',Y:'𝓨',Z:'𝓩' } },
                     { name: 'Old School', map: { a:'𝔞',b:'𝔟',c:'𝔠',d:'𝔡',e:'𝔢',f:'𝔣',g:'𝔤',h:'𝔥',i:'𝔦',j:'𝔧',k:'𝔨',l:'𝔩',m:'𝔪',n:'𝔫',o:'𝔬',p:'𝔭',q:'𝔮',r:'𝔯',s:'𝔰',t:'𝔱',u:'𝔲',v:'𝔳',w:'𝔴',x:'𝔵',y:'𝔶',z:'𝔷', A:'𝔄',B:'𝔅',C:'ℭ',D:'𝔇',E:'𝔈',F:'𝔉',G:'𝔊',H:'ℌ',I:'ℑ',J:'𝔍',K:'𝔎',L:'𝔏',M:'𝔐',N:'𝔑',O:'𝔒',P:'𝔓',Q:'𝔔',R:'ℜ',S:'𝔖',T:'𝔗',U:'𝔲',V:'𝔙',W:'𝔚',X:'𝔛',Y:'𝔜',Z:'ℨ' } },
                     { name: 'Gangsta Bold', map: { a:'𝖆',b:'𝖇',c:'𝖈',d:'𝖉',e:'𝖊',f:'𝖋',g:'𝖌',h:'𝖍',i:'𝖎',j:'𝖏',k:'𝖐',l:'𝖑',m:'𝖒',n:'𝖓',o:'𝖔',p:'𝖕',q:'𝖖',r:'𝖗',s:'𝖘',t:'𝖙',u:'𝖚',v:'𝖛',w:'𝖜',x:'𝖝',y:'𝖞',z:'𝖟', A:'𝕬',B:'𝕭',C:'𝕮',D:'𝕯',E:'𝕰',F:'𝕱',G:'𝕲',H:'𝕳',I:'𝕴',J:'𝕵',K:'𝕶',L:'𝕷',M:'𝕸',N:'𝕹',O:'𝕺',P:'𝕻',Q:'𝕼',R:'𝕽',S:'𝕾',T:'𝕿',U:'𝖀',V:'𝖁',W:'𝖂',X:'𝖃',Y:'𝖄',Z:'𝖅' } },
-                    { name: 'Stencil', map: { a:'𝕒',b:'𝕓',c:'𝕔',d:'𝕕',e:'𝕖',f:'𝕗',g:'𝕘',h:'𝕙',i:'𝕚',j:'𝕛',k:'𝕜',l:'𝕝',m:'𝕞',n:'𝕟',o:'𝕠',p:'𝕡',q:'𝕢',r:'𝕣',s:'𝕤',t:'𝕥',u:'𝕦',v:'𝕧',w:'𝕨',x:'𝕩',y:'𝕪',z:'𝕫', A:'𝔸',B:'𝔹',C:'ℂ',D:'𝔻',E:'𝔼',F:'𝔽',G:'𝔾',H:'ℍ',I:'𝕀',J:'𝕁',K:'𝕂',L:'𝕃',M:'𝕄',N:'ℕ',O:'𝕆',P:'ℙ',Q:'ℚ',R:'ℝ',S:'𝕊',T:'𝕋',U:'𝕌',V:'𝕍',W:'𝕎',X:'𝕏',Y:'𝕐',Z:'ℤ' } },
+                    { name: 'Stencil', map: { a:'𝕒',b:'𝕓',c:'𝕔',d:'𝕕',e:'𝕖',f:'𝕗',g:'𝕘',h:'𝕙',i:'𝕚',j:'𝕛',k:'𝕜',l:'𝕝',m:'𝕞',n:'𝕟',o:'𝕠',p:'ℙ',q:'𝕢',r:'𝕣',s:'𝕤',t:'𝕥',u:'𝕦',v:'𝕧',w:'𝕨',x:'𝕩',y:'𝕪',z:'𝕫', A:'𝔸',B:'𝔹',C:'ℂ',D:'𝔻',E:'𝔼',F:'𝔽',G:'𝔾',H:'ℍ',I:'𝕀',J:'𝕛',K:'𝕂',L:'𝕃',M:'𝕄',N:'ℕ',O:'𝕆',P:'ℙ',Q:'ℚ',R:'ℝ',S:'𝕊',T:'𝕋',U:'𝕌',V:'𝕍',W:'𝕎',X:'𝕏',Y:'𝕐',Z:'ℤ' } },
                     { name: 'Typewriter', map: { a:'𝚊',b:'𝚋',c:'𝚌',d:'𝚍',e:'𝚎',f:'𝚏',g:'𝚐',h:'𝚑',i:'𝚒',j:'𝚓',k:'𝚔',l:'𝚕',m:'𝚖',n:'𝚗',o:'𝚘',p:'𝚙',q:'𝚚',r:'𝚛',s:'𝚜',t:'𝚝',u:'𝚞',v:'𝚟',w:'𝚠',x:'𝚡',y:'𝚢',z:'𝚣', A:'𝙰',B:'𝙱',C:'𝙲',D:'𝙳',E:'𝙴',F:'𝙵',G:'𝙶',H:'𝙷',I:'𝙸',J:'𝙹',K:'𝙺',L:'𝙻',M:'𝙼',N:'𝙽',O:'𝙾',P:'𝙿',Q:'𝚀',R:'𝚁',S:'𝚂',T:'𝚃',U:'𝚄',V:'𝚅',W:'𝚆',X:'𝚇',Y:'𝚈',Z:'𝚉' } },
 
                     // --- 4. WILDSTYLE & ABSTRACT ---
@@ -128,74 +128,74 @@
 </head>
 <body x-data="converter" class="min-h-screen flex flex-col relative grid-bg selection:bg-emerald-500 selection:text-white">
 
-    <nav class="sticky top-0 z-50 bg-[#0f172a]/80 backdrop-blur-lg border-b border-emerald-900/50" x-data="{ mobileMenu: false }">
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200" x-data="{ mobileMenu: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <a href="index.html" class="flex items-center gap-2 group">
-                    <div class="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-black font-bold text-lg shadow-[0_0_15px_rgba(16,185,129,0.5)] group-hover:rotate-6 transition-transform">G</div>
-                    <span class="font-bold text-xl tracking-tight text-white font-marker">Letras<span class="text-emerald-400">Graffiti</span></span>
+                    <div class="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:rotate-6 transition-transform">G</div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900 font-marker">Letras<span class="text-emerald-500">Graffiti</span></span>
                 </a>
                 <div class="hidden md:flex items-center gap-6">
-                    <a href="index.html" class="text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors">Inicio</a>
-                    <a href="letras-cursivas.html" class="text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors">Cursivas</a>
-                    <a href="letras-tatuajes.html" class="text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors">Tatuajes</a>
-                    <a href="letras-goticas.html" class="text-sm font-medium text-slate-400 hover:text-emerald-400 transition-colors">Góticas</a>
+                    <a href="index.html" class="text-sm font-medium text-slate-500 hover:text-emerald-600 transition-colors">Inicio</a>
+                    <a href="letras-cursivas.html" class="text-sm font-medium text-slate-500 hover:text-emerald-600 transition-colors">Cursivas</a>
+                    <a href="letras-tatuajes.html" class="text-sm font-medium text-slate-500 hover:text-emerald-600 transition-colors">Tatuajes</a>
+                    <a href="letras-goticas.html" class="text-sm font-medium text-slate-500 hover:text-emerald-600 transition-colors">Góticas</a>
                     <div class="relative group py-5">
-                        <button class="flex items-center gap-1 text-sm font-medium text-white bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 group-hover:bg-emerald-500/20 transition-all">
+                        <button class="flex items-center gap-1 text-sm font-medium text-slate-500 bg-white px-3 py-1 rounded-full border border-slate-200 group-hover:border-emerald-200 group-hover:text-emerald-600 transition-all">
                             Graffiti <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                         </button>
                         <div class="absolute right-0 top-[90%] w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
-                            <div class="bg-slate-900 border border-slate-700 rounded-xl shadow-xl p-2">
-                                <a href="letras-amino.html" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800 hover:text-emerald-400 rounded-lg transition-colors">Amino</a>
-                                <a href="letras-facebook.html" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800 hover:text-emerald-400 rounded-lg transition-colors">Facebook</a>
-                                <div class="h-px bg-slate-700 my-1 mx-2"></div>
-                                <a href="letras-tattoo.html" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800 hover:text-emerald-400 rounded-lg transition-colors">Tattoo (EN)</a>
+                            <div class="bg-white border border-slate-100 rounded-xl shadow-xl p-2">
+                                <a href="letras-amino.html" class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-emerald-600 rounded-lg transition-colors">Amino</a>
+                                <a href="letras-facebook.html" class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-emerald-600 rounded-lg transition-colors">Facebook</a>
+                                <div class="h-px bg-slate-100 my-1 mx-2"></div>
+                                <a href="letras-tattoo.html" class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-emerald-600 rounded-lg transition-colors">Tattoo (EN)</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="md:hidden p-2 text-slate-400 hover:text-emerald-400" @click="mobileMenu = !mobileMenu">
+                <button class="md:hidden p-2 text-slate-500 hover:text-emerald-600" @click="mobileMenu = !mobileMenu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 </button>
             </div>
         </div>
-        <div x-show="mobileMenu" x-collapse class="md:hidden bg-slate-900 border-t border-slate-800 px-4 py-4">
+        <div x-show="mobileMenu" x-collapse class="md:hidden bg-white border-t border-slate-100 px-4 py-4">
             <div class="flex flex-col gap-4">
-                <a href="index.html" class="text-base font-medium text-slate-300">Inicio</a>
-                <a href="letras-cursivas.html" class="text-base font-medium text-slate-300">Cursivas</a>
-                <a href="letras-tatuajes.html" class="text-base font-medium text-slate-300">Tatuajes</a>
-                <a href="letras-goticas.html" class="text-base font-medium text-slate-300">Góticas</a>
-                <a href="letras-graffiti.html" class="text-base font-medium text-emerald-400 font-marker">Graffiti</a>
+                <a href="index.html" class="text-base font-medium text-slate-600">Inicio</a>
+                <a href="letras-cursivas.html" class="text-base font-medium text-slate-600">Cursivas</a>
+                <a href="letras-tatuajes.html" class="text-base font-medium text-slate-600">Tatuajes</a>
+                <a href="letras-goticas.html" class="text-base font-medium text-slate-600">Góticas</a>
+                <a href="letras-graffiti.html" class="text-base font-medium text-emerald-600 font-marker">Graffiti</a>
             </div>
         </div>
     </nav>
 
     <main class="flex-grow w-full max-w-4xl mx-auto px-4 pt-16 pb-24">
         <div class="text-center mb-12">
-            <h1 class="font-extrabold text-5xl md:text-7xl text-white mb-6 tracking-tight leading-[1.1] font-marker">
-                Conversor de <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-green-400 to-lime-400 animate-gradient drop-shadow-[0_0_10px_rgba(16,185,129,0.3)]">Graffiti</span>
+            <h1 class="font-extrabold text-5xl md:text-7xl text-slate-900 mb-6 tracking-tight leading-[1.1] font-marker">
+                Conversor de <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-green-500 to-lime-500 animate-gradient">Graffiti</span>
             </h1>
-            <p class="text-slate-400 text-lg md:text-xl max-w-xl mx-auto leading-relaxed">Estilo urbano, tags, bombas y wildstyle.</p>
+            <p class="text-slate-500 text-lg md:text-xl max-w-xl mx-auto leading-relaxed">Estilo urbano, tags, bombas y wildstyle.</p>
         </div>
 
         <div class="mb-12 sticky top-24 z-30">
-            <div class="bg-[#1e293b] rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] border border-slate-700 p-2 transition-transform hover:scale-[1.01] duration-300 ring-1 ring-emerald-500/20">
+            <div class="bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-slate-200 p-2 transition-transform hover:scale-[1.01] duration-300">
                 
                 <textarea 
                     x-ref="textarea"
                     x-model="inputText" 
-                    class="block w-full px-6 py-8 bg-[#0f172a] border border-slate-700 rounded-xl text-emerald-400 text-3xl md:text-4xl font-bold text-center placeholder:text-slate-600 focus:ring-4 focus:ring-emerald-900/50 focus:border-emerald-500 resize-none outline-none transition-all font-marker tracking-wider" 
+                    class="block w-full px-6 py-8 bg-slate-50 border border-slate-100 rounded-xl text-emerald-600 text-3xl md:text-4xl font-bold text-center placeholder:text-slate-300 focus:ring-4 focus:ring-emerald-100 focus:border-emerald-200 resize-none outline-none transition-all font-marker tracking-wider" 
                     rows="1" 
                     spellcheck="false" 
                     placeholder="TAG HERE..."></textarea>
 
                 <!-- Symbol Toolbar -->
-                <div class="mt-2 pt-2 border-t border-slate-700">
+                <div class="mt-2 pt-2 border-t border-slate-100">
                     <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1 px-1">
                         <template x-for="sym in toolbarSymbols" :key="sym">
                             <button 
                                 @click="insertSymbol(sym)"
-                                class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-xl bg-slate-800 hover:bg-emerald-900/30 text-slate-400 hover:text-emerald-400 rounded-lg transition-all active:scale-90"
+                                class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-xl bg-slate-50 hover:bg-emerald-50 text-slate-600 hover:text-emerald-600 rounded-lg transition-all active:scale-90"
                                 type="button"
                                 x-text="sym"
                             ></button>
@@ -208,18 +208,18 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-20">
             <template x-for="font in fonts" :key="font.name">
-                <div class="group relative bg-[#1e293b] border border-slate-700 rounded-xl p-6 hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-900/20 transition-all duration-300 cursor-pointer" @click="copyToClipboard(transformText(font, false))">
+                <div class="group relative bg-white border border-slate-200 rounded-xl p-6 hover:border-emerald-300 hover:shadow-lg hover:shadow-emerald-500/5 transition-all duration-300 cursor-pointer" @click="copyToClipboard(transformText(font, false))">
                     <div class="flex justify-between items-center mb-3">
-                        <span class="text-[11px] font-bold uppercase tracking-widest text-slate-500 group-hover:text-emerald-400 transition-colors" x-text="font.name"></span>
-                        <div class="opacity-0 group-hover:opacity-100 transition-all transform translate-x-2 group-hover:translate-x-0"><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/20">Copiar</span></div>
+                        <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-emerald-600 transition-colors" x-text="font.name"></span>
+                        <div class="opacity-0 group-hover:opacity-100 transition-all transform translate-x-2 group-hover:translate-x-0"><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold border border-emerald-100">Copiar</span></div>
                     </div>
-                    <p class="text-xl md:text-2xl text-slate-200 break-words font-medium leading-relaxed" x-html="transformText(font, true)"></p>
+                    <p class="text-xl md:text-2xl text-slate-800 break-words font-medium leading-relaxed" x-html="transformText(font, true)"></p>
                 </div>
             </template>
         </div>
     </main>
 
-    <footer class="mt-auto border-t border-slate-800 bg-[#0f172a] py-12"><div class="max-w-7xl mx-auto px-4 text-center"><p class="text-slate-500 text-sm font-medium">&copy; 2024 LetrasBonitas.pro</p></div></footer>
-    <div x-cloak x-show="toastVisible" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none"><div class="bg-emerald-900 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 border border-emerald-700"><div class="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center"><svg class="w-3 h-3 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span class="font-bold text-sm">Copiado al portapapeles</span></div></div>
+    <footer class="mt-auto border-t border-slate-200 bg-white py-12"><div class="max-w-7xl mx-auto px-4 text-center"><p class="text-slate-400 text-sm font-medium">&copy; 2024 LetrasBonitas.pro</p></div></footer>
+    <div x-cloak x-show="toastVisible" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none"><div class="bg-emerald-900 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 border border-emerald-700"><div class="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center"><svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span class="font-bold text-sm">Copiado al portapapeles</span></div></div>
 </body>
 </html>

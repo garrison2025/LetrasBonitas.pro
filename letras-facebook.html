@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conversor Facebook - Letras</title>
-    <meta name="description" content="Cambia la fuente de tus estados y comentarios en Facebook.">
+    <meta name="description" content="Cambia la fuente de tus estados, comentarios y perfil en Facebook. Letras negritas, cursivas y más.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,16 +16,13 @@
         body { font-family: 'Inter', sans-serif; background-color: #09090b; color: #fafafa; }
         .font-display { font-family: 'Space Grotesk', sans-serif; }
         [x-cloak] { display: none !important; }
-
         .bg-tech-grid {
             background-size: 40px 40px;
             background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             mask-image: radial-gradient(circle at 50% 0%, black 40%, transparent 100%);
         }
-        .static-glow {
-            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%); /* Blue glow */
-        }
+        .static-glow { background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%); }
     </style>
     <script>
         document.addEventListener('alpine:init', () => {
@@ -33,11 +30,13 @@
                 inputText: 'Hola Facebook',
                 toastVisible: false,
                 fonts: [
-                    { name: 'Bold', map: { a:'𝐚',b:'𝐛',c:'𝐜',d:'𝐝',e:'𝐞',f:'𝐟',g:'𝐠',h:'𝐡',i:'𝐢',j:'𝐣',k:'𝐤',l:'𝐥',m:'𝐦',n:'𝐧',o:'𝐨',p:'𝐩',q:'𝐪',r:'𝐫',s:'𝐬',t:'𝐭',u:'𝐮',v:'𝐯',w:'𝐰',x:'𝐱',y:'𝐲',z:'𝐳', A:'𝐀',B:'𝐁',C:'𝐂',D:'𝐃',E:'𝐄',F:'𝐅',G:'𝐆',H:'𝐇',I:'𝐈',J:'𝐉',K:'𝐊',L:'𝐋',M:'𝐌',N:'𝐍',O:'𝐎',P:'𝐏',Q:'𝐐',R:'𝐑',S:'𝐒',T:'𝐓',U:'𝐔',V:'𝐕',W:'𝐖',X:'𝐗',Y:'𝐘',Z:'𝐙' } },
-                    { name: 'Italic', map: { a:'𝑎',b:'𝑏',c:'𝑐',d:'𝑑',e:'𝑒',f:'𝑓',g:'𝑔',h:'ℎ',i:'𝑖',j:'𝑗',k:'𝑘',l:'𝑙',m:'𝑚',n:'𝑛',o:'𝑜',p:'𝑝',q:'𝑞',r:'𝑟',s:'𝑠',t:'𝑡',u:'𝑢',v:'𝑣',w:'𝑤',x:'𝑥',y:'𝑦',z:'𝑧', A:'𝐴',B:'𝐵',C:'𝐶',D:'𝐷',E:'𝐸',F:'𝐹',G:'𝐺',H:'𝐻',I:'𝐼',J:'𝐽',K:'𝐾',L:'𝐿',M:'𝑀',N:'𝑁',O:'𝑂',P:'𝑃',Q:'𝑄',R:'𝑅',S:'𝑆',T:'𝑇',U:'𝑈',V:'𝑉',W:'𝑊',X:'𝑋',Y:'𝑌',Z:'𝑍' } }
+                    { name: 'Bold Serif', map: { a:'𝐚',b:'𝐛',c:'𝐜',d:'𝐝',e:'𝐞',f:'𝐟',g:'𝐠',h:'𝐡',i:'𝐢',j:'𝐣',k:'𝐤',l:'𝐥',m:'𝐦',n:'𝐧',o:'𝐨',p:'𝐩',q:'𝐪',r:'𝐫',s:'𝐬',t:'𝐭',u:'𝐮',v:'𝐯',w:'𝐰',x:'𝐱',y:'𝐲',z:'𝐳', A:'𝐀',B:'𝐁',C:'𝐂',D:'𝐃',E:'𝐄',F:'𝐅',G:'𝐆',H:'𝐇',I:'𝐈',J:'𝐉',K:'𝐊',L:'𝐋',M:'𝐌',N:'𝐍',O:'𝐎',P:'𝐏',Q:'𝐐',R:'𝐑',S:'𝐒',T:'𝐓',U:'𝐔',V:'𝐕',W:'𝐖',X:'𝐗',Y:'𝐘',Z:'𝐙' } },
+                    { name: 'Bold Sans', map: { a:'𝗮',b:'𝗯',c:'𝗰',d:'𝗱',e:'𝗲',f:'𝗳',g:'𝗴',h:'𝗵',i:'𝗶',j:'𝗷',k:'𝗸',l:'𝗹',m:'𝗺',n:'𝗻',o:'𝗼',p:'𝗽',q:'𝗾',r:'𝗿',s:'𝘀',t:'𝘁',u:'𝘂',v:'𝘃',w:'𝘄',x:'𝘅',y:'𝘆',z:'𝘇', A:'𝗔',B:'𝗕',C:'𝗖',D:'𝗗',E:'𝗘',F:'𝗙',G:'𝗚',H:'𝗛',I:'𝗜',J:'𝗝',K:'𝗞',L:'𝗟',M:'𝗠',N:'𝗡',O:'𝗢',P:'𝗣',Q:'𝗤',R:'𝗥',S:'𝗦',T:'𝗧',U:'𝗨',V:'𝗩',W:'𝗪',X:'𝗫',Y:'𝗬',Z:'𝗭' } },
+                    { name: 'Italic Serif', map: { a:'𝑎',b:'𝑏',c:'𝑐',d:'𝑑',e:'𝑒',f:'𝑓',g:'𝑔',h:'ℎ',i:'𝑖',j:'𝑗',k:'𝑘',l:'𝑙',m:'𝑚',n:'𝑛',o:'𝑜',p:'𝑝',q:'𝑞',r:'𝑟',s:'𝑠',t:'𝑡',u:'𝑢',v:'𝑣',w:'𝑤',x:'𝑥',y:'𝑦',z:'𝑧', A:'𝐴',B:'𝐵',C:'𝐶',D:'𝐷',E:'𝐸',F:'𝐹',G:'𝐺',H:'𝐻',I:'𝐼',J:'𝐽',K:'𝐾',L:'𝐿',M:'𝑀',N:'𝑁',O:'𝑂',P:'𝑃',Q:'𝑄',R:'𝑅',S:'𝑆',T:'𝑇',U:'𝑈',V:'𝑉',W:'𝑊',X:'𝑋',Y:'𝑌',Z:'𝑍' } },
+                    { name: 'Italic Sans', map: { a:'𝘢',b:'𝘣',c:'𝘤',d:'𝘥',e:'𝘦',f:'𝘧',g:'𝘨',h:'𝘩',i:'𝘪',j:'𝘫',k:'𝘬',l:'𝘭',m:'𝘮',n:'𝘯',o:'𝘰',p:'𝘱',q:'𝘲',r:'𝘳',s:'𝘴',t:'𝘵',u:'𝘶',v:'𝘷',w:'𝘸',x:'𝘹',y:'𝘺',z:'𝘻', A:'𝘈',B:'𝘉',C:'𝘊',D:'𝘋',E:'𝘌',F:'𝘍',G:'𝘎',H:'𝘏',I:'𝘐',J:'𝘑',K:'𝘒',L:'𝘓',M:'𝘔',N:'𝘕',O:'𝘖',P:'𝘗',Q:'𝘘',R:'𝘙',S:'𝘚',T:'𝘛',U:'𝘜',V:'𝘝',W:'𝘞',X:'𝘟',Y:'𝘠',Z:'𝘡' } }
                 ],
                 transformText(map) { if (!this.inputText) return 'Facebook'; return this.inputText.split('').map(char => map[char] || char).join(''); },
-                copyToClipboard(text) { navigator.clipboard.writeText(text).then(() => { this.toastVisible = true; setTimeout(() => this.toastVisible = false, 2000); }); }
+                copyToClipboard(text) { navigator.clipboard.writeText(text).then(() => { this.toastVisible = true; setTimeout(() => this.toastVisible = false, 1500); }); }
             }));
         });
     </script>
@@ -47,7 +46,7 @@
     <div class="fixed inset-0 bg-tech-grid pointer-events-none -z-10"></div>
     <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] static-glow pointer-events-none -z-10 opacity-60"></div>
 
-    <header class="sticky top-0 z-50 w-full bg-[#09090b]/90 border-b border-white/10 supports-[backdrop-filter]:bg-[#09090b]/80 supports-[backdrop-filter]:backdrop-blur-sm">
+    <header class="sticky top-0 z-50 w-full bg-[#09090b]/90 border-b border-white/10 backdrop-blur-sm">
         <div class="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
             <a href="index.html" class="flex items-center gap-2 group">
                 <div class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white font-bold text-xs group-hover:bg-blue-500 transition-colors">F</div>
@@ -59,6 +58,19 @@
                 <a href="letras-tatuajes.html" class="hover:text-white transition-colors">Tatuajes</a>
                 <a href="letras-goticas.html" class="hover:text-white transition-colors">Góticas</a>
                 <a href="letras-graffiti.html" class="hover:text-white transition-colors">Graffiti</a>
+                <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <button class="flex items-center gap-1 hover:text-white transition-colors py-2">
+                        Más <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="open" class="absolute right-0 top-full pt-2 w-48 z-50" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
+                        <div class="bg-[#121214] border border-zinc-800 rounded-lg shadow-xl overflow-hidden p-1">
+                            <a href="letras-amino.html" class="block px-3 py-2 text-zinc-400 hover:text-white hover:bg-white/5 rounded-md transition-colors">Amino</a>
+                            <a href="letras-facebook.html" class="block px-3 py-2 text-white bg-white/5 rounded-md transition-colors">Facebook</a>
+                            <div class="h-px bg-zinc-800 my-1"></div>
+                            <a href="letras-tattoo.html" class="block px-3 py-2 text-zinc-400 hover:text-white hover:bg-white/5 rounded-md transition-colors">Tattoo (EN)</a>
+                        </div>
+                    </div>
+                </div>
             </nav>
             <button class="md:hidden p-2 text-zinc-400" @click="document.getElementById('mobile-menu').classList.toggle('hidden')">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -75,6 +87,7 @@
             <a href="letras-graffiti.html">Graffiti</a>
             <a href="letras-amino.html">Amino</a>
             <a href="letras-facebook.html" class="text-white">Facebook</a>
+            <a href="letras-tattoo.html" class="text-zinc-500 pt-4 border-t border-zinc-900">Tattoo (EN)</a>
             <button class="mt-8 text-sm text-zinc-500" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Cerrar</button>
         </div>
     </div>
@@ -110,15 +123,10 @@
             </template>
         </div>
     </main>
-
-    <footer class="border-t border-zinc-900 py-8 text-center text-xs text-zinc-600">
-        <p>&copy; 2024 LetrasBonitas.pro &bull; Social Tools</p>
-    </footer>
-
+    <footer class="border-t border-zinc-900 py-8 text-center text-xs text-zinc-600"><p>&copy; 2024 LetrasBonitas.pro</p></footer>
     <div x-cloak x-show="toastVisible" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none will-change-transform">
         <div class="bg-zinc-100 text-zinc-900 px-4 py-2 rounded-full font-bold text-sm shadow-xl flex items-center gap-2">
-            <svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            Copiado
+            <svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Copiado
         </div>
     </div>
 </body>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Letras Graffiti - Generador</title>
-    <meta name="description" content="Generador de letras estilo graffiti y urbano.">
+    <title>Conversor de Letras Graffiti</title>
+    <meta name="description" content="Generador de letras estilo graffiti, urbano, burbujas y bloques.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,16 +16,13 @@
         body { font-family: 'Inter', sans-serif; background-color: #09090b; color: #fafafa; }
         .font-display { font-family: 'Space Grotesk', sans-serif; }
         [x-cloak] { display: none !important; }
-
         .bg-tech-grid {
             background-size: 40px 40px;
             background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             mask-image: radial-gradient(circle at 50% 0%, black 40%, transparent 100%);
         }
-        .static-glow {
-            background: radial-gradient(circle at center, rgba(34, 197, 94, 0.15) 0%, transparent 70%); /* Green glow */
-        }
+        .static-glow { background: radial-gradient(circle at center, rgba(34, 197, 94, 0.15) 0%, transparent 70%); }
     </style>
     <script>
         document.addEventListener('alpine:init', () => {
@@ -34,7 +31,8 @@
                 toastVisible: false,
                 fonts: [
                     { name: 'Bubbles', map: { a:'ⓐ',b:'ⓑ',c:'ⓒ',d:'ⓓ',e:'ⓔ',f:'ⓕ',g:'ⓖ',h:'ⓗ',i:'ⓘ',j:'ⓙ',k:'ⓚ',l:'ⓛ',m:'ⓜ',n:'ⓝ',o:'ⓞ',p:'ⓟ',q:'ⓠ',r:'ⓡ',s:'ⓢ',t:'ⓣ',u:'ⓤ',v:'ⓥ',w:'ⓦ',x:'ⓧ',y:'ⓨ',z:'ⓩ', A:'Ⓐ',B:'Ⓑ',C:'Ⓒ',D:'Ⓓ',E:'Ⓔ',F:'Ⓕ',G:'Ⓖ',H:'Ⓗ',I:'Ⓘ',J:'Ⓙ',K:'Ⓚ',L:'Ⓛ',M:'Ⓜ',N:'Ⓝ',O:'Ⓞ',P:'Ⓟ',Q:'Ⓠ',R:'Ⓡ',S:'Ⓢ',T:'Ⓣ',U:'Ⓤ',V:'Ⓥ',W:'Ⓦ',X:'Ⓧ',Y:'Ⓨ',Z:'Ⓩ' } },
-                    { name: 'Black Bubbles', map: { a:'🅐',b:'🅑',c:'🅒',d:'🅓',e:'🅔',f:'🅕',g:'🅖',h:'🅗',i:'🅘',j:'🅙',k:'🅚',l:'🅛',m:'🅜',n:'🅝',o:'🅞',p:'🅟',q:'🅠',r:'🅡',s:'🅢',t:'🅣',u:'🅤',v:'🅥',w:'🅦',x:'🅧',y:'🅨',z:'🅩', A:'🅐',B:'🅑',C:'🅒',D:'🅓',E:'🅔',F:'🅕',G:'🅖',H:'🅗',I:'🅘',J:'𝅚',K:'𝅚',L:'𝅚',M:'🅜',N:'𝅝',O:'🅞',P:'🅟',Q:'𝅚',R:'🅡',S:'🅢',T:'🅣',U:'🅤',V:'𝅥',W:'🅦',X:'🅧',Y:'🅨',Z:'🅩' } }
+                    { name: 'Black Bubbles', map: { a:'🅐',b:'🅑',c:'🅒',d:'🅓',e:'🅔',f:'🅕',g:'🅖',h:'🅗',i:'🅘',j:'🅙',k:'🅚',l:'🅛',m:'🅜',n:'🅝',o:'🅞',p:'🅟',q:'🅠',r:'🅡',s:'🅢',t:'🅣',u:'🅤',v:'🅥',w:'🅦',x:'🅧',y:'🅨',z:'🅩', A:'🅐',B:'🅑',C:'🅒',D:'🅓',E:'🅔',F:'🅕',G:'🅖',H:'🅗',I:'🅘',J:'𝅚',K:'𝅚',L:'𝅚',M:'🅜',N:'𝅝',O:'🅞',P:'🅟',Q:'𝅚',R:'🅡',S:'🅢',T:'🅣',U:'🅤',V:'𝅥',W:'🅦',X:'🅧',Y:'🅨',Z:'🅩' } },
+                    { name: 'Squares', map: { a:'🄰',b:'🄱',c:'🄲',d:'🄳',e:'🄴',f:'🄵',g:'🄶',h:'🄷',i:'🄸',j:'🄹',k:'🄺',l:'🄻',m:'🄼',n:'🄽',o:'🄾',p:'🄿',q:'🅀',r:'🅁',s:'🅂',t:'🅃',u:'🅄',v:'🅅',w:'🅆',x:'🅇',y:'🅈',z:'🅉', A:'🄰',B:'🄱',C:'🄲',D:'🄳',E:'🄴',F:'🄵',G:'🄶',H:'🄷',I:'🄸',J:'🄹',K:'🄺',L:'🄻',M:'🄼',N:'🄽',O:'🄾',P:'🄿',Q:'🅀',R:'🅁',S:'🅂',T:'🅃',U:'🅄',V:'🅅',W:'🅆',X:'🅇',Y:'🅈',Z:'🅉' } }
                 ],
                 transformText(map) { if (!this.inputText) return 'GRAFFITI'; return this.inputText.split('').map(char => map[char] || char).join(''); },
                 copyToClipboard(text) { navigator.clipboard.writeText(text).then(() => { this.toastVisible = true; setTimeout(() => this.toastVisible = false, 1500); }); }
@@ -47,7 +45,7 @@
     <div class="fixed inset-0 bg-tech-grid pointer-events-none -z-10"></div>
     <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] static-glow pointer-events-none -z-10 opacity-60"></div>
 
-    <header class="sticky top-0 z-50 w-full bg-[#09090b]/90 border-b border-white/10 supports-[backdrop-filter]:bg-[#09090b]/80 supports-[backdrop-filter]:backdrop-blur-sm">
+    <header class="sticky top-0 z-50 w-full bg-[#09090b]/90 border-b border-white/10 backdrop-blur-sm">
         <div class="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
             <a href="index.html" class="flex items-center gap-2 group">
                 <div class="w-6 h-6 bg-green-500 rounded flex items-center justify-center text-black font-bold text-xs group-hover:bg-green-400 transition-colors">G</div>
@@ -59,6 +57,19 @@
                 <a href="letras-tatuajes.html" class="hover:text-white transition-colors">Tatuajes</a>
                 <a href="letras-goticas.html" class="hover:text-white transition-colors">Góticas</a>
                 <a href="letras-graffiti.html" class="text-white">Graffiti</a>
+                <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <button class="flex items-center gap-1 hover:text-white transition-colors py-2">
+                        Más <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="open" class="absolute right-0 top-full pt-2 w-48 z-50" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
+                        <div class="bg-[#121214] border border-zinc-800 rounded-lg shadow-xl overflow-hidden p-1">
+                            <a href="letras-amino.html" class="block px-3 py-2 text-zinc-400 hover:text-white hover:bg-white/5 rounded-md transition-colors">Amino</a>
+                            <a href="letras-facebook.html" class="block px-3 py-2 text-zinc-400 hover:text-white hover:bg-white/5 rounded-md transition-colors">Facebook</a>
+                            <div class="h-px bg-zinc-800 my-1"></div>
+                            <a href="letras-tattoo.html" class="block px-3 py-2 text-zinc-400 hover:text-white hover:bg-white/5 rounded-md transition-colors">Tattoo (EN)</a>
+                        </div>
+                    </div>
+                </div>
             </nav>
             <button class="md:hidden p-2 text-zinc-400" @click="document.getElementById('mobile-menu').classList.toggle('hidden')">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -75,6 +86,7 @@
             <a href="letras-graffiti.html" class="text-white">Graffiti</a>
             <a href="letras-amino.html">Amino</a>
             <a href="letras-facebook.html">Facebook</a>
+            <a href="letras-tattoo.html" class="text-zinc-500 pt-4 border-t border-zinc-900">Tattoo (EN)</a>
             <button class="mt-8 text-sm text-zinc-500" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Cerrar</button>
         </div>
     </div>
@@ -110,15 +122,10 @@
             </template>
         </div>
     </main>
-
-    <footer class="border-t border-zinc-900 py-8 text-center text-xs text-zinc-600">
-        <p>&copy; 2024 LetrasBonitas.pro &bull; Urban Style</p>
-    </footer>
-
+    <footer class="border-t border-zinc-900 py-8 text-center text-xs text-zinc-600"><p>&copy; 2024 LetrasBonitas.pro</p></footer>
     <div x-cloak x-show="toastVisible" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none will-change-transform">
         <div class="bg-zinc-100 text-zinc-900 px-4 py-2 rounded-full font-bold text-sm shadow-xl flex items-center gap-2">
-            <svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            Copiado
+            <svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Copiado
         </div>
     </div>
 </body>

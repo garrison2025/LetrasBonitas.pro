@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor Amino - Letras</title>
-    <meta name="description" content="Fuentes compatibles para Amino App.">
+    <title>Conversor Amino - Letras y Fuentes</title>
+    <meta name="description" content="Conversor de letras para Amino App. Fuentes que funcionan para blogs, wikis, perfiles y chats de Amino.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,16 +16,13 @@
         body { font-family: 'Inter', sans-serif; background-color: #09090b; color: #fafafa; }
         .font-display { font-family: 'Space Grotesk', sans-serif; }
         [x-cloak] { display: none !important; }
-
         .bg-tech-grid {
             background-size: 40px 40px;
             background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             mask-image: radial-gradient(circle at 50% 0%, black 40%, transparent 100%);
         }
-        .static-glow {
-            background: radial-gradient(circle at center, rgba(45, 212, 191, 0.15) 0%, transparent 70%); /* Teal glow */
-        }
+        .static-glow { background: radial-gradient(circle at center, rgba(45, 212, 191, 0.15) 0%, transparent 70%); }
     </style>
     <script>
         document.addEventListener('alpine:init', () => {
@@ -34,7 +31,9 @@
                 toastVisible: false,
                 fonts: [
                     { name: 'Small Caps', map: { a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ǫ',r:'ʀ',s:'s',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ', A:'ᴀ',B:'ʙ',C:'ᴄ',D:'ᴅ',E:'ᴇ',F:'ꜰ',G:'ɢ',H:'ʜ',I:'ɪ',J:'ᴊ',K:'ᴋ',L:'ʟ',M:'ᴍ',N:'ɴ',O:'ᴏ',P:'ᴘ',Q:'ǫ',R:'ʀ',S:'s',T:'ᴛ',U:'ᴜ',V:'ᴠ',W:'ᴡ',X:'x',Y:'ʏ',Z:'ᴢ' } },
-                    { name: 'Bold', map: { a:'𝐚',b:'𝐛',c:'𝐜',d:'𝐝',e:'𝐞',f:'𝐟',g:'𝐠',h:'𝐡',i:'𝐢',j:'𝐣',k:'𝐤',l:'𝐥',m:'𝐦',n:'𝐧',o:'𝐨',p:'𝐩',q:'𝐪',r:'𝐫',s:'𝐬',t:'𝐭',u:'𝐮',v:'𝐯',w:'𝐰',x:'𝐱',y:'𝐲',z:'𝐳', A:'𝐀',B:'𝐁',C:'𝐂',D:'𝐃',E:'𝐄',F:'𝐅',G:'𝐆',H:'𝐇',I:'𝐈',J:'𝐉',K:'𝐊',L:'𝐋',M:'𝐌',N:'𝐍',O:'𝐎',P:'𝐏',Q:'𝐐',R:'𝐑',S:'𝐒',T:'𝐓',U:'𝐔',V:'𝐕',W:'𝐖',X:'𝐗',Y:'𝐘',Z:'𝐙' } }
+                    { name: 'Bold Serif', map: { a:'𝐚',b:'𝐛',c:'𝐜',d:'𝐝',e:'𝐞',f:'𝐟',g:'𝐠',h:'𝐡',i:'𝐢',j:'𝐣',k:'𝐤',l:'𝐥',m:'𝐦',n:'𝐧',o:'𝐨',p:'𝐩',q:'𝐪',r:'𝐫',s:'𝐬',t:'𝐭',u:'𝐮',v:'𝐯',w:'𝐰',x:'𝐱',y:'𝐲',z:'𝐳', A:'𝐀',B:'𝐁',C:'𝐂',D:'𝐃',E:'𝐄',F:'𝐅',G:'𝐆',H:'𝐇',I:'𝐈',J:'𝐉',K:'𝐊',L:'𝐋',M:'𝐌',N:'𝐍',O:'𝐎',P:'𝐏',Q:'𝐐',R:'𝐑',S:'𝐒',T:'𝐓',U:'𝐔',V:'𝐕',W:'𝐖',X:'𝐗',Y:'𝐘',Z:'𝐙' } },
+                    { name: 'Italic Serif', map: { a:'𝑎',b:'𝑏',c:'𝑐',d:'𝑑',e:'𝑒',f:'𝑓',g:'𝑔',h:'ℎ',i:'𝑖',j:'𝑗',k:'𝑘',l:'𝑙',m:'𝑚',n:'𝑛',o:'𝑜',p:'𝑝',q:'𝑞',r:'𝑟',s:'𝑠',t:'𝑡',u:'𝑢',v:'𝑣',w:'𝑤',x:'𝑥',y:'𝑦',z:'𝑧', A:'𝐴',B:'𝐵',C:'𝐶',D:'𝐷',E:'𝐸',F:'𝐹',G:'𝐺',H:'𝐻',I:'𝐼',J:'𝐽',K:'𝐾',L:'𝐿',M:'𝑀',N:'𝑁',O:'𝑂',P:'𝑃',Q:'𝑄',R:'𝑅',S:'𝑆',T:'𝑇',U:'𝑈',V:'𝑉',W:'𝑊',X:'𝑋',Y:'𝑌',Z:'𝑍' } },
+                    { name: 'Monospace', map: { a:'𝚊',b:'𝚋',c:'𝚌',d:'𝚍',e:'𝚎',f:'𝚏',g:'𝚐',h:'𝚑',i:'𝚒',j:'𝚓',k:'𝚔',l:'𝚕',m:'𝚖',n:'𝚗',o:'𝚘',p:'𝚙',q:'𝚚',r:'𝚛',s:'𝚜',t:'𝚝',u:'𝚞',v:'𝚟',w:'𝚠',x:'𝚡',y:'𝚢',z:'𝚣', A:'𝙰',B:'𝙱',C:'𝙲',D:'𝙳',E:'𝙴',F:'𝙵',G:'𝙶',H:'𝙷',I:'𝙸',J:'𝙹',K:'𝙺',L:'𝙻',M:'𝙼',N:'𝙽',O:'𝙾',P:'𝙿',Q:'𝚀',R:'𝚁',S:'𝚂',T:'𝚃',U:'𝚄',V:'𝚅',W:'𝚆',X:'𝚇',Y:'𝚈',Z:'𝚉' } }
                 ],
                 transformText(map) { if (!this.inputText) return 'Amino'; return this.inputText.split('').map(char => map[char] || char).join(''); },
                 copyToClipboard(text) { navigator.clipboard.writeText(text).then(() => { this.toastVisible = true; setTimeout(() => this.toastVisible = false, 1500); }); }
@@ -47,7 +46,7 @@
     <div class="fixed inset-0 bg-tech-grid pointer-events-none -z-10"></div>
     <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] static-glow pointer-events-none -z-10 opacity-60"></div>
 
-    <header class="sticky top-0 z-50 w-full bg-[#09090b]/90 border-b border-white/10 supports-[backdrop-filter]:bg-[#09090b]/80 supports-[backdrop-filter]:backdrop-blur-sm">
+    <header class="sticky top-0 z-50 w-full bg-[#09090b]/90 border-b border-white/10 backdrop-blur-sm">
         <div class="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
             <a href="index.html" class="flex items-center gap-2 group">
                 <div class="w-6 h-6 bg-teal-500 rounded flex items-center justify-center text-black font-bold text-xs group-hover:bg-teal-400 transition-colors">A</div>
@@ -59,6 +58,19 @@
                 <a href="letras-tatuajes.html" class="hover:text-white transition-colors">Tatuajes</a>
                 <a href="letras-goticas.html" class="hover:text-white transition-colors">Góticas</a>
                 <a href="letras-graffiti.html" class="hover:text-white transition-colors">Graffiti</a>
+                <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <button class="flex items-center gap-1 hover:text-white transition-colors py-2">
+                        Más <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="open" class="absolute right-0 top-full pt-2 w-48 z-50" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
+                        <div class="bg-[#121214] border border-zinc-800 rounded-lg shadow-xl overflow-hidden p-1">
+                            <a href="letras-amino.html" class="block px-3 py-2 text-white bg-white/5 rounded-md transition-colors">Amino</a>
+                            <a href="letras-facebook.html" class="block px-3 py-2 text-zinc-400 hover:text-white hover:bg-white/5 rounded-md transition-colors">Facebook</a>
+                            <div class="h-px bg-zinc-800 my-1"></div>
+                            <a href="letras-tattoo.html" class="block px-3 py-2 text-zinc-400 hover:text-white hover:bg-white/5 rounded-md transition-colors">Tattoo (EN)</a>
+                        </div>
+                    </div>
+                </div>
             </nav>
             <button class="md:hidden p-2 text-zinc-400" @click="document.getElementById('mobile-menu').classList.toggle('hidden')">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -75,6 +87,7 @@
             <a href="letras-graffiti.html">Graffiti</a>
             <a href="letras-amino.html" class="text-white">Amino</a>
             <a href="letras-facebook.html">Facebook</a>
+            <a href="letras-tattoo.html" class="text-zinc-500 pt-4 border-t border-zinc-900">Tattoo (EN)</a>
             <button class="mt-8 text-sm text-zinc-500" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Cerrar</button>
         </div>
     </div>
@@ -110,15 +123,10 @@
             </template>
         </div>
     </main>
-
-    <footer class="border-t border-zinc-900 py-8 text-center text-xs text-zinc-600">
-        <p>&copy; 2024 LetrasBonitas.pro &bull; Amino Tools</p>
-    </footer>
-
+    <footer class="border-t border-zinc-900 py-8 text-center text-xs text-zinc-600"><p>&copy; 2024 LetrasBonitas.pro</p></footer>
     <div x-cloak x-show="toastVisible" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none will-change-transform">
         <div class="bg-zinc-100 text-zinc-900 px-4 py-2 rounded-full font-bold text-sm shadow-xl flex items-center gap-2">
-            <svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            Copiado
+            <svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Copiado
         </div>
     </div>
 </body>

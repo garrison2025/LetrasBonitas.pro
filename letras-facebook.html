@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conversor de Letras para Facebook - Negritas y Cursivas</title>
-    <meta name="description" content="Escribe en negrita, cursiva y otros estilos en tus publicaciones de Facebook. Conversor gratuito y fácil de usar.">
-    <meta name="keywords" content="conversor de letras para facebook, letras negritas facebook, letras cursivas facebook">
+    <meta name="description" content="Escribe en negrita, cursiva y otros estilos en tus publicaciones de Facebook. Conversor gratuito y fácil de usar para destacar en el feed.">
+    <meta name="keywords" content="conversor de letras para facebook, letras negritas facebook, letras cursivas facebook, cambiar letra facebook">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -20,26 +20,10 @@
                 toastVisible: false,
                 toastMessage: '',
                 fonts: [
-                    {
-                        name: 'Negrita (Bold)',
-                        id: 'bold-sans',
-                        map: { a:'𝐚',b:'𝐛',c:'𝐜',d:'𝐝',e:'𝐞',f:'𝐟',g:'𝐠',h:'𝐡',i:'𝐢',j:'𝐣',k:'𝐤',l:'𝐥',m:'𝐦',n:'𝐧',o:'𝐨',p:'𝐩',q:'𝐪',r:'𝐫',s:'𝐬',t:'𝐭',u:'𝐮',v:'𝐯',w:'𝐰',x:'𝐱',y:'𝐲',z:'𝐳', A:'𝐀',B:'𝐁',C:'𝐂',D:'𝐃',E:'𝐄',F:'𝐅',G:'𝐆',H:'𝐇',I:'𝐈',J:'𝐉',K:'𝐊',L:'𝐋',M:'𝐌',N:'𝐍',O:'𝐎',P:'𝐏',Q:'𝐐',R:'𝐑',S:'𝐒',T:'𝐓',U:'𝐔',V:'𝐕',W:'𝐖',X:'𝐗',Y:'𝐘',Z:'𝐙' }
-                    },
-                    {
-                        name: 'Itálica (Cursiva)',
-                        id: 'italic-serif',
-                        map: { a:'𝑎',b:'𝑏',c:'𝑐',d:'𝑑',e:'𝑒',f:'𝑓',g:'𝑔',h:'ℎ',i:'𝑖',j:'𝑗',k:'𝑘',l:'𝑙',m:'𝑚',n:'𝑛',o:'𝑜',p:'𝑝',q:'𝑞',r:'𝑟',s:'𝑠',t:'𝑡',u:'𝑢',v:'𝑣',w:'𝑤',x:'𝑥',y:'𝑦',z:'𝑧', A:'𝐴',B:'𝐵',C:'𝐶',D:'𝐷',E:'𝐸',F:'𝐹',G:'𝐺',H:'𝐻',I:'𝐼',J:'𝐽',K:'𝐾',L:'𝐿',M:'𝑀',N:'𝑁',O:'𝑂',P:'𝑃',Q:'𝑄',R:'𝑅',S:'𝑆',T:'𝑇',U:'𝑈',V:'𝑉',W:'𝑊',X:'𝑋',Y:'𝑌',Z:'𝑍' }
-                    },
-                    {
-                        name: 'Monospace (Máquina)',
-                        id: 'monospace',
-                        map: { a:'𝚊',b:'𝚋',c:'𝚌',d:'𝚍',e:'𝚎',f:'𝚏',g:'𝚐',h:'𝚑',i:'𝚒',j:'𝚓',k:'𝚔',l:'𝚕',m:'𝚖',n:'𝚗',o:'𝚘',p:'𝚙',q:'𝚚',r:'𝚛',s:'𝚜',t:'𝚝',u:'𝚞',v:'𝚟',w:'𝚠',x:'𝚡',y:'𝚢',z:'𝚣', A:'𝙰',B:'𝙱',C:'𝙲',D:'𝙳',E:'𝙴',F:'𝙵',G:'𝙶',H:'𝙷',I:'𝙸',J:'𝙹',K:'𝙺',L:'𝙻',M:'𝙼',N:'𝙽',O:'𝙾',P:'𝙿',Q:'𝚀',R:'𝚁',S:'𝚂',T:'𝚃',U:'𝚄',V:'𝚅',W:'𝚆',X:'𝚇',Y:'𝚈',Z:'𝚉' }
-                    },
-                    {
-                        name: 'Script (Mano)',
-                        id: 'script',
-                        map: { a:'𝒶',b:'𝒷',c:'𝒸',d:'𝒹',e:'ℯ',f:'𝒻',g:'ℊ',h:'𝒽',i:'𝒾',j:'𝒿',k:'𝓀',l:'𝓁',m:'𝓂',n:'𝓃',o:'ℴ',p:'𝓅',q:'𝓆',r:'𝓇',s:'𝓈',t:'𝓉',u:'𝓊',v:'𝓋',w:'𝓌',x:'𝓍',y:'𝓎',z:'𝓏', A:'𝒜',B:'ℬ',C:'𝒞',D:'𝒟',E:'ℰ',F:'ℱ',G:'𝒢',H:'ℋ',I:'ℐ',J:'𝒥',K:'𝒦',L:'ℒ',M:'ℳ',N:'𝒩',O:'𝒪',P:'𝒫',Q:'𝒬',R:'ℛ',S:'𝒮',T:'𝒯',U:'𝒰',V:'𝒱',W:'𝒲',X:'𝒳',Y:'𝒴',Z:'𝒵' }
-                    }
+                    { name: 'Negrita (Bold)', map: { a:'𝐚',b:'𝐛',c:'𝐜',d:'𝐝',e:'𝐞',f:'𝐟',g:'𝐠',h:'𝐡',i:'𝐢',j:'𝐣',k:'𝐤',l:'𝐥',m:'𝐦',n:'𝐧',o:'𝐨',p:'𝐩',q:'𝐪',r:'𝐫',s:'𝐬',t:'𝐭',u:'𝐮',v:'𝐯',w:'𝐰',x:'𝐱',y:'𝐲',z:'𝐳', A:'𝐀',B:'𝐁',C:'𝐂',D:'𝐃',E:'𝐄',F:'𝐅',G:'𝐆',H:'𝐇',I:'𝐈',J:'𝐉',K:'𝐊',L:'𝐋',M:'𝐌',N:'𝐍',O:'𝐎',P:'𝐏',Q:'𝐐',R:'𝐑',S:'𝐒',T:'𝐓',U:'𝐔',V:'𝐕',W:'𝐖',X:'𝐗',Y:'𝐘',Z:'𝐙' } },
+                    { name: 'Itálica (Cursiva)', map: { a:'𝑎',b:'𝑏',c:'𝑐',d:'𝑑',e:'𝑒',f:'𝑓',g:'𝑔',h:'ℎ',i:'𝑖',j:'𝑗',k:'𝑘',l:'𝑙',m:'𝑚',n:'𝑛',o:'𝑜',p:'𝑝',q:'𝑞',r:'𝑟',s:'𝑠',t:'𝑡',u:'𝑢',v:'𝑣',w:'𝑤',x:'𝑥',y:'𝑦',z:'𝑧', A:'𝐴',B:'𝐵',C:'𝐶',D:'𝐷',E:'𝐸',F:'𝐹',G:'𝐺',H:'𝐻',I:'𝐼',J:'𝐽',K:'𝐾',L:'𝐿',M:'𝑀',N:'𝑁',O:'𝑂',P:'𝑃',Q:'𝑄',R:'𝑅',S:'𝑆',T:'𝑇',U:'𝑈',V:'𝑉',W:'𝑊',X:'𝑋',Y:'𝑌',Z:'𝑍' } },
+                    { name: 'Monospace', map: { a:'𝚊',b:'𝚋',c:'𝚌',d:'𝚍',e:'𝚎',f:'𝚏',g:'𝚐',h:'𝚑',i:'𝚒',j:'𝚓',k:'𝚔',l:'𝚕',m:'𝚖',n:'𝚗',o:'𝚘',p:'𝚙',q:'𝚚',r:'𝚛',s:'𝚜',t:'𝚝',u:'𝚞',v:'𝚟',w:'𝚠',x:'𝚡',y:'𝚢',z:'𝚣', A:'𝙰',B:'𝙱',C:'𝙲',D:'𝙳',E:'𝙴',F:'𝙵',G:'𝙶',H:'𝙷',I:'𝙸',J:'𝙹',K:'𝙺',L:'𝙻',M:'𝙼',N:'𝙽',O:'𝙾',P:'𝙿',Q:'𝚀',R:'𝚁',S:'𝚂',T:'𝚃',U:'𝚄',V:'𝚅',W:'𝚆',X:'𝚇',Y:'𝚈',Z:'𝚉' } },
+                    { name: 'Script', map: { a:'𝒶',b:'𝒷',c:'𝒸',d:'𝒹',e:'ℯ',f:'𝒻',g:'ℊ',h:'𝒽',i:'𝒾',j:'𝒿',k:'𝓀',l:'𝓁',m:'𝓂',n:'𝓃',o:'ℴ',p:'𝓅',q:'𝓆',r:'𝓇',s:'𝓈',t:'𝓉',u:'𝓊',v:'𝓋',w:'𝓌',x:'𝓍',y:'𝓎',z:'𝓏', A:'𝒜',B:'ℬ',C:'𝒞',D:'𝒟',E:'ℰ',F:'ℱ',G:'𝒢',H:'ℋ',I:'ℐ',J:'𝒥',K:'𝒦',L:'ℒ',M:'ℳ',N:'𝒩',O:'𝒪',P:'𝒫',Q:'𝒬',R:'ℛ',S:'𝒮',T:'𝒯',U:'𝒰',V:'𝒱',W:'𝒲',X:'𝒳',Y:'𝒴',Z:'𝒵' } }
                 ],
                 transformText(map) {
                     if (!this.inputText) return '';
@@ -57,6 +41,7 @@
     </script>
 </head>
 <body class="bg-slate-50 text-slate-900" x-data="converter">
+    
     <nav class="bg-white border-b border-slate-200 sticky top-0 z-50" x-data="{ open: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
@@ -65,19 +50,27 @@
                         <a href="index.html" class="font-bold text-2xl text-indigo-600 tracking-tighter">LetrasBonitas<span class="text-slate-400">.pro</span></a>
                     </div>
                 </div>
+                <!-- Desktop Nav -->
                 <div class="hidden lg:flex lg:items-center lg:space-x-1">
-                    <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600">Inicio</a>
-                    <a href="letras-cursivas.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600">Cursivas</a>
+                    <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50">Inicio</a>
+                    <a href="letras-cursivas.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50">Cursivas</a>
+                    <a href="letras-tatuajes.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50">Tatuajes</a>
+                    <a href="letras-goticas.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50">Góticas</a>
+                    <a href="letras-graffiti.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50">Graffiti</a>
+                    
                     <div class="relative ml-3" x-data="{ dropdown: false }">
-                        <button @click="dropdown = !dropdown" @click.away="dropdown = false" class="flex items-center px-3 py-2 rounded-md text-sm font-medium text-indigo-600 bg-indigo-50">
+                        <button @click="dropdown = !dropdown" @click.away="dropdown = false" class="flex items-center px-3 py-2 rounded-md text-sm font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 focus:outline-none">
                             <span>Plataformas</span>
+                            <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div x-show="dropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 z-50" style="display: none;">
+                        <div x-show="dropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 z-50" style="display: none;" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95">
                             <a href="letras-amino.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50">Para Amino</a>
                             <a href="letras-facebook.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50">Para Facebook</a>
+                            <a href="letras-tattoo.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50">Tattoo Fonts (EN)</a>
                         </div>
                     </div>
                 </div>
+                <!-- Mobile Button -->
                 <div class="flex items-center lg:hidden">
                     <button @click="open = !open" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400">
                         <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
@@ -85,26 +78,65 @@
                 </div>
             </div>
         </div>
-        <div x-show="open" class="lg:hidden bg-white border-t border-slate-100"><div class="px-2 pt-2 pb-3 space-y-1"><a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700">Inicio</a><a href="letras-facebook.html" class="block px-3 py-2 rounded-md text-base font-medium text-indigo-700 bg-indigo-50">Para Facebook</a></div></div>
+        <!-- Mobile Menu -->
+        <div x-show="open" x-transition class="lg:hidden bg-white border-t border-slate-100">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700">Inicio</a>
+                <a href="letras-cursivas.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700">Cursivas</a>
+                <a href="letras-tatuajes.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700">Tatuajes</a>
+                <a href="letras-goticas.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700">Góticas</a>
+                <a href="letras-graffiti.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700">Graffiti</a>
+                <div class="border-t border-slate-200 my-2"></div>
+                <a href="letras-amino.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700">Para Amino</a>
+                <a href="letras-facebook.html" class="block px-3 py-2 rounded-md text-base font-medium text-indigo-700 bg-indigo-50">Para Facebook</a>
+                <a href="letras-tattoo.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700">Tattoo Fonts</a>
+            </div>
+        </div>
     </nav>
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-screen">
         <div class="text-center mb-10">
             <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">Conversor de Letras para <span class="text-indigo-600">Facebook</span></h1>
             <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">Personaliza tus estados y comentarios de Facebook con letras en negrita, cursiva y máquina de escribir.</p>
             <textarea x-model="inputText" class="block w-full p-4 border-2 border-slate-200 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 text-lg shadow-sm resize-none" rows="3" placeholder="¿Qué estás pensando?"></textarea>
         </div>
         <div class="space-y-4">
-            <template x-for="font in fonts" :key="font.id">
-                <div class="bg-white rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-all p-4 flex justify-between items-center">
+            <template x-for="font in fonts" :key="font.name">
+                <div class="bg-white rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-all p-4 flex justify-between items-center group">
                     <div class="overflow-hidden mr-4">
                         <p class="text-xs font-semibold text-slate-400 uppercase mb-1" x-text="font.name"></p>
                         <p class="text-2xl text-slate-900 truncate font-medium" x-text="transformText(font.map)"></p>
                     </div>
-                    <button @click="copyToClipboard(transformText(font.map))" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 shrink-0">Copiar</button>
+                    <button @click="copyToClipboard(transformText(font.map))" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 shrink-0 transition-transform active:scale-95">Copiar</button>
                 </div>
             </template>
         </div>
     </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <span class="text-xl font-bold text-white tracking-tighter">LetrasBonitas.pro</span>
+                <p class="mt-2 text-sm">Herramienta 100% gratuita para decorar tus textos.</p>
+            </div>
+            <div>
+                <h3 class="text-white font-semibold mb-3">Estilos</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="letras-cursivas.html" class="hover:text-white">Cursivas</a></li>
+                    <li><a href="letras-goticas.html" class="hover:text-white">Góticas</a></li>
+                    <li><a href="letras-tatuajes.html" class="hover:text-white">Tatuajes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-white font-semibold mb-3">Redes Sociales</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="letras-amino.html" class="hover:text-white">Amino</a></li>
+                    <li><a href="letras-facebook.html" class="hover:text-white">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center mt-12 text-sm border-t border-slate-800 pt-8">&copy; 2023 Conversor de Letras Bonitas.</div>
+    </footer>
     <div x-cloak x-show="toastVisible" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-lg shadow-lg" x-text="toastMessage"></div>
 </body>
 </html>

@@ -1,0 +1,5 @@
+{
+  "name": "Conversor de Letras Bonitas",
+  "description": "Conversor de fuentes Unicode para redes sociales (Instagram, Facebook, TikTok) enfocado en el mercado hispanohablante. Stack: HTML5, Alpine.js, Tailwind CSS.",
+  "requestFramePermissions": []
+}

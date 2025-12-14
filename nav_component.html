@@ -1,0 +1,93 @@
+<!-- Componente de Navegación Universal -->
+<!-- Copia y pega esto justo después de la etiqueta <body> en todas las páginas -->
+
+<nav class="bg-white border-b border-slate-200 sticky top-0 z-50" x-data="{ open: false }">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <!-- Logo Area -->
+            <div class="flex">
+                <div class="shrink-0 flex items-center">
+                    <a href="index.html" class="font-bold text-2xl text-indigo-600 tracking-tighter hover:opacity-90 transition-opacity">
+                        LetrasBonitas<span class="text-slate-400">.pro</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex lg:items-center lg:space-x-1">
+                <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50 transition-colors">
+                    Inicio
+                </a>
+                <a href="letras-cursivas.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50 transition-colors">
+                    Cursivas
+                </a>
+                <a href="letras-tatuajes.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50 transition-colors">
+                    Tatuajes
+                </a>
+                <a href="letras-goticas.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50 transition-colors">
+                    Góticas
+                </a>
+                <a href="letras-graffiti.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50 transition-colors">
+                    Graffiti
+                </a>
+                
+                <!-- Dropdown for specific platforms/extra -->
+                <div class="relative ml-3" x-data="{ dropdown: false }">
+                    <button @click="dropdown = !dropdown" @click.away="dropdown = false" class="flex items-center px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50 focus:outline-none">
+                        <span>Plataformas</span>
+                        <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="dropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 z-50" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" style="display: none;">
+                        <a href="letras-amino.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50">Para Amino</a>
+                        <a href="letras-facebook.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50">Para Facebook</a>
+                        <a href="letras-tattoo.html" class="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50">Tattoo Fonts (EN)</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="flex items-center lg:hidden">
+                <button @click="open = !open" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                    <span class="sr-only">Abrir menú</span>
+                    <svg class="h-6 w-6" :class="{'hidden': open, 'block': !open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg class="h-6 w-6" :class="{'block': open, 'hidden': !open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu List -->
+    <div x-show="open" x-transition class="lg:hidden bg-white border-t border-slate-100">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-900 bg-slate-50 border-l-4 border-indigo-500">
+                Inicio
+            </a>
+            <a href="letras-cursivas.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50 border-l-4 border-transparent hover:border-indigo-300">
+                Letras Cursivas
+            </a>
+            <a href="letras-tatuajes.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50 border-l-4 border-transparent hover:border-indigo-300">
+                Letras para Tatuajes
+            </a>
+            <a href="letras-goticas.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50 border-l-4 border-transparent hover:border-indigo-300">
+                Letras Góticas
+            </a>
+            <a href="letras-graffiti.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50 border-l-4 border-transparent hover:border-indigo-300">
+                Graffiti
+            </a>
+            <div class="border-t border-slate-200 my-2"></div>
+            <a href="letras-amino.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-500 hover:text-indigo-600 hover:bg-slate-50">
+                Para Amino
+            </a>
+            <a href="letras-facebook.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-500 hover:text-indigo-600 hover:bg-slate-50">
+                Para Facebook
+            </a>
+            <a href="letras-tattoo.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-500 hover:text-indigo-600 hover:bg-slate-50">
+                Tattoo Fonts (Extra)
+            </a>
+        </div>
+    </div>
+</nav>

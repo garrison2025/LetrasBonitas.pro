@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos y Condiciones - Conversor de Letras Bonitas</title>
+    <meta name="description" content="Términos y condiciones de uso de ConversorDeLetrasBonitas.org.">
+    <link rel="canonical" href="https://conversordeletrasbonitas.org/terminos-condiciones.html" />
+    <meta name="robots" content="noindex">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #0f172a; }
+        [x-cloak] { display: none !important; }
+        .grid-bg {
+            background-color: #f8fafc;
+            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center top;
+        }
+    </style>
+</head>
+<body x-data="{ mobileMenu: false }" class="min-h-screen flex flex-col relative grid-bg selection:bg-indigo-500 selection:text-white">
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:rotate-6 transition-transform">L</div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">Letras<span class="text-indigo-600">Bonitas</span></span>
+                </a>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="index.html" class="text-sm font-medium text-slate-500 hover:text-indigo-600 transition-colors">Inicio</a>
+                    <a href="letras-cursivas.html" class="text-sm font-medium text-slate-500 hover:text-indigo-600 transition-colors">Cursivas</a>
+                    <a href="letras-tatuajes.html" class="text-sm font-medium text-slate-500 hover:text-indigo-600 transition-colors">Tatuajes</a>
+                    <a href="letras-goticas.html" class="text-sm font-medium text-slate-500 hover:text-indigo-600 transition-colors">Góticas</a>
+                </div>
+                <button class="md:hidden p-2 text-slate-500 hover:text-slate-900" @click="mobileMenu = !mobileMenu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div x-show="mobileMenu" x-collapse class="md:hidden bg-white border-t border-slate-100 px-4 py-4">
+            <div class="flex flex-col gap-4">
+                <a href="index.html" class="text-base font-medium text-slate-600">Inicio</a>
+                <a href="letras-cursivas.html" class="text-base font-medium text-slate-600">Cursivas</a>
+                <a href="letras-tatuajes.html" class="text-base font-medium text-slate-600">Tatuajes</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow w-full max-w-3xl mx-auto px-4 pt-16 pb-24">
+        <div class="bg-white rounded-3xl p-8 md:p-12 border border-slate-200 shadow-sm">
+            <h1 class="font-extrabold text-3xl md:text-4xl text-slate-900 mb-2">Términos y Condiciones</h1>
+            <p class="text-slate-400 text-sm mb-8">Fecha efectiva: 16 de diciembre</p>
+            
+            <div class="prose prose-slate prose-sm md:prose-base text-slate-600 leading-relaxed">
+                <h2 class="text-xl font-bold text-slate-900 mt-8 mb-4">1. Aceptación de los términos</h2>
+                <p>Bienvenido a <strong>conversordeletrasbonitas.org</strong>. Al acceder a este sitio web, asumimos que aceptas estos términos y condiciones. No continúes usando conversordeletrasbonitas.org si no estás de acuerdo con todos los términos y condiciones establecidos en esta página.</p>
+
+                <h2 class="text-xl font-bold text-slate-900 mt-8 mb-4">2. Licencia</h2>
+                <p>A menos que se indique lo contrario, conversordeletrasbonitas.org y/o sus licenciantes poseen los derechos de propiedad intelectual de todo el material en este sitio web. Todos los derechos de propiedad intelectual están reservados. Puedes acceder a esto desde conversordeletrasbonitas.org para tu uso personal sujeto a las restricciones establecidas en estos términos y condiciones.</p>
+                <p>No debes:</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li>Republicar material de conversordeletrasbonitas.org</li>
+                    <li>Vender, alquilar o sublicenciar material de conversordeletrasbonitas.org</li>
+                    <li>Reproducir, duplicar o copiar material de conversordeletrasbonitas.org</li>
+                    <li>Redistribuir contenido de conversordeletrasbonitas.org</li>
+                </ul>
+
+                <h2 class="text-xl font-bold text-slate-900 mt-8 mb-4">3. Descargo de responsabilidad</h2>
+                <p>El uso de nuestro conversor de fuentes y herramientas es bajo tu propio riesgo. El material en el sitio web de conversordeletrasbonitas.org se proporciona "tal cual". No ofrecemos ninguna garantía, expresa o implícita, y por la presente renunciamos y negamos todas las demás garantías, incluidas, entre otras, las garantías implícitas o condiciones de comerciabilidad, idoneidad para un propósito particular o no infracción de la propiedad intelectual u otra violación de derechos.</p>
+
+                <h2 class="text-xl font-bold text-slate-900 mt-8 mb-4">4. Limitaciones</h2>
+                <p>En ningún caso conversordeletrasbonitas.org o sus proveedores serán responsables de ningún daño (incluidos, entre otros, daños por pérdida de datos o ganancias, o debido a la interrupción del negocio) que surjan del uso o la imposibilidad de usar los materiales en el sitio web, incluso si se ha notificado oralmente o por escrito la posibilidad de tal daño.</p>
+
+                <h2 class="text-xl font-bold text-slate-900 mt-8 mb-4">5. Enlaces</h2>
+                <p>conversordeletrasbonitas.org no ha revisado todos los sitios vinculados a su sitio web y no es responsable de los contenidos de dicho sitio vinculado. La inclusión de cualquier enlace no implica aprobación por parte de conversordeletrasbonitas.org del sitio. El uso de cualquier sitio web vinculado es bajo el propio riesgo del usuario.</p>
+
+                <h2 class="text-xl font-bold text-slate-900 mt-8 mb-4">6. Modificaciones</h2>
+                <p>conversordeletrasbonitas.org puede revisar estos términos de servicio para su sitio web en cualquier momento sin previo aviso. Al utilizar este sitio web, aceptas estar sujeto a la versión actual de estos términos de servicio.</p>
+            
+                <h2 class="text-xl font-bold text-slate-900 mt-8 mb-4">7. Contacto</h2>
+                <p>Para cualquier duda sobre estos términos, por favor contáctanos en: <strong>info@conversordeletrasbonitas.org</strong>.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-auto border-t border-slate-200 bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-4">
+            <p class="text-slate-400 text-sm font-medium">&copy; 2024 ConversorDeLetrasBonitas.org</p>
+            <div class="flex justify-center gap-6 text-sm text-slate-500">
+                <a href="sobre-nosotros.html" class="hover:text-indigo-600">Sobre nosotros</a>
+                <a href="contacto.html" class="hover:text-indigo-600">Contacto</a>
+                <a href="politica-privacidad.html" class="hover:text-indigo-600">Privacidad</a>
+                <a href="terminos-condiciones.html" class="hover:text-indigo-600">Términos</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros - Conversor de Letras Bonitas</title>
+    <meta name="description" content="Conoce al equipo detrás de ConversorDeLetrasBonitas.org. Nuestra misión es ayudarte a destacar en redes sociales con tipografías y fuentes únicas.">
+    <link rel="canonical" href="https://conversordeletrasbonitas.org/sobre-nosotros.html" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #0f172a; }
+        [x-cloak] { display: none !important; }
+        .grid-bg {
+            background-color: #f8fafc;
+            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center top;
+        }
+    </style>
+</head>
+<body x-data="{ mobileMenu: false }" class="min-h-screen flex flex-col relative grid-bg selection:bg-indigo-500 selection:text-white">
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:rotate-6 transition-transform">L</div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">Letras<span class="text-indigo-600">Bonitas</span></span>
+                </a>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="index.html" class="text-sm font-medium text-slate-500 hover:text-indigo-600 transition-colors">Inicio</a>
+                    <a href="letras-cursivas.html" class="text-sm font-medium text-slate-500 hover:text-indigo-600 transition-colors">Cursivas</a>
+                    <a href="letras-tatuajes.html" class="text-sm font-medium text-slate-500 hover:text-indigo-600 transition-colors">Tatuajes</a>
+                    <a href="letras-goticas.html" class="text-sm font-medium text-slate-500 hover:text-indigo-600 transition-colors">Góticas</a>
+                </div>
+                <button class="md:hidden p-2 text-slate-500 hover:text-slate-900" @click="mobileMenu = !mobileMenu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div x-show="mobileMenu" x-collapse class="md:hidden bg-white border-t border-slate-100 px-4 py-4">
+            <div class="flex flex-col gap-4">
+                <a href="index.html" class="text-base font-medium text-slate-600">Inicio</a>
+                <a href="letras-cursivas.html" class="text-base font-medium text-slate-600">Cursivas</a>
+                <a href="letras-tatuajes.html" class="text-base font-medium text-slate-600">Tatuajes</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow w-full max-w-3xl mx-auto px-4 pt-16 pb-24">
+        <div class="bg-white rounded-3xl p-8 md:p-12 border border-slate-200 shadow-sm">
+            <h1 class="font-extrabold text-4xl md:text-5xl text-slate-900 mb-8 tracking-tight">Sobre Nosotros</h1>
+            
+            <div class="prose prose-slate prose-lg text-slate-600 leading-relaxed">
+                <p class="mb-6">
+                    Bienvenidos a <strong>ConversorDeLetrasBonitas.org</strong>, la herramienta definitiva para transformar texto plano en arte digital. Somos apasionados de la tipografía y la estética en redes sociales, dedicados a ayudar a usuarios de todo el mundo a expresarse de manera única en internet.
+                </p>
+
+                <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">Nuestra Misión</h2>
+                <p class="mb-6">
+                    Creemos que tu biografía de Instagram, tus estados de Facebook y tus mensajes de TikTok merecen destacar. Nuestra misión es proporcionar una herramienta gratuita, rápida y accesible que permita a cualquier persona, sin conocimientos técnicos, generar fuentes estéticas (aesthetic), letras cursivas, góticas y símbolos especiales con un solo clic.
+                </p>
+
+                <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">¿Cómo funciona?</h2>
+                <p class="mb-6">
+                    A diferencia de las fuentes tradicionales que requieren instalación, nuestro sitio utiliza el estándar <strong>Unicode</strong>. Esto significa que convertimos tus letras normales (ASCII) en símbolos matemáticos, alfanuméricos y glifos de otros idiomas que se asemejan a nuestro alfabeto. Gracias a esto, puedes "copiar y pegar" nuestros diseños en casi cualquier plataforma social, juego o aplicación de mensajería.
+                </p>
+
+                <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">El Equipo</h2>
+                <p>
+                    Somos un pequeño equipo de desarrolladores y diseñadores amantes de la cultura digital. Trabajamos constantemente para actualizar nuestra base de datos con nuevos estilos, desde "Graffiti" hasta "Old English", asegurando que siempre tengas las tendencias más frescas a tu disposición.
+                </p>
+                <p class="mt-4">
+                    Gracias por elegirnos para personalizar tu mundo digital.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-auto border-t border-slate-200 bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-4">
+            <p class="text-slate-400 text-sm font-medium">&copy; 2024 ConversorDeLetrasBonitas.org</p>
+            <div class="flex justify-center gap-6 text-sm text-slate-500">
+                <a href="sobre-nosotros.html" class="hover:text-indigo-600">Sobre nosotros</a>
+                <a href="contacto.html" class="hover:text-indigo-600">Contacto</a>
+                <a href="politica-privacidad.html" class="hover:text-indigo-600">Privacidad</a>
+                <a href="terminos-condiciones.html" class="hover:text-indigo-600">Términos</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

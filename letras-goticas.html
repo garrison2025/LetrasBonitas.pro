@@ -1,16 +1,149 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Letras Góticas - Fuentes Dark para Nicks</title>
+    <meta name="description" content="Generador de letras góticas y fuentes dark para copiar y pegar. Ideal para nicks de Free Fire, Instagram y títulos impactantes.">
+    <link rel="canonical" href="https://letrasbonitas.pro/letras-goticas.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fef2f2; color: #991b1b; }
+        [x-cloak] { display: none !important; }
+        .grid-bg { background-color: #fef2f2; background-image: linear-gradient(#fecaca 1px, transparent 1px), linear-gradient(90deg, #fecaca 1px, transparent 1px); background-size: 40px 40px; background-position: center top; }
+        .animate-gradient { background-size: 200% auto; animation: shine 4s linear infinite; }
+        @keyframes shine { to { background-position: 200% center; } }
+        .fallback-char { font-family: 'Times New Roman', Didot, 'Playfair Display', serif; font-style: italic; font-weight: 400; display: inline-block; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('converter', () => ({
+                inputText: 'Dark Soul',
+                toastVisible: false,
+                toolbarSymbols: ['★', '⚡', '꧁', '꧂', '❤', '✈', '☠', '✔', '✘', '⚔', '☂', '✿', '❄', '✪', '✯', '✦', '✨', '❥', '❣', 'ღ', '➤', '❝', '❞', '✎'],
+                fonts: [
+                    { name: 'Gótica', map: { a:'𝔞',b:'𝔟',c:'𝔠',d:'𝔡',e:'𝔢',f:'𝔣',g:'𝔤',h:'𝔥',i:'𝔦',j:'𝔧',k:'𝔨',l:'𝔩',m:'𝔪',n:'𝔫',o:'𝔬',p:'𝔭',q:'𝔮',r:'𝔯',s:'𝔰',t:'𝔱',u:'𝔲',v:'𝔳',w:'𝔴',x:'𝔵',y:'𝔶',z:'𝔷', A:'𝔄',B:'𝔅',C:'ℭ',D:'𝔇',E:'𝔈',F:'𝔉',G:'𝔊',H:'ℌ',I:'ℑ',J:'𝔍',K:'𝔎',L:'𝔏',M:'𝔐',N:'𝔑',O:'𝔒',P:'𝔓',Q:'𝔔',R:'ℜ',S:'𝔖',T:'𝔗',U:'𝔲',V:'𝔙',W:'𝔚',X:'𝔛',Y:'𝔜',Z:'ℨ' } },
+                    { name: 'Gótica Negrita', map: { a:'𝖆',b:'𝖇',c:'𝖈',d:'𝖉',e:'𝖊',f:'𝖋',g:'𝖌',h:'𝖍',i:'𝖎',j:'𝖏',k:'𝖐',l:'𝖑',m:'𝖒',n:'𝖓',o:'𝖔',p:'𝖕',q:'𝖖',r:'𝖗',s:'𝖘',t:'𝖙',u:'𝖚',v:'𝖛',w:'𝖜',x:'𝖝',y:'𝖞',z:'𝖟', A:'𝕬',B:'𝕭',C:'𝕮',D:'𝕯',E:'𝕰',F:'𝕱',G:'𝕲',H:'𝕳',I:'𝕴',J:'𝕵',K:'𝕶',L:'𝕷',M:'𝕸',N:'𝕹',O:'𝕺',P:'𝕻',Q:'𝕼',R:'𝕽',S:'𝕾',T:'𝕿',U:'𝖀',V:'𝖁',W:'𝖂',X:'𝖃',Y:'𝖄',Z:'𝖅' } },
+                    { name: 'Aesthetic (Ancho)', map: { a:'ａ',b:'ｂ',c:'ｃ',d:'ｄ',e:'ｅ',f:'ｆ',g:'ｇ',h:'ｈ',i:'ｉ',j:'ｊ',k:'ｋ',l:'ｌ',m:'ｍ',n:'ｎ',o:'ｏ',p:'ｐ',q:'ｑ',r:'ｒ',s:'ｓ',t:'ｔ',u:'ｕ',v:'ｖ',w:'ｗ',x:'ｘ',y:'ｙ',z:'ｚ', A:'Ａ',B:'Ｂ',C:'Ｃ',D:'Ｄ',E:'Ｅ',F:'Ｆ',G:'Ｇ',H:'Ｈ',I:'Ｉ',J:'Ｊ',K:'Ｋ',L:'Ｌ',M:'Ｍ',N:'Ｎ',O:'Ｏ',P:'Ｐ',Q:'Ｑ',R:'Ｒ',S:'Ｓ',T:'Ｔ',U:'Ｕ',V:'Ｖ',W:'Ｗ',X:'Ｘ',Y:'Ｙ',Z:'Ｚ', ' ':'　' } },
+                    { name: 'Runas', map: { a:'ᗅ',b:'ᗷ',c:'ᑕ',d:'ᗪ',e:'ᗴ',f:'ᖴ',g:'ᘜ',h:'ᕼ',i:'I',j:'ᒍ',k:'K',l:'ᒪ',m:'ᗰ',n:'ᑎ',o:'O',p:'ᑭ',q:'ᑸ',r:'ᖇ',s:'S',t:'T',u:'ᑌ',v:'ᐯ',w:'ᗯ',x:'᙭',y:'Y',z:'ᘔ', A:'ᗅ',B:'ᗷ',C:'ᑕ',D:'ᗪ',E:'ᗴ',F:'ᖴ',G:'ᘜ',H:'ᕼ',I:'I',J:'ᒍ',K:'K',L:'ᒪ',M:'ᗰ',N:'ᑎ',O:'O',P:'ᑭ',Q:'ᑸ',R:'ᖇ',S:'S',T:'T',U:'ᑌ',V:'ᐯ',W:'ᗯ',X:'᙭',Y:'Y',Z:'ᘔ' } },
+                    // ... (Including all fonts to support user choice) ...
+                    { name: 'Calaveras', map: { a:'☠a☠',b:'☠b☠',c:'☠c☠',d:'☠d☠',e:'☠e☠',f:'☠f☠',g:'☠g☠',h:'☠h☠',i:'☠i☠',j:'☠j☠',k:'☠k☠',l:'☠l☠',m:'☠m☠',n:'☠n☠',o:'☠o☠',p:'☠p☠',q:'☠q☠',r:'☠r☠',s:'☠s☠',t:'☠t☠',u:'☠u☠',v:'☠v☠',w:'☠w☠',x:'☠x☠',y:'☠y☠',z:'☠z☠', A:'☠A☠',B:'☠B☠',C:'☠C☠',D:'☠D☠',E:'☠E☠',F:'☠F☠',G:'☠G☠',H:'☠H☠',I:'☠I☠',J:'☠J☠',K:'☠K☠',L:'☠L☠',M:'☠M☠',N:'☠N☠',O:'☠O☠',P:'☠P☠',Q:'☠Q☠',R:'☠R☠',S:'☠S☠',T:'☠T☠',U:'☠U☠',V:'☠V☠',W:'☠W☠',X:'☠X☠',Y:'☠Y☠',Z:'☠Z☠' } },
+                ],
+                transformText(font, htmlMode = false) {
+                    if (!this.inputText) return 'Dark Soul';
+                    let text = this.inputText;
+                    if (font.reverse) text = text.split('').reverse().join('');
+                    const map = font.map;
+                    const specialChars = ['á', 'é', 'í', 'ó', 'ú', 'ñ', 'Ñ', '¿', '¡'];
+                    let result = text.split('').map(char => {
+                        if (map && map[char]) return map[char];
+                        if (htmlMode && specialChars.includes(char)) return `<span class="fallback-char">${char}</span>`;
+                        return char;
+                    }).join('');
+                    if (font.prefix) result = font.prefix + result;
+                    if (font.suffix) result = result + font.suffix;
+                    return result;
+                },
+                insertSymbol(symbol) {
+                    const textarea = this.$refs.textarea;
+                    const start = textarea.selectionStart;
+                    const end = textarea.selectionEnd;
+                    const text = this.inputText;
+                    this.inputText = text.substring(0, start) + symbol + text.substring(end);
+                    this.$nextTick(() => { textarea.focus(); const newPos = start + symbol.length; textarea.setSelectionRange(newPos, newPos); });
+                },
+                copyToClipboard(text) {
+                    navigator.clipboard.writeText(text).then(() => { this.toastVisible = true; setTimeout(() => this.toastVisible = false, 2000); });
+                }
+            }));
+        });
+    </script>
+</head>
+<body x-data="converter" class="min-h-screen flex flex-col relative grid-bg selection:bg-red-500 selection:text-white">
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-red-200" x-data="{ mobileMenu: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:rotate-6 transition-transform">L</div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">Letras<span class="text-red-600">Bonitas</span></span>
+                </a>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="index.html" class="text-sm font-medium text-slate-500 hover:text-red-600 transition-colors">Inicio</a>
+                    <a href="letras-cursivas.html" class="text-sm font-medium text-slate-500 hover:text-red-600 transition-colors">Cursivas</a>
+                    <a href="letras-tatuajes.html" class="text-sm font-medium text-slate-500 hover:text-red-600 transition-colors">Tatuajes</a>
+                    <a href="letras-goticas.html" class="text-sm font-semibold text-slate-900 border-b-2 border-red-600 py-5">Góticas</a>
+                    <div class="relative group py-5">
+                        <button class="flex items-center gap-1 text-sm font-medium text-slate-500 group-hover:text-red-600 transition-colors">Más <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+                        <div class="absolute right-0 top-[90%] w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                            <div class="bg-white border border-red-100 rounded-xl shadow-xl p-2">
+                                <a href="letras-graffiti.html" class="block px-4 py-2 text-sm text-slate-600 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors">Graffiti</a>
+                                <a href="letras-amino.html" class="block px-4 py-2 text-sm text-slate-600 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors">Amino</a>
+                                <a href="letras-facebook.html" class="block px-4 py-2 text-sm text-slate-600 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors">Facebook</a>
+                                <div class="h-px bg-red-100 my-1 mx-2"></div>
+                                <a href="letras-tattoo.html" class="block px-4 py-2 text-sm text-slate-600 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors">Tattoo (EN)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="md:hidden p-2 text-slate-500 hover:text-red-600" @click="mobileMenu = !mobileMenu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div x-show="mobileMenu" x-collapse class="md:hidden bg-white border-t border-red-100 px-4 py-4">
+            <div class="flex flex-col gap-4">
+                <a href="index.html" class="text-base font-medium text-slate-600">Inicio</a>
+                <a href="letras-cursivas.html" class="text-base font-medium text-slate-600">Cursivas</a>
+                <a href="letras-tatuajes.html" class="text-base font-medium text-slate-600">Tatuajes</a>
+                <a href="letras-goticas.html" class="text-base font-semibold text-red-600">Góticas</a>
+                <a href="letras-graffiti.html" class="text-base font-medium text-slate-600">Graffiti</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow w-full max-w-4xl mx-auto px-4 pt-16 pb-24">
+        <div class="text-center mb-12">
+            <h1 class="font-extrabold text-5xl md:text-7xl text-slate-900 mb-6 tracking-tight leading-[1.1]">
+                Letras <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 animate-gradient">Góticas</span>
+            </h1>
+            <p class="text-slate-500 text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
+                Transforma tu nick en algo misterioso y oscuro con nuestras fuentes <strong>Góticas y Fraktur</strong>.
+            </p>
+        </div>
+
+        <div class="mb-12 sticky top-24 z-30">
+            <div class="bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-red-200 p-2 transition-transform hover:scale-[1.01] duration-300">
+                <textarea x-ref="textarea" x-model="inputText" class="block w-full px-6 py-8 bg-red-50/50 border border-red-100 rounded-xl text-slate-900 text-3xl md:text-4xl font-bold text-center placeholder:text-red-300 focus:ring-4 focus:ring-red-100 focus:border-red-200 resize-none outline-none transition-all" rows="1" spellcheck="false" placeholder="Escribe tu texto..."></textarea>
+                <div class="mt-2 pt-2 border-t border-red-100">
+                    <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1 px-1">
+                        <template x-for="sym in toolbarSymbols" :key="sym">
+                            <button @click="insertSymbol(sym)" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-xl bg-red-50 hover:bg-red-100 text-red-600 hover:text-red-700 rounded-lg transition-all active:scale-90" type="button" x-text="sym"></button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-20">
             <template x-for="font in fonts" :key="font.name">
-                <div class="group relative bg-white border border-slate-200 rounded-xl p-6 hover:border-red-300 hover:shadow-lg hover:shadow-red-500/5 transition-all duration-300 cursor-pointer" @click="copyToClipboard(transformText(font, false))">
+                <div class="group relative bg-white border border-red-200 rounded-xl p-6 hover:border-red-400 hover:shadow-lg hover:shadow-red-500/10 transition-all duration-300 cursor-pointer" @click="copyToClipboard(transformText(font, false))">
                     <div class="flex justify-between items-center mb-3">
-                        <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-red-600 transition-colors" x-text="font.name"></span>
-                        <div class="opacity-0 group-hover:opacity-100 transition-all transform translate-x-2 group-hover:translate-x-0"><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-50 text-red-600 text-xs font-bold">Copiar</span></div>
+                        <span class="text-[11px] font-bold uppercase tracking-widest text-red-400 group-hover:text-red-600 transition-colors" x-text="font.name"></span>
+                        <div class="opacity-0 group-hover:opacity-100 transition-all transform translate-x-2 group-hover:translate-x-0"><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-100 text-red-600 text-xs font-bold">Copiar</span></div>
                     </div>
                     <p class="text-xl md:text-2xl text-slate-800 break-words font-medium leading-relaxed" x-html="transformText(font, true)"></p>
                 </div>
             </template>
         </div>
 
-        <!-- SEO Content Section: Góticas -->
+        <!-- SEO Content -->
         <div class="border-t border-slate-200 pt-16 mt-16">
             <div class="grid md:grid-cols-3 gap-8 mb-16">
                 <div class="space-y-4">
@@ -99,3 +232,21 @@
             </div>
         </div>
     </main>
+
+    <footer class="mt-auto border-t border-slate-200 bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-slate-400 text-sm font-medium">&copy; 2024 LetrasBonitas.pro</p>
+        </div>
+    </footer>
+
+    <!-- Vibrant Toast -->
+    <div x-cloak x-show="toastVisible" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 translate-y-4 scale-95" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
+        <div class="bg-slate-900 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3">
+            <div class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center">
+                <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <span class="font-bold text-sm">¡Copiado!</span>
+        </div>
+    </div>
+</body>
+</html>

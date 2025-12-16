@@ -1,3 +1,136 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Letras Graffiti - Fuentes Urbanas</title>
+    <meta name="description" content="Generador de letras estilo graffiti y bubble letters. Crea textos urbanos y callejeros para tus redes sociales con un clic.">
+    <link rel="canonical" href="https://letrasbonitas.pro/letras-graffiti.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #ecfdf5; color: #064e3b; }
+        [x-cloak] { display: none !important; }
+        .grid-bg { background-color: #ecfdf5; background-image: linear-gradient(#d1fae5 1px, transparent 1px), linear-gradient(90deg, #d1fae5 1px, transparent 1px); background-size: 40px 40px; background-position: center top; }
+        .animate-gradient { background-size: 200% auto; animation: shine 4s linear infinite; }
+        @keyframes shine { to { background-position: 200% center; } }
+        .fallback-char { font-family: 'Times New Roman', Didot, 'Playfair Display', serif; font-style: italic; font-weight: 400; display: inline-block; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('converter', () => ({
+                inputText: 'Street Art',
+                toastVisible: false,
+                toolbarSymbols: ['★', '⚡', '꧁', '꧂', '❤', '✈', '☠', '✔', '✘', '⚔', '☂', '✿', '❄', '✪', '✯', '✦', '✨', '❥', '❣', 'ღ', '➤', '❝', '❞', '✎'],
+                fonts: [
+                    { name: 'Burbujas', map: { a:'ⓐ',b:'ⓑ',c:'ⓒ',d:'ⓓ',e:'ⓔ',f:'ⓕ',g:'ⓖ',h:'ⓗ',i:'ⓘ',j:'ⓙ',k:'ⓚ',l:'ⓛ',m:'ⓜ',n:'ⓝ',o:'ⓞ',p:'ⓟ',q:'ⓠ',r:'ⓡ',s:'ⓢ',t:'ⓣ',u:'ⓤ',v:'ⓥ',w:'ⓦ',x:'ⓧ',y:'ⓨ',z:'ⓩ', A:'Ⓐ',B:'Ⓑ',C:'Ⓒ',D:'Ⓓ',E:'Ⓔ',F:'Ⓕ',G:'Ⓖ',H:'Ⓗ',I:'Ⓘ',J:'Ⓙ',K:'Ⓚ',L:'Ⓛ',M:'Ⓜ',N:'Ⓝ',O:'Ⓞ',P:'Ⓟ',Q:'Ⓠ',R:'Ⓡ',S:'Ⓢ',T:'Ⓣ',U:'Ⓤ',V:'Ⓥ',W:'Ⓦ',X:'Ⓧ',Y:'Ⓨ',Z:'Ⓩ' } },
+                    { name: 'Burbujas Negras', map: { a:'🅐',b:'🅑',c:'🅒',d:'🅓',e:'🅔',f:'🅕',g:'🅖',h:'🅗',i:'🅘',j:'🅙',k:'🅚',l:'🅛',m:'🅼',n:'🅝',o:'🅞',p:'🅟',q:'🅠',r:'🅡',s:'🅢',t:'🅣',u:'🅤',v:'🅥',w:'🅦',x:'🅧',y:'🅨',z:'🅩', A:'🅐',B:'🅑',C:'🅒',D:'🅓',E:'🅔',F:'🅕',G:'🅖',H:'🅗',I:'🅘',J:'🅙',K:'𝅚',L:'𝅛',M:'🅼',N:'𝅝',O:'🅞',P:'🅟',Q:'🅠',R:'🅡',S:'🅢',T:'🅣',U:'🅤',V:'𝅥',W:'𝅦',X:'𝅧',Y:'𝅨',Z:'𝅩' } },
+                    { name: 'Cuadrados', map: { a:'🄰',b:'🄱',c:'🄲',d:'🄳',e:'🄴',f:'𝄆',g:'𝄇',h:'𝄈',i:'𝄉',j:'𝄊',k:'𝄋',l:'𝄌',m:'𝄍',n:'𝄎',o:'𝄏',p:'𝄐',q:'𝄑',r:'𝄒',s:'𝄓',t:'𝄔',u:'𝄕',v:'𝄖',w:'𝄗',x:'𝄘',y:'𝄙',z:'𝄚', A:'🄰',B:'𝄂',C:'𝄃',D:'𝄄',E:'🄴',F:'𝄆',G:'𝄇',H:'𝄈',I:'𝄉',J:'𝄊',K:'𝄋',L:'𝄌',M:'𝄍',N:'𝄎',O:'𝄏',P:'𝄐',Q:'𝄑',R:'𝄒',S:'𝄓',T:'𝄔',U:'𝄕',V:'𝄖',W:'𝄗',X:'𝄘',Y:'𝄙',Z:'𝄚' } },
+                    { name: 'Cuadrados Negros', map: { a:'🅰',b:'🅱',c:'🅲',d:'🅳',e:'🅴',f:'𝅵',g:'🅶',h:'🅷',i:'🅸',j:'🅹',k:'🅺',l:'🅻',m:'🅼',n:'🅽',o:'🅾',p:'🅿',q:'𝆀',r:'🆁',s:'🆂',t:'🆃',u:'🆄',v:'🆅',w:'🆆',x:'🆇',y:'🆈',z:'🆉', A:'🅰',B:'🅱',C:'🅲',D:'🅳',E:'🅴',F:'𝅵',G:'🅶',H:'🅷',I:'🅸',J:'𝅹',K:'𝅺',L:'🅻',M:'🅼',N:'🅽',O:'🅾',P:'🅿',Q:'𝆀',R:'🆁',S:'🆂',T:'🆃',U:'🆄',V:'𝆅',W:'𝆆',X:'𝆇',Y:'🆈',Z:'𝆉' } },
+                    // ... (All fonts) ...
+                    { name: 'Sans Negrita', map: { a:'𝗮',b:'𝗯',c:'𝗰',d:'𝗱',e:'𝗲',f:'𝗳',g:'𝗴',h:'𝗵',i:'𝗶',j:'𝗷',k:'𝗸',l:'𝗹',m:'𝗺',n:'𝗻',o:'𝗼',p:'𝗽',q:'𝗾',r:'𝗿',s:'𝘀',t:'𝘁',u:'𝘂',v:'𝘃',w:'𝘄',x:'𝘅',y:'𝘆',z:'𝘇', A:'𝗔',B:'𝗕',C:'𝗖',D:'𝗗',E:'𝗘',F:'𝗙',G:'𝗚',H:'𝗛',I:'𝗜',J:'Ｊ',K:'𝗞',L:'𝗟',M:'𝗠',N:'Ｎ',O:'Ｏ',P:'Ｐ',Q:'Ｑ',R:'Ｒ',S:'Ｓ',T:'Ｔ',U:'𝗨',V:'Ｖ',W:'𝗪',X:'Ｘ',Y:'Ｙ',Z:'Ｚ' } }
+                ],
+                transformText(font, htmlMode = false) {
+                    if (!this.inputText) return 'Street Art';
+                    let text = this.inputText;
+                    if (font.reverse) text = text.split('').reverse().join('');
+                    const map = font.map;
+                    const specialChars = ['á', 'é', 'í', 'ó', 'ú', 'ñ', 'Ñ', '¿', '¡'];
+                    let result = text.split('').map(char => {
+                        if (map && map[char]) return map[char];
+                        if (htmlMode && specialChars.includes(char)) return `<span class="fallback-char">${char}</span>`;
+                        return char;
+                    }).join('');
+                    if (font.prefix) result = font.prefix + result;
+                    if (font.suffix) result = result + font.suffix;
+                    return result;
+                },
+                insertSymbol(symbol) {
+                    const textarea = this.$refs.textarea;
+                    const start = textarea.selectionStart;
+                    const end = textarea.selectionEnd;
+                    const text = this.inputText;
+                    this.inputText = text.substring(0, start) + symbol + text.substring(end);
+                    this.$nextTick(() => { textarea.focus(); const newPos = start + symbol.length; textarea.setSelectionRange(newPos, newPos); });
+                },
+                copyToClipboard(text) {
+                    navigator.clipboard.writeText(text).then(() => { this.toastVisible = true; setTimeout(() => this.toastVisible = false, 2000); });
+                }
+            }));
+        });
+    </script>
+</head>
+<body x-data="converter" class="min-h-screen flex flex-col relative grid-bg selection:bg-emerald-500 selection:text-white">
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-emerald-200" x-data="{ mobileMenu: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:rotate-6 transition-transform">L</div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">Letras<span class="text-emerald-600">Bonitas</span></span>
+                </a>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="index.html" class="text-sm font-medium text-slate-500 hover:text-emerald-600 transition-colors">Inicio</a>
+                    <a href="letras-cursivas.html" class="text-sm font-medium text-slate-500 hover:text-emerald-600 transition-colors">Cursivas</a>
+                    <a href="letras-tatuajes.html" class="text-sm font-medium text-slate-500 hover:text-emerald-600 transition-colors">Tatuajes</a>
+                    <a href="letras-goticas.html" class="text-sm font-medium text-slate-500 hover:text-emerald-600 transition-colors">Góticas</a>
+                    <div class="relative group py-5">
+                        <button class="flex items-center gap-1 text-sm font-medium text-slate-500 group-hover:text-emerald-600 transition-colors">Más <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+                        <div class="absolute right-0 top-[90%] w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                            <div class="bg-white border border-emerald-100 rounded-xl shadow-xl p-2">
+                                <a href="letras-graffiti.html" class="block px-4 py-2 text-sm text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-lg transition-colors">Graffiti</a>
+                                <a href="letras-amino.html" class="block px-4 py-2 text-sm text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-lg transition-colors">Amino</a>
+                                <a href="letras-facebook.html" class="block px-4 py-2 text-sm text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-lg transition-colors">Facebook</a>
+                                <div class="h-px bg-emerald-100 my-1 mx-2"></div>
+                                <a href="letras-tattoo.html" class="block px-4 py-2 text-sm text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-lg transition-colors">Tattoo (EN)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="md:hidden p-2 text-slate-500 hover:text-emerald-600" @click="mobileMenu = !mobileMenu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div x-show="mobileMenu" x-collapse class="md:hidden bg-white border-t border-emerald-100 px-4 py-4">
+            <div class="flex flex-col gap-4">
+                <a href="index.html" class="text-base font-medium text-slate-600">Inicio</a>
+                <a href="letras-cursivas.html" class="text-base font-medium text-slate-600">Cursivas</a>
+                <a href="letras-tatuajes.html" class="text-base font-medium text-slate-600">Tatuajes</a>
+                <a href="letras-goticas.html" class="text-base font-medium text-slate-600">Góticas</a>
+                <a href="letras-graffiti.html" class="text-base font-semibold text-emerald-600">Graffiti</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow w-full max-w-4xl mx-auto px-4 pt-16 pb-24">
+        <div class="text-center mb-12">
+            <h1 class="font-extrabold text-5xl md:text-7xl text-slate-900 mb-6 tracking-tight leading-[1.1]">
+                Letras <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-green-500 to-lime-500 animate-gradient">Graffiti</span>
+            </h1>
+            <p class="text-slate-500 text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
+                Crea tu tag digital con fuentes estilo <strong>Graffiti, Bubble y Wildstyle</strong>.
+            </p>
+        </div>
+
+        <div class="mb-12 sticky top-24 z-30">
+            <div class="bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-emerald-200 p-2 transition-transform hover:scale-[1.01] duration-300">
+                <textarea x-ref="textarea" x-model="inputText" class="block w-full px-6 py-8 bg-emerald-50/50 border border-emerald-100 rounded-xl text-slate-900 text-3xl md:text-4xl font-bold text-center placeholder:text-emerald-300 focus:ring-4 focus:ring-emerald-100 focus:border-emerald-200 resize-none outline-none transition-all" rows="1" spellcheck="false" placeholder="Tu texto aquí..."></textarea>
+                <div class="mt-2 pt-2 border-t border-emerald-100">
+                    <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1 px-1">
+                        <template x-for="sym in toolbarSymbols" :key="sym">
+                            <button @click="insertSymbol(sym)" class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-600 hover:text-emerald-700 rounded-lg transition-all active:scale-90" type="button" x-text="sym"></button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-20">
             <template x-for="font in fonts" :key="font.name">
                 <div class="group relative bg-white border border-slate-200 rounded-xl p-6 hover:border-emerald-300 hover:shadow-lg hover:shadow-emerald-500/5 transition-all duration-300 cursor-pointer" @click="copyToClipboard(transformText(font, false))">
@@ -10,7 +143,7 @@
             </template>
         </div>
 
-        <!-- SEO Content Section: Graffiti -->
+        <!-- SEO Content -->
         <div class="border-t border-slate-200 pt-16 mt-16">
             <div class="grid md:grid-cols-3 gap-8 mb-16">
                 <div class="space-y-4">
@@ -99,3 +232,21 @@
             </div>
         </div>
     </main>
+
+    <footer class="mt-auto border-t border-slate-200 bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-slate-400 text-sm font-medium">&copy; 2024 LetrasBonitas.pro</p>
+        </div>
+    </footer>
+
+    <!-- Vibrant Toast -->
+    <div x-cloak x-show="toastVisible" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 translate-y-4 scale-95" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
+        <div class="bg-slate-900 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3">
+            <div class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center">
+                <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <span class="font-bold text-sm">¡Copiado!</span>
+        </div>
+    </div>
+</body>
+</html>

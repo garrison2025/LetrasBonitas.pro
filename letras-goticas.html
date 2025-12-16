@@ -1,217 +1,3 @@
-<!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor de Letras Góticas - 55+ Fuentes Dark</title>
-    <meta name="description" content="Conversor de letras góticas, fuentes dark, tipografía medieval y nicks estéticos para redes sociales. Copiar y pegar letras de terror y ocultismo.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #0f172a; }
-        [x-cloak] { display: none !important; }
-        .grid-bg {
-            background-color: #f8fafc;
-            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
-            background-size: 40px 40px;
-            background-position: center top;
-        }
-        .animate-gradient { background-size: 200% auto; animation: shine 4s linear infinite; }
-        @keyframes shine { to { background-position: 200% center; } }
-        /* Task 1: Fallback Char Style */
-        .fallback-char {
-            font-family: 'Times New Roman', Didot, 'Playfair Display', serif;
-            font-style: italic;
-            font-weight: 400;
-            display: inline-block;
-        }
-        /* Task 3: Hide Scrollbar for Toolbar */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    </style>
-    <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('converter', () => ({
-                inputText: 'Darkness',
-                toastVisible: false,
-                toolbarSymbols: ['★', '⚡', '꧁', '꧂', '❤', '✈', '☠', '✔', '✘', '⚔', '☂', '✿', '❄', '✪', '✯', '✦', '✨', '❥', '❣', 'ღ', '⸸', '⛧', '🦇', '⚰'],
-                fonts: [
-                    // --- 1. GOTHIC ESSENTIALS (Blackletter) ---
-                    { name: 'Fraktur Normal', map: { a:'𝔞',b:'𝔟',c:'𝔠',d:'𝔡',e:'𝔢',f:'𝔣',g:'𝔤',h:'𝔥',i:'𝔦',j:'𝔧',k:'𝔨',l:'𝔩',m:'𝔪',n:'𝔫',o:'𝔬',p:'𝔭',q:'𝔮',r:'𝔯',s:'𝔰',t:'𝔱',u:'𝔲',v:'𝔳',w:'𝔴',x:'𝔵',y:'𝔶',z:'𝔷', A:'𝔄',B:'𝔅',C:'ℭ',D:'𝔇',E:'𝔈',F:'𝔉',G:'𝔊',H:'ℌ',I:'ℑ',J:'𝔍',K:'𝔎',L:'𝔏',M:'𝔐',N:'𝔑',O:'𝔒',P:'𝔓',Q:'𝔔',R:'ℜ',S:'𝔖',T:'𝔗',U:'𝔲',V:'𝔙',W:'𝔚',X:'𝔛',Y:'𝔜',Z:'ℨ' } },
-                    { name: 'Fraktur Bold', map: { a:'𝖆',b:'𝖇',c:'𝖈',d:'𝖉',e:'𝖊',f:'𝖋',g:'𝖌',h:'𝖍',i:'𝖎',j:'𝖏',k:'𝖐',l:'𝖑',m:'𝖒',n:'𝖓',o:'𝖔',p:'𝖕',q:'𝖖',r:'𝖗',s:'𝖘',t:'𝖙',u:'𝖚',v:'𝖛',w:'𝖜',x:'𝖝',y:'𝖞',z:'𝖟', A:'𝕬',B:'𝕭',C:'𝕮',D:'𝕯',E:'𝕰',F:'𝕱',G:'𝕲',H:'𝕳',I:'𝕴',J:'𝕵',K:'𝕶',L:'𝕷',M:'𝕸',N:'𝕹',O:'𝕺',P:'𝕻',Q:'𝕼',R:'𝕽',S:'𝕾',T:'𝕿',U:'𝖀',V:'𝖁',W:'𝖂',X:'𝖃',Y:'𝖄',Z:'𝖅' } },
-                    
-                    // --- 2. DARK & VAMPIRE (Serif) ---
-                    { name: 'Vampire Serif', map: { a:'𝐚',b:'𝐛',c:'𝐜',d:'𝐝',e:'𝐞',f:'𝐟',g:'𝐠',h:'𝐡',i:'𝐢',j:'𝐣',k:'𝐤',l:'𝐥',m:'𝐦',n:'𝐧',o:'𝐨',p:'𝐩',q:'𝐪',r:'𝐫',s:'𝐬',t:'𝐭',u:'𝐮',v:'𝐯',w:'𝐰',x:'𝐱',y:'𝐲',z:'𝐳', A:'𝐀',B:'𝐁',C:'𝐂',D:'𝐃',E:'𝐄',F:'𝐅',G:'𝐆',H:'𝐇',I:'𝐈',J:'𝐉',K:'𝐊',L:'𝐋',M:'𝐌',N:'𝐍',O:'𝐎',P:'𝐏',Q:'𝐐',R:'𝐑',S:'𝐒',T:'𝐓',U:'𝐔',V:'𝐕',W:'𝐖',X:'𝐗',Y:'𝐘',Z:'𝐙' } },
-                    { name: 'Victorian Italic', map: { a:'𝒂',b:'𝒃',c:'𝒄',d:'𝒅',e:'𝒆',f:'𝒇',g:'𝒈',h:'𝒉',i:'𝒊',j:'𝒋',k:'𝒌',l:'𝒍',m:'𝒎',n:'𝒏',o:'𝒐',p:'𝒑',q:'𝒒',r:'𝒓',s:'𝒔',t:'𝒕',u:'𝒖',v:'𝒗',w:'𝒘',x:'𝒙',y:'𝒚',z:'𝒛', A:'𝑨',B:'𝑩',C:'𝑪',D:'𝑫',E:'𝑬',F:'𝑭',G:'𝑮',H:'𝑯',I:'𝑰',J:'𝑱',K:'𝑲',L:'𝑳',M:'𝑴',N:'𝑵',O:'𝑶',P:'𝑷',Q:'𝑸',R:'𝑹',S:'𝑺',T:'𝑻',U:'𝑼',V:'𝑽',W:'𝑾',X:'𝑿',Y:'𝑿',Z:'𝒁' } },
-                    { name: 'Ancient Serif', map: { a:'𝑎',b:'𝑏',c:'𝑐',d:'𝑑',e:'𝑒',f:'𝑓',g:'𝑔',h:'ℎ',i:'𝑖',j:'𝑗',k:'𝑘',l:'𝑙',m:'𝑚',n:'𝑛',o:'𝑜',p:'𝑝',q:'𝑞',r:'𝑟',s:'𝑠',t:'𝑡',u:'𝑢',v:'𝑣',w:'𝑤',x:'𝑥',y:'𝑦',z:'𝑧', A:'𝐴',B:'𝐵',C:'𝐶',D:'𝐷',E:'𝐸',F:'𝐹',G:'𝐺',H:'𝐻',I:'𝐼',J:'𝐽',K:'Ｋ',L:'𝐿',M:'𝑀',N:'𝑁',O:'𝑂',P:'𝑃',Q:'𝑄',R:'𝑅',S:'𝑆',T:'𝑇',U:'𝑈',V:'Ｖ',W:'𝑊',X:'𝑋',Y:'𝑌',Z:'𝑍' } },
-                    { name: 'Medieval Script', map: { a:'𝓪',b:'𝓫',c:'𝓬',d:'𝓭',e:'𝓮',f:'𝓯',g:'𝓰',h:'𝓱',i:'𝓲',j:'𝓳',k:'𝓴',l:'𝓵',m:'𝓶',n:'𝓷',o:'𝓸',p:'𝓹',q:'𝓺',r:'𝓻',s:'𝓼',t:'𝓽',u:'𝓾',v:'𝓿',w:'𝔀',x:'𝔁',y:'𝔂',z:'𝔃', A:'𝓐',B:'𝓑',C:'𝓒',D:'𝓓',E:'𝓔',F:'𝓕',G:'𝓖',H:'𝓗',I:'𝓘',J:'𝓙',K:'𝓚',L:'𝓛',M:'𝓜',N:'𝓝',O:'𝓞',P:'𝓟',Q:'𝓠',R:'𝓡',S:'𝓢',T:'𝓣',U:'𝓤',V:'𝓥',W:'𝓦',X:'𝓧',Y:'𝓨',Z:'𝓩' } },
-
-                    // --- 3. INDUSTRIAL & MODERN GOTH ---
-                    { name: 'Industrial Bold', map: { a:'𝗮',b:'𝗯',c:'𝗰',d:'𝗱',e:'𝗲',f:'𝗳',g:'𝗴',h:'𝗵',i:'𝗶',j:'𝗷',k:'𝗸',l:'𝗹',m:'𝗺',n:'𝗻',o:'𝗼',p:'𝗽',q:'𝗾',r:'𝗿',s:'𝘀',t:'𝘁',u:'𝘂',v:'𝘃',w:'𝘄',x:'𝘅',y:'𝘆',z:'𝘇', A:'𝗔',B:'𝗕',C:'𝗖',D:'𝗗',E:'𝗘',F:'𝗙',G:'𝗚',H:'𝗛',I:'𝗜',J:'𝗝',K:'𝗞',L:'𝗟',M:'𝗠',N:'𝗡',O:'𝗢',P:'𝗣',Q:'𝗤',R:'𝗥',S:'𝗦',T:'𝗧',U:'𝗨',V:'𝑽',W:'𝗪',X:'𝗫',Y:'𝗬',Z:'𝗭' } },
-                    { name: 'Cyber Goth', map: { a:'𝘢',b:'𝘣',c:'𝘤',d:'𝘥',e:'𝘦',f:'𝘧',g:'𝘨',h:'𝘩',i:'𝘪',j:'𝘫',k:'𝘬',l:'𝘭',m:'𝘮',n:'𝘯',o:'𝘰',p:'𝘱',q:'𝘲',r:'𝘳',s:'𝘴',t:'𝘵',u:'𝘶',v:'𝘷',w:'𝘸',x:'𝘹',y:'𝘺',z:'𝘻', A:'𝘈',B:'𝘉',C:'𝘊',D:'𝘋',E:'𝘌',F:'𝘍',G:'𝘎',H:'𝘏',I:'𝘐',J:'𝘑',K:'𝘒',L:'𝘓',M:'𝘔',N:'𝘕',O:'𝘖',P:'𝘗',Q:'𝘘',R:'𝘙',S:'𝘚',T:'𝘛',U:'𝘜',V:'𝘝',W:'𝘞',X:'𝘟',Y:'𝘠',Z:'𝘡' } },
-                    { name: 'Typewriter', map: { a:'𝚊',b:'𝚋',c:'𝚌',d:'𝚍',e:'𝚎',f:'𝚏',g:'𝚐',h:'𝚑',i:'𝚒',j:'𝚓',k:'𝚔',l:'𝚕',m:'𝚖',n:'𝚗',o:'𝚘',p:'𝚙',q:'𝚚',r:'𝚛',s:'𝚜',t:'𝚝',u:'𝚞',v:'𝚟',w:'𝚠',x:'𝚡',y:'𝚢',z:'𝚣', A:'𝙰',B:'𝙱',C:'𝙲',D:'𝙳',E:'𝙴',F:'𝙵',G:'𝙶',H:'𝙷',I:'𝙸',J:'𝙹',K:'𝙺',L:'𝙻',M:'𝙼',N:'𝙽',O:'𝙾',P:'𝙿',Q:'𝚀',R:'𝚁',S:'𝚂',T:'𝚃',U:'𝚄',V:'𝚅',W:'𝚆',X:'𝚇',Y:'𝚈',Z:'𝚉' } },
-                    { name: 'Double Struck', map: { a:'𝕒',b:'𝕓',c:'𝕔',d:'𝕕',e:'𝕖',f:'𝕗',g:'𝕘',h:'𝕙',i:'𝕚',j:'𝕛',k:'𝕜',l:'𝕝',m:'𝕞',n:'𝕟',o:'𝕠',p:'ℙ',q:'𝕢',r:'𝕣',s:'𝕤',t:'𝕥',u:'𝕦',v:'𝕧',w:'𝕨',x:'𝕩',y:'𝕪',z:'𝕫', A:'𝔸',B:'𝔹',C:'ℂ',D:'𝔻',E:'𝔼',F:'𝔽',G:'𝔾',H:'ℍ',I:'𝕀',J:'𝕛',K:'𝕂',L:'𝕃',M:'𝕄',N:'ℕ',O:'𝕆',P:'ℙ',Q:'ℚ',R:'ℝ',S:'𝕊',T:'𝕋',U:'𝕌',V:'𝕍',W:'𝕎',X:'𝕏',Y:'𝕐',Z:'ℤ' } },
-                    { name: 'Small Caps', map: { a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ǫ',r:'ʀ',s:'s',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ', A:'ᴀ',B:'ʙ',C:'ᴄ',D:'ᴅ',E:'ᴇ',F:'ꜰ',G:'ɢ',H:'ʜ',I:'ɪ',J:'ᴊ',K:'ᴋ',L:'ʟ',M:'ᴍ',N:'ɴ',O:'ᴏ',P:'ᴘ',Q:'ǫ',R:'ʀ',S:'s',T:'ᴛ',U:'ᴜ',V:'ᴠ',W:'ᴡ',X:'x',Y:'ʏ',Z:'ᴢ' } },
-
-                    // --- 4. FANTASY & OCCULT ---
-                    { name: 'Runes', map: { a:'ᗅ',b:'ᗷ',c:'ᑕ',d:'ᗪ',e:'ᗴ',f:'ᖴ',g:'ᘜ',h:'ᕼ',i:'I',j:'ᒍ',k:'K',l:'ᒪ',m:'ᗰ',n:'ᑎ',o:'O',p:'ᑭ',q:'ᑸ',r:'ᖇ',s:'S',t:'T',u:'ᑌ',v:'ᐯ',w:'ᗯ',x:'᙭',y:'Y',z:'ᘔ', A:'ᗅ',B:'ᗷ',C:'ᑕ',D:'ᗪ',E:'ᗴ',F:'ᖴ',G:'ᘜ',H:'ᕼ',I:'I',J:'ᒍ',K:'K',L:'ᒪ',M:'ᗰ',N:'ᑎ',O:'O',P:'ᑭ',Q:'ᑸ',R:'ᖇ',S:'S',T:'T',U:'ᑌ',V:'ᐯ',W:'ᗯ',X:'᙭',Y:'Y',Z:'ᘔ' } },
-                    { name: 'Greek Myth', map: { a:'α',b:'ɓ',c:'ϲ',d:'d',e:'ε',f:'f',g:'g',h:'h',i:'ι',j:'j',k:'κ',l:'l',m:'ϻ',n:'π',o:'σ',p:'ρ',q:'q',r:'r',s:'s',t:'τ',u:'υ',v:'ν',w:'ω',x:'χ',y:'γ',z:'ζ', A:'Α',B:'Β',C:'Ϲ',D:'Δ',E:'Ε',F:'Ϝ',G:'Γ',H:'Η',I:'Ι',J:'J',K:'Κ',L:'Λ',M:'Μ',N:'Ν',O:'Ο',P:'Ρ',Q:'Q',R:'R',S:'Σ',T:'Τ',U:'Υ',V:'V',W:'Ω',X:'Χ',Y:'Ψ',Z:'Ζ' } },
-                    { name: 'Cyrillic Dark', map: { a:'а',b:'ъ',c:'с',d:'d',e:'е',f:'f',g:'g',h:'н',i:'i',j:'j',k:'к',l:'l',m:'м',n:'п',o:'о',p:'р',q:'q',r:'г',s:'ѕ',t:'т',u:'ц',v:'ѵ',w:'ш',x:'х',y:'у',z:'z', A:'Д',B:'В',C:'С',D:'D',E:'З',F:'F',G:'G',H:'Н',I:'І',J:'J',K:'К',L:'L',M:'М',N:'И',O:'О',P:'Р',Q:'Q',R:'Я',S:'Ѕ',T:'Т',U:'Ц',V:'Ѵ',W:'Ш',X:'Х',Y:'У',Z:'Z' } },
-                    { name: 'Luni', map: { a:'ℓ',b:'в',c:'c',d:'∂',e:'є',f:'ƒ',g:'g',h:'н',i:'ι',j:'נ',k:'к',l:'l',m:'м',n:'η',o:'σ',p:'ρ',q:'q',r:'я',s:'ѕ',t:'т',u:'υ',v:'ν',w:'ω',x:'χ',y:'у',z:'z', A:'ℓ',B:'в',C:'c',D:'∂',E:'є',F:'ƒ',G:'g',H:'н',I:'ι',J:'נ',K:'к',L:'l',M:'м',N:'η',O:'σ',P:'ρ',Q:'q',R:'я',S:'ѕ',T:'т',U:'υ',V:'ν',W:'ω',X:'χ',Y:'у',Z:'z' } },
-                    { name: 'Asian Mystery', map: { a:'ﾑ',b:'乃',c:'c',d:'d',e:'e',f:'ｷ',g:'g',h:'ん',i:'1',j:'ﾌ',k:'k',l:'1',m:'ﾶ',n:'刀',o:'o',p:'p',q:'q',r:'尺',s:'丂',t:'t',u:'u',v:'v',w:'w',x:'x',y:'y',z:'z', A:'ﾑ',B:'乃',C:'c',D:'d',E:'e',F:'ｷ',G:'g',H:'ん',I:'1',J:'ﾌ',K:'k',L:'1',M:'ﾶ',N:'刀',O:'o',P:'p',Q:'q',R:'尺',S:'丂',T:'t',U:'u',V:'v',W:'w',X:'x',Y:'y',Z:'z' } },
-                    { name: 'Currency', map: { a:'₳',b:'฿',c:'₵',d:'Đ',e:'Ɇ',f:'₣',g:'₲',h:'Ⱨ',i:'ł',j:'J',k:'₭',l:'Ⱡ',m:'₥',n:'₦',o:'Ø',p:'₱',q:'Q',r:'Ɽ',s:'₴',t:'₮',u:'Ʉ',v:'V',w:'₩',x:'Ӿ',y:'Ɏ',z:'Ⱬ', A:'₳',B:'฿',C:'₵',D:'Đ',E:'Ɇ',F:'₣',G:'₲',H:'Ⱨ',I:'ł',J:'J',K:'₭',L:'Ⱡ',M:'₥',N:'₦',O:'Ø',P:'₱',Q:'Q',R:'Ɽ',S:'₴',T:'₮',U:'Ʉ',V:'V',W:'₩',X:'Ӿ',Y:'Ɏ',Z:'Ⱬ' } },
-
-                    // --- 5. HORROR & DISTORTED ---
-                    { name: 'Strikethrough', map: { a:'a̶',b:'b̶',c:'c̶',d:'d̶',e:'e̶',f:'f̶',g:'g̶',h:'h̶',i:'i̶',j:'j̶',k:'k̶',l:'l̶',m:'m̶',n:'n̶',o:'o̶',p:'p̶',q:'q̶',r:'r̶',s:'s̶',t:'t̶',u:'u̶',v:'v̶',w:'w̶',x:'x̶',y:'y̶',z:'z̶', A:'A̶',B:'B̶',C:'C̶',D:'D̶',E:'E̶',F:'F̶',G:'G̶',H:'H̶',I:'I̶',J:'J̶',K:'K̶',L:'L̶',M:'M̶',N:'N̶',O:'O̶',P:'P̶',Q:'Q̶',R:'R̶',S:'S̶',T:'T̶',U:'U̶',V:'V̶',W:'W̶',X:'X̶',Y:'Y̶',Z:'Z̶' } },
-                    { name: 'Slash', map: { a:'a̷',b:'b̷',c:'c̷',d:'d̷',e:'e̷',f:'f̷',g:'g̷',h:'h̷',i:'i̷',j:'j̷',k:'k̷',l:'l̷',m:'m̷',n:'n̷',o:'o̷',p:'p̷',q:'q̷',r:'r̷',s:'s̷',t:'t̷',u:'u̷',v:'v̷',w:'w̷',x:'x̷',y:'y̷',z:'z̷', A:'A̷',B:'B̷',C:'C̷',D:'D̷',E:'E̷',F:'F̷',G:'G̷',H:'H̷',I:'I̷',J:'J̷',K:'K̷',L:'L̷',M:'M̷',N:'N̷',O:'O̷',P:'P̷',Q:'Q̷',R:'R̷',S:'S̷',T:'T̷',U:'U̷',V:'V̷',W:'W̷',X:'X̷',Y:'Y̷',Z:'Z̷' } },
-                    { name: 'Underline', map: { a:'a̲',b:'b̲',c:'c̲',d:'d̲',e:'e̲',f:'f̲',g:'g̲',h:'h̲',i:'i̲',j:'j̲',k:'k̲',l:'l̲',m:'m̲',n:'n̲',o:'o̲',p:'p̲',q:'q̲',r:'r̲',s:'s̲',t:'t̲',u:'u̲',v:'v̲',w:'w̲',x:'x̲',y:'y̲',z:'z̲', A:'A̲',B:'B̲',C:'C̲',D:'D̲',E:'E̲',F:'F̲',G:'G̲',H:'H̲',I:'I̲',J:'J̲',K:'K̲',L:'L̲',M:'M̲',N:'N̲',O:'O̲',P:'P̲',Q:'Q̲',R:'R̲',S:'S̲',T:'T̲',U:'U̲',V:'V̲',W:'W̲',X:'X̲',Y:'Y̲',Z:'Z̲' } },
-                    { name: 'Wavy', map: { a:'a̰',b:'b̰',c:'c̰',d:'d̰',e:'ḛ',f:'f̰',g:'g̰',h:'h̰',i:'ḭ',j:'j̰',k:'k̰',l:'l̰',m:'m̰',n:'n̰',o:'o̰',p:'p̰',q:'q̰',r:'r̰',s:'s̰',t:'t̰',u:'ṵ',v:'v̰',w:'w̰',x:'x̰',y:'y̰',z:'z̰', A:'A̰',B:'B̰',C:'C̰',D:'D̰',E:'Ḛ',F:'F̰',G:'G̰',H:'H̰',I:'Ḭ',J:'J̰',K:'K̰',L:'L̰',M:'M̰',N:'N̰',O:'O̰',P:'P̰',Q:'Q̰',R:'R̰',S:'S̰',T:'T̰',U:'Ṵ',V:'V̰',W:'W̰',X:'X̰',Y:'Y̰',Z:'Z̰' } },
-                    { name: 'Inverted', reverse: true, map: { a:'ɐ',b:'q',c:'ɔ',d:'p',e:'ǝ',f:'ɟ',g:'ƃ',h:'ɥ',i:'ᴉ',j:'ɾ',k:'ʞ',l:'l',m:'ɯ',n:'u',o:'o',p:'d',q:'b',r:'ɹ',s:'s',t:'ʇ',u:'n',v:'ʌ',w:'ʍ',x:'x',y:'ʎ',z:'z', A:'∀',B:'q',C:'Ɔ',D:'p',E:'Ǝ',F:'Ⅎ',G:'פ',H:'H',I:'I',J:'ſ',K:'ʞ',L:'˥',M:'W',N:'N',O:'O',P:'d',Q:'b',R:'ɹ',S:'S',T:'┴',U:'∩',V:'Λ',W:'M',X:'X',Y:'⅄',Z:'Z' } },
-                    { name: 'Mirror', map: { a:'ɒ',b:'d',c:'ɔ',d:'b',e:'ɘ',f:'Ꮈ',g:'ǫ',h:'ʜ',i:'i',j:'Ⴑ',k:'ʞ',l:'l',m:'m',n:'ᴎ',o:'o',p:'q',q:'p',r:'ɿ',s:'ƨ',t:'t',u:'u',v:'v',w:'w',x:'x',y:'y',z:'ƹ', A:'A',B:'ᙠ',C:'Ɔ',D:'ᗡ',E:'Ǝ',F:'ꟻ',G:'Ꭾ',H:'H',I:'I',J:'Ⴑ',K:'⋊',L:'⅃',M:'M',N:'Ͷ',O:'O',P:'ꟼ',Q:'Ọ',R:'Я',S:'Ƨ',T:'T',U:'U',V:'V',W:'W',X:'X',Y:'Y',Z:'Ƨ' } },
-
-                    // --- 6. GOTHIC DECORATED ---
-                    { name: 'Crosses', map: { a:'† a †',b:'† b †',c:'† c †',d:'† d †',e:'† e †',f:'† f †',g:'† g †',h:'† h †',i:'† i †',j:'† j †',k:'† k †',l:'† l †',m:'† m †',n:'† n †',o:'† o †',p:'† p †',q:'† q †',r:'† r †',s:'† s †',t:'† t †',u:'† u †',v:'† v †',w:'† w †',x:'† x †',y:'† y †',z:'† z †', A:'† A †',B:'† B †',C:'† C †',D:'† D †',E:'† E †',F:'† F †',G:'† G †',H:'† H †',I:'† I †',J:'† J †',K:'† K †',L:'† L †',M:'† M †',N:'† N †',O:'† O †',P:'† P †',Q:'† Q †',R:'† R †',S:'† S †',T:'† T †',U:'† U †',V:'† V †',W:'† W †',X:'† X †',Y:'† Y †',Z:'† Z †' } },
-                    { name: 'Skulls', map: { a:'☠ a ☠',b:'☠ b ☠',c:'☠ c ☠',d:'☠ d ☠',e:'☠ e ☠',f:'☠ f ☠',g:'☠ g ☠',h:'☠ h ☠',i:'☠ i ☠',j:'☠ j ☠',k:'☠ k ☠',l:'☠ l ☠',m:'☠ m ☠',n:'☠ n ☠',o:'☠ o ☠',p:'☠ p ☠',q:'☠ q ☠',r:'☠ r ☠',s:'☠ s ☠',t:'☠ t ☠',u:'☠ u ☠',v:'☠ v ☠',w:'☠ w ☠',x:'☠ x ☠',y:'☠ y ☠',z:'☠ z ☠', A:'☠ A ☠',B:'☠ B ☠',C:'☠ C ☠',D:'☠ D ☠',E:'☠ E ☠',F:'☠ F ☠',G:'☠ G ☠',H:'☠ H ☠',I:'☠ I ☠',J:'☠ J ☠',K:'☠ K ☠',L:'☠ L ☠',M:'☠ M ☠',N:'☠ N ☠',O:'☠ O ☠',P:'☠ P ☠',Q:'☠ Q ☠',R:'☠ R ☠',S:'☠ S ☠',T:'☠ T ☠',U:'☠ U ☠',V:'☠ V ☠',W:'☠ W ☠',X:'☠ X ☠',Y:'☠ Y ☠',Z:'☠ Z ☠' } },
-                    { name: 'Spiders', map: { a:'🕷 a 🕷',b:'🕷 b 🕷',c:'🕷 c 🕷',d:'🕷 d 🕷',e:'🕷 e 🕷',f:'🕷 f 🕷',g:'🕷 g 🕷',h:'🕷 h 🕷',i:'🕷 i 🕷',j:'🕷 j 🕷',k:'🕷 k 🕷',l:'🕷 l 🕷',m:'🕷 m 🕷',n:'🕷 n 🕷',o:'🕷 o 🕷',p:'🕷 p 🕷',q:'🕷 q 🕷',r:'🕷 r 🕷',s:'🕷 s 🕷',t:'🕷 t 🕷',u:'🕷 u 🕷',v:'🕷 v 🕷',w:'🕷 w 🕷',x:'🕷 x 🕷',y:'🕷 y 🕷',z:'🕷 z 🕷', A:'🕷 A 🕷',B:'🕷 B 🕷',C:'🕷 C 🕷',D:'🕷 D 🕷',E:'🕷 E 🕷',F:'🕷 F 🕷',G:'🕷 G 🕷',H:'🕷 H 🕷',I:'🕷 I 🕷',J:'🕷 J 🕷',K:'🕷 K 🕷',L:'🕷 L 🕷',M:'🕷 M 🕷',N:'🕷 N 🕷',O:'🕷 O 🕷',P:'🕷 P 🕷',Q:'🕷 Q 🕷',R:'🕷 R 🕷',S:'🕷 S 🕷',T:'🕷 T 🕷',U:'🕷 U 🕷',V:'🕷 V 🕷',W:'🕷 W 🕷',X:'🕷 X 🕷',Y:'🕷 Y 🕷',Z:'🕷 Z 🕷' } },
-                    { name: 'Webs', map: { a:'🕸 a 🕸',b:'🕸 b 🕸',c:'🕸 c 🕸',d:'🕸 d 🕸',e:'🕸 e 🕸',f:'🕸 f 🕸',g:'🕸 g 🕸',h:'🕸 h 🕸',i:'🕸 i 🕸',j:'🕸 j 🕸',k:'🕸 k 🕸',l:'🕸 l 🕸',m:'🕸 m 🕸',n:'🕸 n 🕸',o:'🕸 o 🕸',p:'🕸 p 🕸',q:'🕸 q 🕸',r:'🕸 r 🕸',s:'🕸 s 🕸',t:'🕸 t 🕸',u:'🕸 u 🕸',v:'🕸 v 🕸',w:'🕸 w 🕸',x:'🕸 x 🕸',y:'🕸 y 🕸',z:'🕸 z 🕸', A:'🕸 A 🕸',B:'🕸 B 🕸',C:'🕸 C 🕸',D:'🕸 D 🕸',E:'🕸 E 🕸',F:'🕸 F 🕸',G:'🕸 G 🕸',H:'🕸 H 🕸',I:'🕸 I 🕸',J:'🕸 J 🕸',K:'🕸 K 🕸',L:'🕸 L 🕸',M:'🕸 M 🕸',N:'🕸 N 🕸',O:'🕸 O 🕸',P:'🕸 P 🕸',Q:'🕸 Q 🕸',R:'🕸 R 🕸',S:'🕸 S 🕸',T:'🕸 T 🕸',U:'🕸 U 🕸',V:'🕸 V 🕸',W:'🕸 W 🕸',X:'🕸 X 🕸',Y:'🕸 Y 🕸',Z:'🕸 Z 🕸' } },
-                    { name: 'Bats', map: { a:'🦇 a 🦇',b:'🦇 b 🦇',c:'🦇 c 🦇',d:'🦇 d 🦇',e:'🦇 e 🦇',f:'🦇 f 🦇',g:'🦇 g 🦇',h:'🦇 h 🦇',i:'🦇 i 🦇',j:'🦇 j 🦇',k:'🦇 k 🦇',l:'🦇 l 🦇',m:'🦇 m 🦇',n:'🦇 n 🦇',o:'🦇 o 🦇',p:'🦇 p 🦇',q:'🦇 q 🦇',r:'🦇 r 🦇',s:'🦇 s 🦇',t:'🦇 t 🦇',u:'🦇 u 🦇',v:'🦇 v 🦇',w:'🦇 w 🦇',x:'🦇 x 🦇',y:'🦇 y 🦇',z:'🦇 z 🦇', A:'🦇 A 🦇',B:'🦇 B 🦇',C:'🦇 C 🦇',D:'🦇 D 🦇',E:'🦇 E 🦇',F:'🦇 F 🦇',G:'🦇 G 🦇',H:'🦇 H 🦇',I:'🦇 I 🦇',J:'🦇 J 🦇',K:'🦇 K 🦇',L:'🦇 L 🦇',M:'🦇 M 🦇',N:'🦇 N 🦇',O:'🦇 O 🦇',P:'🦇 P 🦇',Q:'🦇 Q 🦇',R:'🦇 R 🦇',S:'🦇 S 🦇',T:'🦇 T 🦇',U:'🦇 U 🦇',V:'🦇 V 🦇',W:'🦇 W 🦇',X:'🦇 X 🦇',Y:'🦇 Y 🦇',Z:'🦇 Z 🦇' } },
-                    { name: 'Coffins', map: { a:'⚰ a ⚰',b:'⚰ b ⚰',c:'⚰ c ⚰',d:'⚰ d ⚰',e:'⚰ e ⚰',f:'⚰ f ⚰',g:'⚰ g ⚰',h:'⚰ h ⚰',i:'⚰ i ⚰',j:'⚰ j ⚰',k:'⚰ k ⚰',l:'⚰ l ⚰',m:'⚰ m ⚰',n:'⚰ n ⚰',o:'⚰ o ⚰',p:'⚰ p ⚰',q:'⚰ q ⚰',r:'⚰ r ⚰',s:'⚰ s ⚰',t:'⚰ t ⚰',u:'⚰ u ⚰',v:'⚰ v ⚰',w:'⚰ w ⚰',x:'⚰ x ⚰',y:'⚰ y ⚰',z:'⚰ z ⚰', A:'⚰ A ⚰',B:'⚰ B ⚰',C:'⚰ C ⚰',D:'⚰ D ⚰',E:'⚰ E ⚰',F:'⚰ F ⚰',G:'⚰ G ⚰',H:'⚰ H ⚰',I:'⚰ I ⚰',J:'⚰ J ⚰',K:'⚰ K ⚰',L:'⚰ L ⚰',M:'⚰ M ⚰',N:'⚰ N ⚰',O:'⚰ O ⚰',P:'⚰ P ⚰',Q:'⚰ Q ⚰',R:'⚰ R ⚰',S:'⚰ S ⚰',T:'⚰ T ⚰',U:'⚰ U ⚰',V:'⚰ V ⚰',W:'⚰ W ⚰',X:'⚰ X ⚰',Y:'⚰ Y ⚰',Z:'⚰ Z ⚰' } },
-                    { name: 'Chains', map: { a:'⛓ a ⛓',b:'⛓ b ⛓',c:'⛓ c ⛓',d:'⛓ d ⛓',e:'⛓ e ⛓',f:'⛓ f ⛓',g:'⛓ g ⛓',h:'⛓ h ⛓',i:'⛓ i ⛓',j:'⛓ j ⛓',k:'⛓ k ⛓',l:'⛓ l ⛓',m:'⛓ m ⛓',n:'⛓ n ⛓',o:'⛓ o ⛓',p:'⛓ p ⛓',q:'⛓ q ⛓',r:'⛓ r ⛓',s:'⛓ s ⛓',t:'⛓ t ⛓',u:'⛓ u ⛓',v:'⛓ v ⛓',w:'⛓ w ⛓',x:'⛓ x ⛓',y:'⛓ y ⛓',z:'⛓ z ⛓', A:'⛓ A ⛓',B:'⛓ B ⛓',C:'⛓ C ⛓',D:'⛓ D ⛓',E:'⛓ E ⛓',F:'⛓ F ⛓',G:'⛓ G ⛓',H:'⛓ H ⛓',I:'⛓ I ⛓',J:'⛓ J ⛓',K:'⛓ K ⛓',L:'⛓ L ⛓',M:'⛓ M ⛓',N:'⛓ N ⛓',O:'⛓ O ⛓',P:'⛓ P ⛓',Q:'⛓ Q ⛓',R:'⛓ R ⛓',S:'⛓ S ⛓',T:'⛓ T ⛓',U:'⛓ U ⛓',V:'⛓ V ⛓',W:'⛓ W ⛓',X:'⛓ X ⛓',Y:'⛓ Y ⛓',Z:'⛓ Z ⛓' } },
-                    { name: 'Swords', map: { a:'⚔ a ⚔',b:'⚔ b ⚔',c:'⚔ c ⚔',d:'⚔ d ⚔',e:'⚔ e ⚔',f:'⚔ f ⚔',g:'⚔ g ⚔',h:'⚔ h ⚔',i:'⚔ i ⚔',j:'⚔ j ⚔',k:'⚔ k ⚔',l:'⚔ l ⚔',m:'⚔ m ⚔',n:'⚔ n ⚔',o:'⚔ o ⚔',p:'⚔ p ⚔',q:'⚔ q ⚔',r:'⚔ r ⚔',s:'⚔ s ⚔',t:'⚔ t ⚔',u:'⚔ u ⚔',v:'⚔ v ⚔',w:'⚔ w ⚔',x:'⚔ x ⚔',y:'⚔ y ⚔',z:'⚔ z ⚔', A:'⚔ A ⚔',B:'⚔ B ⚔',C:'⚔ C ⚔',D:'⚔ D ⚔',E:'⚔ E ⚔',F:'⚔ F ⚔',G:'⚔ G ⚔',H:'⚔ H ⚔',I:'⚔ I ⚔',J:'⚔ J ⚔',K:'⚔ K ⚔',L:'⚔ L ⚔',M:'⚔ M ⚔',N:'⚔ N ⚔',O:'⚔ O ⚔',P:'⚔ P ⚔',Q:'⚔ Q ⚔',R:'⚔ R ⚔',S:'⚔ S ⚔',T:'⚔ T ⚔',U:'⚔ U ⚔',V:'⚔ V ⚔',W:'⚔ W ⚔',X:'⚔ X ⚔',Y:'⚔ Y ⚔',Z:'⚔ Z ⚔' } },
-                    { name: 'Blood', map: { a:'🩸 a 🩸',b:'🩸 b 🩸',c:'🩸 c 🩸',d:'🩸 d 🩸',e:'🩸 e 🩸',f:'🩸 f 🩸',g:'🩸 g 🩸',h:'🩸 h 🩸',i:'🩸 i 🩸',j:'🩸 j 🩸',k:'🩸 k 🩸',l:'🩸 l 🩸',m:'🩸 m 🩸',n:'🩸 n 🩸',o:'🩸 o 🩸',p:'🩸 p 🩸',q:'🩸 q 🩸',r:'🩸 r 🩸',s:'🩸 s 🩸',t:'🩸 t 🩸',u:'🩸 u 🩸',v:'🩸 v 🩸',w:'🩸 w 🩸',x:'🩸 x 🩸',y:'🩸 y 🩸',z:'🩸 z 🩸', A:'🩸 A 🩸',B:'🩸 B 🩸',C:'🩸 C 🩸',D:'🩸 D 🩸',E:'🩸 E 🩸',F:'🩸 F 🩸',G:'🩸 G 🩸',H:'🩸 H 🩸',I:'🩸 I 🩸',J:'🩸 J 🩸',K:'🩸 K 🩸',L:'🩸 L 🩸',M:'🩸 M 🩸',N:'🩸 N 🩸',O:'🩸 O 🩸',P:'🩸 P 🩸',Q:'🩸 Q 🩸',R:'🩸 R 🩸',S:'🩸 S 🩸',T:'🩸 T 🩸',U:'🩸 U 🩸',V:'🩸 V 🩸',W:'🩸 W 🩸',X:'🩸 X 🩸',Y:'🩸 Y 🩸',Z:'🩸 Z 🩸' } },
-                    { name: 'Dark Heart', map: { a:'🖤 a 🖤',b:'🖤 b 🖤',c:'🖤 c 🖤',d:'🖤 d 🖤',e:'🖤 e 🖤',f:'🖤 f 🖤',g:'🖤 g 🖤',h:'🖤 h 🖤',i:'🖤 i 🖤',j:'🖤 j 🖤',k:'🖤 k 🖤',l:'🖤 l 🖤',m:'🖤 m 🖤',n:'🖤 n 🖤',o:'🖤 o 🖤',p:'🖤 p 🖤',q:'🖤 q 🖤',r:'🖤 r 🖤',s:'🖤 s 🖤',t:'🖤 t 🖤',u:'🖤 u 🖤',v:'🖤 v 🖤',w:'🖤 w 🖤',x:'🖤 x 🖤',y:'🖤 y 🖤',z:'🖤 z 🖤', A:'🖤 A 🖤',B:'🖤 B 🖤',C:'🖤 C 🖤',D:'🖤 D 🖤',E:'🖤 E 🖤',F:'🖤 F 🖤',G:'🖤 G 🖤',H:'🖤 H 🖤',I:'🖤 I 🖤',J:'🖤 J 🖤',K:'🖤 K 🖤',L:'🖤 L 🖤',M:'🖤 M 🖤',N:'🖤 N 🖤',O:'🖤 O 🖤',P:'🖤 P 🖤',Q:'🖤 Q 🖤',R:'🖤 R 🖤',S:'🖤 S 🖤',T:'🖤 T 🖤',U:'🖤 U 🖤',V:'🖤 V 🖤',W:'🖤 W 🖤',X:'🖤 X 🖤',Y:'🖤 Y 🖤',Z:'🖤 Z 🖤' } },
-                    { name: 'Ghosts', map: { a:'👻 a 👻',b:'👻 b 👻',c:'👻 c 👻',d:'👻 d 👻',e:'👻 e 👻',f:'👻 f 👻',g:'👻 g 👻',h:'👻 h 👻',i:'👻 i 👻',j:'👻 j 👻',k:'👻 k 👻',l:'👻 l 👻',m:'👻 m 👻',n:'👻 n 👻',o:'👻 o 👻',p:'👻 p 👻',q:'👻 q 👻',r:'👻 r 👻',s:'👻 s 👻',t:'👻 t 👻',u:'👻 u 👻',v:'👻 v 👻',w:'👻 w 👻',x:'👻 x 👻',y:'👻 y 👻',z:'👻 z 👻', A:'👻 A 👻',B:'👻 B 👻',C:'👻 C 👻',D:'👻 D 👻',E:'👻 E 👻',F:'👻 F 👻',G:'👻 G 👻',H:'👻 H 👻',I:'👻 I 👻',J:'👻 J 👻',K:'👻 K 👻',L:'👻 L 👻',M:'👻 M 👻',N:'👻 N 👻',O:'👻 O 👻',P:'👻 P 👻',Q:'👻 Q 👻',R:'👻 R 👻',S:'👻 S 👻',T:'👻 T 👻',U:'👻 U 👻',V:'👻 V 👻',W:'👻 W 👻',X:'👻 X 👻',Y:'👻 Y 👻',Z:'👻 Z 👻' } },
-                    { name: 'Lightning', map: { a:'⚡ a ⚡',b:'⚡ b ⚡',c:'⚡ c ⚡',d:'⚡ d ⚡',e:'⚡ e ⚡',f:'⚡ f ⚡',g:'⚡ g ⚡',h:'⚡ h ⚡',i:'⚡ i ⚡',j:'⚡ j ⚡',k:'⚡ k ⚡',l:'⚡ l ⚡',m:'⚡ m ⚡',n:'⚡ n ⚡',o:'⚡ o ⚡',p:'⚡ p ⚡',q:'⚡ q ⚡',r:'⚡ r ⚡',s:'⚡ s ⚡',t:'⚡ t ⚡',u:'⚡ u ⚡',v:'⚡ v ⚡',w:'⚡ w ⚡',x:'⚡ x ⚡',y:'⚡ y ⚡',z:'⚡ z ⚡', A:'⚡ A ⚡',B:'⚡ B ⚡',C:'⚡ C ⚡',D:'⚡ D ⚡',E:'⚡ E ⚡',F:'⚡ F ⚡',G:'⚡ G ⚡',H:'⚡ H ⚡',I:'⚡ I ⚡',J:'⚡ J ⚡',K:'⚡ K ⚡',L:'⚡ L ⚡',M:'⚡ M ⚡',N:'⚡ N ⚡',O:'⚡ O ⚡',P:'⚡ P ⚡',Q:'⚡ Q ⚡',R:'⚡ R ⚡',S:'⚡ S ⚡',T:'⚡ T ⚡',U:'⚡ U ⚡',v:'⚡ V ⚡',W:'⚡ W ⚡',X:'⚡ X ⚡',Y:'⚡ Y ⚡',Z:'⚡ Z ⚡' } },
-                    { name: 'Moons', map: { a:'☾ a ☽',b:'☾ b ☽',c:'☾ c ☽',d:'☾ d ☽',e:'☾ e ☽',f:'☾ f ☽',g:'☾ g ☽',h:'☾ h ☽',i:'☾ i ☽',j:'☾ j ☽',k:'☾ k ☽',l:'☾ l ☽',m:'☾ m ☽',n:'☾ n ☽',o:'☾ o ☽',p:'☾ p ☽',q:'☾ q ☽',r:'☾ r ☽',s:'☾ s ☽',t:'☾ t ☽',u:'☾ u ☽',v:'☾ v ☽',w:'☾ w ☽',x:'☾ x ☽',y:'☾ y ☽',z:'☾ z ☽', A:'☾ A ☽',B:'☾ B ☽',C:'☾ C ☽',D:'☾ D ☽',E:'☾ E ☽',F:'☾ F ☽',G:'☾ G ☽',H:'☾ H ☽',I:'☾ I ☽',J:'☾ J ☽',K:'☾ K ☽',L:'☾ L ☽',M:'☾ M ☽',N:'☾ N ☽',O:'☾ O ☽',P:'☾ P ☽',Q:'☾ Q ☽',R:'☾ R ☽',S:'☾ S ☽',T:'☾ T ☽',U:'☾ U ☽',V:'☾ V ☽',W:'☾ W ☽',X:'☾ X ☽',Y:'☾ Y ☽',Z:'☾ Z ☽' } },
-                    { name: 'Emo xX', map: { a:'xX a Xx',b:'xX b Xx',c:'xX c Xx',d:'xX d Xx',e:'xX e Xx',f:'xX f Xx',g:'xX g Xx',h:'xX h Xx',i:'xX i Xx',j:'xX j Xx',k:'xX k Xx',l:'xX l Xx',m:'xX m Xx',n:'xX n Xx',o:'xX o Xx',p:'xX p Xx',q:'xX q Xx',r:'xX r Xx',s:'xX s Xx',t:'xX t Xx',u:'xX u Xx',v:'xX v Xx',w:'xX w Xx',x:'xX x Xx',y:'xX y Xx',z:'xX z Xx', A:'xX A Xx',B:'xX B Xx',C:'xX C Xx',D:'xX D Xx',E:'xX E Xx',F:'xX F Xx',G:'xX G Xx',H:'xX H Xx',I:'xX I Xx',J:'xX J Xx',K:'xX K Xx',L:'xX L Xx',M:'xX M Xx',N:'xX N Xx',O:'xX O Xx',P:'xX P Xx',Q:'xX Q Xx',R:'xX R Xx',S:'xX S Xx',T:'xX T Xx',U:'xX U Xx',V:'xX V Xx',W:'xX W Xx',X:'xX X Xx',Y:'xX Y Xx',Z:'xX Z Xx' } },
-                    { name: 'Black Bubbles', map: { a:'🅐',b:'🅑',c:'🅒',d:'🅓',e:'🅔',f:'𝅕',g:'🅖',h:'🅗',i:'🅘',j:'🅙',k:'🅚',l:'🅛',m:'🅼',n:'🅝',o:'🅞',p:'🅟',q:'🅠',r:'🅡',s:'🅢',t:'🅣',u:'🅤',v:'🅥',w:'🅦',x:'🅧',y:'🅨',z:'🅩', A:'🅐',B:'🅑',C:'🅒',D:'🅓',E:'🅔',F:'🅕',G:'🅖',H:'🅗',I:'🅘',J:'🅙',K:'𝅚',L:'𝅛',M:'🅜',N:'🅝',O:'🅞',P:'🅟',Q:'🅠',R:'🅡',S:'🅢',T:'🅣',U:'🅤',V:'𝅥',W:'𝅦',X:'𝅧',Y:'𝅨',Z:'𝅩' } },
-                    { name: 'Black Squares', map: { a:'🅰',b:'🅱',c:'🅲',d:'🅳',e:'🅴',f:'𝅵',g:'🅶',h:'🅷',i:'🅸',j:'🅹',k:'🅺',l:'🅻',m:'🅼',n:'🅽',o:'🅾',p:'🅿',q:'🆀',r:'🆁',s:'🆂',t:'🆃',u:'🆄',v:'🆅',w:'🆆',x:'🆇',y:'🆈',z:'🆉', A:'🅰',B:'🅱',C:'🅲',D:'🅳',E:'🅴',F:'𝅵',G:'🅶',H:'🅷',I:'🅸',J:'𝅹',K:'𝅺',L:'🅻',M:'🅼',N:'🅽',O:'🅾',P:'🅿',Q:'🆀',R:'🆁',S:'🆂',T:'🆃',U:'🆄',V:'🆅',W:'🆆',X:'𝆇',Y:'🆈',Z:'🆉' } }
-                ],
-                transformText(font, htmlMode = false) {
-                    if (!this.inputText) return 'Darkness';
-                    let text = this.inputText;
-                    
-                    if (font.reverse) {
-                        text = text.split('').reverse().join('');
-                    }
-
-                    const map = font.map;
-                    const specialChars = ['á', 'é', 'í', 'ó', 'ú', 'ñ', 'Ñ', '¿', '¡'];
-                    
-                    return text.split('').map(char => {
-                        if (map[char]) return map[char];
-                        if (htmlMode && specialChars.includes(char)) return `<span class="fallback-char">${char}</span>`;
-                        return char;
-                    }).join('');
-                },
-                insertSymbol(symbol) {
-                    const textarea = this.$refs.textarea;
-                    const start = textarea.selectionStart;
-                    const end = textarea.selectionEnd;
-                    const text = this.inputText;
-                    this.inputText = text.substring(0, start) + symbol + text.substring(end);
-                    this.$nextTick(() => {
-                        textarea.focus();
-                        const newPos = start + symbol.length;
-                        textarea.setSelectionRange(newPos, newPos);
-                    });
-                },
-                copyToClipboard(text) {
-                    navigator.clipboard.writeText(text).then(() => {
-                        this.toastVisible = true;
-                        setTimeout(() => this.toastVisible = false, 2000);
-                    });
-                }
-            }));
-        });
-    </script>
-</head>
-<body x-data="converter" class="min-h-screen flex flex-col relative grid-bg selection:bg-red-500 selection:text-white">
-
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200" x-data="{ mobileMenu: false }">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <a href="index.html" class="flex items-center gap-2 group">
-                    <div class="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:rotate-6 transition-transform">G</div>
-                    <span class="font-bold text-xl tracking-tight text-slate-900">Letras<span class="text-red-600">Góticas</span></span>
-                </a>
-                <div class="hidden md:flex items-center gap-6">
-                    <a href="index.html" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Inicio</a>
-                    <a href="letras-cursivas.html" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Cursivas</a>
-                    <a href="letras-tatuajes.html" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Tatuajes</a>
-                    <a href="letras-goticas.html" class="text-sm font-semibold text-slate-900 border-b-2 border-red-600 py-5">Góticas</a>
-                    <div class="relative group py-5">
-                        <button class="flex items-center gap-1 text-sm font-medium text-slate-500 group-hover:text-slate-900 transition-colors">
-                            Más <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </button>
-                        <div class="absolute right-0 top-[90%] w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
-                            <div class="bg-white border border-slate-100 rounded-xl shadow-xl p-2">
-                                <a href="letras-graffiti.html" class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-red-600 rounded-lg transition-colors">Graffiti</a>
-                                <a href="letras-amino.html" class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-red-600 rounded-lg transition-colors">Amino</a>
-                                <a href="letras-facebook.html" class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-red-600 rounded-lg transition-colors">Facebook</a>
-                                <div class="h-px bg-slate-100 my-1 mx-2"></div>
-                                <a href="letras-tattoo.html" class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-red-600 rounded-lg transition-colors">Tattoo (EN)</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="md:hidden p-2 text-slate-500 hover:text-slate-900" @click="mobileMenu = !mobileMenu">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                </button>
-            </div>
-        </div>
-        <div x-show="mobileMenu" x-collapse class="md:hidden bg-white border-t border-slate-100 px-4 py-4">
-            <div class="flex flex-col gap-4">
-                <a href="index.html" class="text-base font-medium text-slate-600">Inicio</a>
-                <a href="letras-cursivas.html" class="text-base font-medium text-slate-600">Cursivas</a>
-                <a href="letras-tatuajes.html" class="text-base font-medium text-slate-600">Tatuajes</a>
-                <a href="letras-goticas.html" class="text-base font-medium text-slate-900">Góticas</a>
-                <a href="letras-graffiti.html" class="text-base font-medium text-slate-600">Graffiti</a>
-            </div>
-        </div>
-    </nav>
-
-    <main class="flex-grow w-full max-w-4xl mx-auto px-4 pt-16 pb-24">
-        <div class="text-center mb-12">
-            <h1 class="font-extrabold text-5xl md:text-7xl text-slate-900 mb-6 tracking-tight leading-[1.1]">
-                Conversor de Letras <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-rose-600 to-slate-500 animate-gradient">Góticas</span>
-            </h1>
-            <p class="text-slate-500 text-lg md:text-xl max-w-xl mx-auto leading-relaxed">Estilo medieval, oscuro y ocultista.</p>
-        </div>
-
-        <div class="mb-12 sticky top-24 z-30">
-            <div class="bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-slate-200 p-2 transition-transform hover:scale-[1.01] duration-300">
-                
-                <textarea 
-                    x-ref="textarea"
-                    x-model="inputText" 
-                    class="block w-full px-6 py-8 bg-slate-50 border border-slate-100 rounded-xl text-slate-900 text-3xl md:text-4xl font-bold text-center placeholder:text-slate-300 focus:ring-4 focus:ring-red-100 focus:border-red-200 resize-none outline-none transition-all" 
-                    rows="1" 
-                    spellcheck="false" 
-                    placeholder="Escribe tu texto aquí..."></textarea>
-
-                <!-- Symbol Toolbar -->
-                <div class="mt-2 pt-2 border-t border-slate-100">
-                    <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1 px-1">
-                        <template x-for="sym in toolbarSymbols" :key="sym">
-                            <button 
-                                @click="insertSymbol(sym)"
-                                class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-xl bg-slate-50 hover:bg-red-50 text-slate-600 hover:text-red-600 rounded-lg transition-all active:scale-90"
-                                type="button"
-                                x-text="sym"
-                            ></button>
-                        </template>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-20">
             <template x-for="font in fonts" :key="font.name">
                 <div class="group relative bg-white border border-slate-200 rounded-xl p-6 hover:border-red-300 hover:shadow-lg hover:shadow-red-500/5 transition-all duration-300 cursor-pointer" @click="copyToClipboard(transformText(font, false))">
@@ -223,9 +9,93 @@
                 </div>
             </template>
         </div>
-    </main>
 
-    <footer class="mt-auto border-t border-slate-200 bg-white py-12"><div class="max-w-7xl mx-auto px-4 text-center"><p class="text-slate-400 text-sm font-medium">&copy; 2024 LetrasBonitas.pro</p></div></footer>
-    <div x-cloak x-show="toastVisible" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none"><div class="bg-slate-900 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3"><div class="w-5 h-5 rounded-full bg-red-500 flex items-center justify-center"><svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><span class="font-bold text-sm">Copiado al portapapeles</span></div></div>
-</body>
-</html>
+        <!-- SEO Content Section: Góticas -->
+        <div class="border-t border-slate-200 pt-16 mt-16">
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 bg-red-100 text-red-700 rounded-2xl flex items-center justify-center text-2xl">🧛</div>
+                    <h3 class="text-xl font-bold text-slate-900">Estética Dark y Oscura</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">El <strong>conversor de letras góticas</strong> es perfecto para perfiles con temática dark, emo, metal o vampírica. Transforma tu texto en algo misterioso y antiguo.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="w-12 h-12 bg-zinc-100 text-zinc-700 rounded-2xl flex items-center justify-center text-2xl">🏰</div>
+                    <h3 class="text-xl font-bold text-slate-900">Tipografía Medieval</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">Basadas en la escritura <strong>Blackletter y Fraktur</strong> de la Edad Media. Estas fuentes transmiten autoridad, historia y un fuerte impacto visual.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="w-12 h-12 bg-rose-100 text-rose-700 rounded-2xl flex items-center justify-center text-2xl">🕸️</div>
+                    <h3 class="text-xl font-bold text-slate-900">Símbolos Ocultistas</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">Complementa tus letras góticas con nuestra selección de símbolos únicos: ataúdes, arañas, cadenas y cruces invertidas para un look total.</p>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-slate-100 to-red-50 rounded-3xl p-8 md:p-12 border border-red-100 mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center">Usos populares de las Letras Góticas</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden group hover:border-red-300 transition-colors">
+                        <div class="absolute -right-4 -top-4 text-9xl font-bold text-slate-50 group-hover:text-red-50 transition-colors select-none">1</div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-bold text-slate-900 mb-2">Nicks de Juegos</h4>
+                            <p class="text-slate-500 text-sm">Destaca en Free Fire, PUBG o COD con un nombre intimidante usando caracteres góticos.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden group hover:border-red-300 transition-colors">
+                        <div class="absolute -right-4 -top-4 text-9xl font-bold text-slate-50 group-hover:text-red-50 transition-colors select-none">2</div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-bold text-slate-900 mb-2">Bios de Instagram</h4>
+                            <p class="text-slate-500 text-sm">Crea una estética "dark academia" o grunge en tu perfil social con facilidad.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden group hover:border-red-300 transition-colors">
+                        <div class="absolute -right-4 -top-4 text-9xl font-bold text-slate-50 group-hover:text-red-50 transition-colors select-none">3</div>
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-bold text-slate-900 mb-2">Títulos de Arte</h4>
+                            <p class="text-slate-500 text-sm">Perfecto para diseñadores que buscan inspiración tipográfica rápida para portadas o posters.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto" x-data="{ activeAccordion: null }">
+                <h2 class="text-2xl font-bold text-slate-900 mb-8 text-center">Preguntas Frecuentes (FAQ)</h2>
+                <div class="space-y-4">
+                    <div class="border border-slate-200 rounded-xl bg-white overflow-hidden">
+                        <button @click="activeAccordion = activeAccordion === 0 ? null : 0" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-slate-50 transition-colors">
+                            <span class="font-semibold text-slate-900">¿Qué es el estilo Fraktur?</span>
+                            <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-200" :class="{'rotate-180': activeAccordion === 0}" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="activeAccordion === 0" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100">
+                            <div class="px-6 pb-4 text-slate-600 text-sm leading-relaxed">
+                                El Fraktur es un subgrupo de la escritura gótica muy popular en Alemania. Es el estilo clásico que verás en nuestro generador bajo el nombre de "Gótica" o "Fraktur Bold", caracterizado por sus líneas quebradas y aspecto denso.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-slate-200 rounded-xl bg-white overflow-hidden">
+                        <button @click="activeAccordion = activeAccordion === 1 ? null : 1" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-slate-50 transition-colors">
+                            <span class="font-semibold text-slate-900">¿Por qué algunas letras góticas no se leen bien?</span>
+                            <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-200" :class="{'rotate-180': activeAccordion === 1}" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="activeAccordion === 1" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100">
+                            <div class="px-6 pb-4 text-slate-600 text-sm leading-relaxed">
+                                Las <strong>fuentes góticas reales</strong> son complejas y ornamentadas. Al convertirlas a Unicode para redes sociales, a veces se sacrifica legibilidad por estética. Recomendamos usarlas para palabras cortas o títulos, no para párrafos enteros.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-200 rounded-xl bg-white overflow-hidden">
+                        <button @click="activeAccordion = activeAccordion === 2 ? null : 2" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-slate-50 transition-colors">
+                            <span class="font-semibold text-slate-900">¿Funcionan en Twitter y Facebook?</span>
+                            <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-200" :class="{'rotate-180': activeAccordion === 2}" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="activeAccordion === 2" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100">
+                            <div class="px-6 pb-4 text-slate-600 text-sm leading-relaxed">
+                                ¡Sí! Estas letras "dark" funcionan perfectamente en Twitter (X), Facebook, WhatsApp y Discord. Son ideales para destacar anuncios importantes o darle personalidad a tu nombre de usuario.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
